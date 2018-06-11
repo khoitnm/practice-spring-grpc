@@ -5,17 +5,17 @@ option java_package = "org.tnmk.practice.springgrpc.protobuf";
 
 
 service ItemProtoResource {
-    rpc addItem (ItemDTO) returns (ItemDTO);
-    rpc deleteItem (ItemIdDTO) returns (ItemDTO);
-    rpc getItem (ItemIdDTO) returns (ItemDTO);
+    rpc addItem (ItemProto) returns (ItemProto);
+    rpc deleteItem (ItemIdProto) returns (ItemProto);
+    rpc getItem (ItemIdProto) returns (ItemProto);
 }
 
 
-message ItemIdDTO {
+message ItemIdProto {
     string id = 1;
 }
 
-message ItemDTO {
+message ItemProto {
 
     string id = 1;
 

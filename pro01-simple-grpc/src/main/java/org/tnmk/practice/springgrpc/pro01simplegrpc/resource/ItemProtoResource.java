@@ -2,8 +2,8 @@ package org.tnmk.practice.springgrpc.pro01simplegrpc.resource;
 
 import io.grpc.stub.StreamObserver;
 import org.lognet.springboot.grpc.GRpcService;
-import org.tnmk.practice.springgrpc.protobuf.ItemDTO;
-import org.tnmk.practice.springgrpc.protobuf.ItemIdDTO;
+import org.tnmk.practice.springgrpc.protobuf.ItemProto;
+import org.tnmk.practice.springgrpc.protobuf.ItemIdProto;
 import org.tnmk.practice.springgrpc.protobuf.ItemProtoResourceGrpc;
 
 import java.util.Date;
@@ -13,12 +13,12 @@ public class ItemProtoResource extends ItemProtoResourceGrpc.ItemProtoResourceIm
 
     /**
      */
-    public void getItem(ItemIdDTO request, StreamObserver<ItemDTO> responseObserver) {
-        ItemDTO itemDTO = ItemDTO.newBuilder()
+    public void getItem(ItemIdProto request, StreamObserver<ItemProto> responseObserver) {
+        ItemProto itemProto = ItemProto.newBuilder()
             .setId(request.getId())
             .setName("Some name " + new Date()).build();
 
-        responseObserver.onNext(itemDTO);
+        responseObserver.onNext(itemProto);
         responseObserver.onCompleted();
     }
 

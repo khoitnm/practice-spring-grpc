@@ -12,6 +12,9 @@
     <groupId>org.tnmk.skeleton.practice-spring-grpc</groupId>
     <artifactId>grpc-client</artifactId>
 
+    <properties>
+        <org.mapstruct.version>1.2.0.Final</org.mapstruct.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -20,14 +23,15 @@
         </dependency>
 
         <dependency>
-            <groupId>org.lognet</groupId>
-            <artifactId>grpc-spring-boot-starter</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.tnmk.skeleton.practice-spring-grpc</groupId>
             <artifactId>grpc-resource</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <!-- GRPC CLIENT CONNECTION-->
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-netty</artifactId>
         </dependency>
     </dependencies>
 </project>

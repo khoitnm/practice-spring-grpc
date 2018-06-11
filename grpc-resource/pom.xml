@@ -56,32 +56,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-            <!--&lt;!&ndash; Copy generated Java file to the final jar &ndash;&gt;-->
-            <!--<plugin>-->
-            <!--<artifactId>maven-resources-plugin</artifactId>-->
-            <!--<executions>-->
-            <!--<execution>-->
-            <!--<id>copy-annotations</id>-->
-            <!--<phase>prepare-package</phase>-->
-            <!--<goals>-->
-            <!--<goal>copy-resources</goal>-->
-            <!--</goals>-->
-            <!--<configuration>-->
-            <!--<resources>-->
-            <!--<resource>-->
-            <!--<directory>target/generated-sources/annotations</directory>-->
-            <!--</resource>-->
-            <!--<resource>-->
-            <!--<directory>target/generated-sources/protobuf</directory>-->
-            <!--</resource>-->
-            <!--</resources>-->
-            <!--&lt;!&ndash; The output is not really important but this is the mandatory field! &ndash;&gt;-->
-            <!--<outputDirectory>${basedir}/target/extra-resources</outputDirectory>-->
-            <!--</configuration>-->
-            <!--</execution>-->
-            <!--</executions>-->
-            <!--</plugin>-->
         </plugins>
     </build>
 </project>
