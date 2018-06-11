@@ -1,4 +1,4 @@
-package org.tnmk.skeleton.springgrpc.client.common;
+package org.tnmk.skeleton.common.grpc;
 
 public class GrpcConnectionProperties {
     private String host;
