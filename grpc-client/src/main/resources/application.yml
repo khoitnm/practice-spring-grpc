@@ -1,0 +1,4 @@
+itemgrpc:
+  client:
+      host: localhost
+      port: 6565
