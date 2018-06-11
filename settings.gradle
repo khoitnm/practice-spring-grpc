@@ -1,7 +1,0 @@
-rootProject.name = "practice-spring-grpc"
-
-include 'common-grpc'
-include 'pro01-simple-grpc'
-include 'pro02-error-handler'
-
-

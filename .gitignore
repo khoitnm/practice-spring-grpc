@@ -2,7 +2,7 @@
 **/gradle/
 **/gradlew
 **/gradlew.bat
-
+**/target/
 **/build/
 **/out/
 **/outputs/
@@ -35,5 +35,7 @@ springboot-batch-partition-fileinput/gradle/wrapper/gradle-wrapper\.jar
 springboot-batch-partition-fileinput/gradle/wrapper/gradle-wrapper\.properties
 
 springboot-batch-partition-fileinput/gradlew\.bat
+
+
 
 
