@@ -8,9 +8,6 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>kafka-common</name>
-    <description></description>
-
     <parent>
         <groupId>org.tnmk.skeleton</groupId>
         <artifactId>practice-spring-grpc</artifactId>

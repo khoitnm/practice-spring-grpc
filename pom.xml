@@ -10,6 +10,7 @@
 
     <modules>
         <module>common-grpc</module>
+        <module>grpc-resource</module>
         <module>pro01-simple-grpc</module>
         <module>pro02-error-handler</module>
     </modules>

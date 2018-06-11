@@ -20,7 +20,6 @@
             <artifactId>common-grpc</artifactId>
             <version>${project.version}</version>
         </dependency>
-
         <!--Test-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -28,22 +27,17 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.tnmk.skeleton.practice-spring-grpc</groupId>
+            <artifactId>grpc-resource</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
         <!-- GRPC SERVICE: SPRING BOOT GRPC -->
         <dependency>
             <groupId>org.lognet</groupId>
             <artifactId>grpc-spring-boot-starter</artifactId>
         </dependency>
 
-        <!-- GRPC GENERATION: GENERATED STUB -->
-        <dependency>
-            <groupId>io.grpc</groupId>
-            <artifactId>grpc-stub</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.grpc</groupId>
-            <artifactId>grpc-protobuf</artifactId>
-        </dependency>
     </dependencies>
 
 
@@ -63,62 +57,9 @@
 
     <build>
         <extensions>
-            <!-- GRPC GENERATION: provides os.detected.classifier (i.e. linux-x86_64, osx-x86_64) property -->
-            <extension>
-                <groupId>kr.motd.maven</groupId>
-                <artifactId>os-maven-plugin</artifactId>
-                <version>1.5.0.Final</version>
-            </extension>
+
         </extensions>
         <plugins>
-            <!-- GRPC GENERATION: The plugin for generating Java files from ProtoBuf files -->
-            <plugin>
-                <groupId>org.xolstice.maven.plugins</groupId>
-                <artifactId>protobuf-maven-plugin</artifactId>
-                <version>0.5.1</version>
-                <configuration>
-                    <protocArtifact>com.google.protobuf:protoc:3.5.1-1:exe:${os.detected.classifier}</protocArtifact>
-                    <pluginId>grpc-java</pluginId>
-                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.11.0:exe:${os.detected.classifier}</pluginArtifact>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                            <goal>test-compile</goal>
-                            <goal>compile-custom</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <!--&lt;!&ndash; Copy generated Java file to the final jar &ndash;&gt;-->
-            <!--<plugin>-->
-                <!--<artifactId>maven-resources-plugin</artifactId>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>copy-annotations</id>-->
-                        <!--<phase>prepare-package</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>copy-resources</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<resources>-->
-                                <!--<resource>-->
-                                    <!--<directory>target/generated-sources/annotations</directory>-->
-                                <!--</resource>-->
-                                <!--<resource>-->
-                                    <!--<directory>target/generated-sources/protobuf</directory>-->
-                                <!--</resource>-->
-                            <!--</resources>-->
-                            <!--&lt;!&ndash; The output is not really important but this is the mandatory field! &ndash;&gt;-->
-                            <!--<outputDirectory>${basedir}/target/extra-resources</outputDirectory>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
-
-
             <!-- SPRING PLUGIN -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
