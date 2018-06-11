@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.tnmk.practice.springgrpc.protobuf";
+
+
+service ItemProtoResource {
+    rpc addItem (ItemDTO) returns (ItemDTO);
+    rpc deleteItem (ItemIdDTO) returns (ItemDTO);
+    rpc getItem (ItemIdDTO) returns (ItemDTO);
+}
+
+
+message ItemIdDTO {
+    string id = 1;
+}
+
+message ItemDTO {
+
+    string id = 1;
+
+    string name = 2;
+
+    oneof optional_hotelFileConfigUuid {
+        string description = 3;
+    }
+}
+
+
