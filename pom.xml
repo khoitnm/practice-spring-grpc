@@ -11,9 +11,9 @@
     <modules>
         <module>common-grpc</module>
         <module>grpc-resource</module>
+        <module>grpc-client</module>
         <module>pro01-simple-grpc</module>
         <module>pro02-error-handler</module>
-        <module>grpc-client</module>
     </modules>
 
     <parent>
