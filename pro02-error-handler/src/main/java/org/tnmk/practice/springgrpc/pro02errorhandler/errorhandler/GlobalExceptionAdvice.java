@@ -17,8 +17,10 @@ public class GlobalExceptionAdvice {
     private static final Logger LOGGER = LoggerFactory.getLogger(GlobalExceptionAdvice.class);
 
     /**
-     * View more at https://www.eclipse.org/aspectj/doc/next/progguide/language-joinPoints.html or
+     * The PointCuts are all classes with annotation {@link org.lognet.springboot.grpc.GRpcService} and the methods with one argument {@link StreamObserver}.
      *
+     * View more about point cut expression at https://www.eclipse.org/aspectj/doc/next/progguide/language-joinPoints.html
+     * 
      * @param joinPoint
      */
     //    @Around("execution(void org.tnmk.practice..*Resource.* (*, io.grpc.stub.StreamObserver))")
