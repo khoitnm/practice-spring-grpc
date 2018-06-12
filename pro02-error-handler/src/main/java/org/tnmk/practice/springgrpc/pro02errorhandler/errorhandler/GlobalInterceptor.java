@@ -27,13 +27,13 @@ public class GlobalInterceptor implements ServerInterceptor {
         } catch (Exception ex) {
             //Because the caller was started in another thread, if there's any error, this method also could not able to catch that exception!
             LOGGER.error("LISTENER: ERROR: header: {}, servercall: {}, exception: {}", headers, call, ex.getMessage(), ex);
-            call.close(exceptionTranslator(ex), headers);
+            call.close(translateException(ex), headers);
             return new ServerCall.Listener<I>() {
             };
         }
     }
 
-    private Status exceptionTranslator(Exception ex) {
+    private Status translateException(Exception ex) {
         return Status.INTERNAL.withCause(ex).withDescription(ex.getMessage());
     }
 }
