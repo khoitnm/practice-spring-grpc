@@ -1,4 +1,4 @@
-package org.tnmk.practice.springgrpc.pro02errorhandler.errorhandler;
+package org.tnmk.common.grpc.errorhandler;
 
 import io.grpc.*;
 import org.lognet.springboot.grpc.GRpcGlobalInterceptor;

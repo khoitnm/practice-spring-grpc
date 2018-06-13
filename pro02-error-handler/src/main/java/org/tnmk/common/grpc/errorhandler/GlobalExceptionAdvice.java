@@ -1,6 +1,5 @@
-package org.tnmk.practice.springgrpc.pro02errorhandler.errorhandler;
+package org.tnmk.common.grpc.errorhandler;
 
-import io.grpc.Metadata;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -9,22 +8,17 @@ import org.aspectj.lang.annotation.Aspect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Aspect
 @Component
 public class GlobalExceptionAdvice {
     private static final Logger LOGGER = LoggerFactory.getLogger(GlobalExceptionAdvice.class);
 
-    private final ExceptionToGrpcStatusTranslator exceptionTranslator;
+    private final ExceptionTranslator exceptionTranslator;
 
     @Autowired
-    public GlobalExceptionAdvice(ExceptionToGrpcStatusTranslator exceptionTranslator) {
+    public GlobalExceptionAdvice(ExceptionTranslator exceptionTranslator) {
         this.exceptionTranslator = exceptionTranslator;
     }
 

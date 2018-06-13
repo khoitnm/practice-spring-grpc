@@ -2,6 +2,7 @@ package org.tnmk.practice.springgrpc.pro02errorhandler.errorhandler;
 
 import io.grpc.Status;
 import org.springframework.stereotype.Component;
+import org.tnmk.common.grpc.errorhandler.ExceptionTranslator;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +12,7 @@ import java.util.function.Function;
  * This class translate an exception to a specific gRPC {@link Status}.
  */
 @Component
-public class ExceptionToGrpcStatusTranslator {
+public class ItemExceptionTranslator implements ExceptionTranslator {
     /**
      * The map between exception types and the function for converting those exception.<br/>
      * <p/>
@@ -40,6 +41,7 @@ public class ExceptionToGrpcStatusTranslator {
         return result;
     }
 
+    @Override
     public Status translateException(Throwable ex) {
         Function<Throwable, Status> converter = getExceptionConverter(ex);
         return converter.apply(ex);

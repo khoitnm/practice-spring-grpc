@@ -5,7 +5,7 @@ import org.lognet.springboot.grpc.GRpcService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.tnmk.practice.springgrpc.pro02errorhandler.errorhandler.GlobalInterceptor;
+import org.tnmk.common.grpc.errorhandler.GlobalInterceptor;
 import org.tnmk.practice.springgrpc.pro02errorhandler.service.ItemProtoService;
 import org.tnmk.practice.springgrpc.protobuf.ItemIdProto;
 import org.tnmk.practice.springgrpc.protobuf.ItemProto;
