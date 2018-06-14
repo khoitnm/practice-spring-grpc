@@ -16,7 +16,16 @@ import org.tnmk.practice.springgrpc.protobuf.ItemProto;
 import org.tnmk.practice.springgrpc.protobuf.ItemResourceGrpc;
 
 /**
- * View more from here: https://github.com/grpc/grpc-java/blob/master/testing/src/test/java/io/grpc/testing/GrpcServerRuleTest.java
+ * More additional reference links:
+ * <li>
+ * This link use new grpc version with many use cases:
+ * https://github.com/grpc/grpc-java/blob/master/testing/src/test/java/io/grpc/testing/GrpcServerRuleTest.java
+ * </li>
+ *
+ * <li>
+ * This link use old grpc version but has some clear explanations:
+ * https://github.com/grpc/grpc-java/blob/master/examples/src/test/java/io/grpc/examples/helloworld/HelloWorldServerTest.java
+ * </li>
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -34,7 +43,7 @@ public class ItemResourceTest {
     private ItemResourceGrpc.ItemResourceBlockingStub stub;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         grpcServerRule.getServiceRegistry().addService(itemResource);
         stub = ItemResourceGrpc.newBlockingStub(grpcServerRule.getChannel());
     }
