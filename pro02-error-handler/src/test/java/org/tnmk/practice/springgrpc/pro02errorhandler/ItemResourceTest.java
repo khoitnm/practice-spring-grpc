@@ -15,6 +15,9 @@ import org.tnmk.practice.springgrpc.protobuf.ItemIdProto;
 import org.tnmk.practice.springgrpc.protobuf.ItemProto;
 import org.tnmk.practice.springgrpc.protobuf.ItemResourceGrpc;
 
+/**
+ * View more from here: https://github.com/grpc/grpc-java/blob/master/testing/src/test/java/io/grpc/testing/GrpcServerRuleTest.java
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ItemResourceTest {
