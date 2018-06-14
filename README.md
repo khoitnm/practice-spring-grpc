@@ -28,8 +28,11 @@ mvn clean install -DskipTests
 
 ### Start a gRPC server
 The source code of gRPC servers have prefix `proXX` such as `pro01-simple-grpc` or `pro02-error-handler`, so you can start any one of those servers.
+
 1. You can  by using your IDE, and start the file `Application.java` in the corresponding server module.
+
 2. Or you can use the command line:
+
 Access the folder which contains source code of server:
 ```
 cd pro01-simple-grpc
