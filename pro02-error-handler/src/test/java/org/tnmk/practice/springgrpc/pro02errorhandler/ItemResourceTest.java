@@ -1,6 +1,8 @@
 package org.tnmk.practice.springgrpc.pro02errorhandler;
 
+import io.grpc.Server;
 import io.grpc.StatusRuntimeException;
+import io.grpc.inprocess.InProcessServerBuilder;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
@@ -31,8 +33,7 @@ import org.tnmk.practice.springgrpc.protobuf.ItemResourceGrpc;
 @SpringBootTest
 public class ItemResourceTest {
     /**
-     * This rule manages automatic graceful shutdown for the registered servers and channels at the
-     * end of test.
+     * This rule manages automatic graceful start and shutdown for the registered servers and channels at the end of test.
      */
     @Rule
     public final GrpcServerRule grpcServerRule = new GrpcServerRule();
@@ -44,6 +45,7 @@ public class ItemResourceTest {
 
     @Before
     public void setUp() {
+        // Create a server, add grpc resource, start, and register for automatic graceful shutdown.
         grpcServerRule.getServiceRegistry().addService(itemResource);
         stub = ItemResourceGrpc.newBlockingStub(grpcServerRule.getChannel());
     }
