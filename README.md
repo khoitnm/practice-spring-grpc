@@ -1,6 +1,6 @@
 You can import the whole project with all modules into your IDE, or you can import some modules separately.
 
-1.  `common-grpc`: The common code related to gRPC which can be reused in other projects.
+1.  `common-grpc`: The common code related to gRPC which can be reused in other projects. At this moment, it just contains the common dependencies for other grpc server modules (such as `pro01-simple-grpc` & `pro02-error-handler`). 
 
 2. `grpc-resource`: Declare the grpc servers in *.proto file.
     
