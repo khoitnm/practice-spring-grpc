@@ -1,4 +1,4 @@
-#I. Introduction
+# I. Introduction
 
 You can import the whole project with all modules into your IDE, or you can import some modules separately.
 
@@ -13,7 +13,7 @@ You can import the whole project with all modules into your IDE, or you can impo
 5. `pro02-error-handler`: Provides a central error handler for gRPC endpoints by using AOP. 
 We also have an Component Test which will start the grpcServer, then the client stub will connect to that server in the test cases. 
 
-#II. Build projects
+# II. Build projects
 Run the command line, it will complie the source code, build project, and then run tests.
 ```
 mvn clean install 
@@ -24,7 +24,7 @@ If you want to build without testing, run the command line:
 mvn clean install -DskipTests 
 ```
 
-#III. Start Application.
+# III. Start Application.
 
 ### Start a gRPC server
 The source code of gRPC servers have prefix `proXX` such as `pro01-simple-grpc` or `pro02-error-handler`, so you can start any one of those servers.
