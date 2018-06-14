@@ -8,16 +8,16 @@ import org.springframework.util.StringUtils;
 import org.tnmk.practice.springgrpc.pro01simplegrpc.service.ItemProtoService;
 import org.tnmk.practice.springgrpc.protobuf.ItemProto;
 import org.tnmk.practice.springgrpc.protobuf.ItemIdProto;
-import org.tnmk.practice.springgrpc.protobuf.ItemProtoResourceGrpc;
+import org.tnmk.practice.springgrpc.protobuf.ItemResourceGrpc;
 
 import java.util.Date;
 
 @GRpcService
-public class ItemProtoResource extends ItemProtoResourceGrpc.ItemProtoResourceImplBase {
+public class ItemResource extends ItemResourceGrpc.ItemResourceImplBase {
     private final ItemProtoService itemProtoService;
 
     @Autowired
-    public ItemProtoResource(ItemProtoService itemProtoService) {
+    public ItemResource(ItemProtoService itemProtoService) {
         this.itemProtoService = itemProtoService;
     }
 

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.tnmk.practice.springgrpc.protobuf.ItemProto;
 import org.tnmk.practice.springgrpc.protobuf.ItemIdProto;
-import org.tnmk.practice.springgrpc.protobuf.ItemProtoResourceGrpc;
+import org.tnmk.practice.springgrpc.protobuf.ItemResourceGrpc;
 
 @Component
 public class ItemGrpcClient implements ItemProtoClient {
@@ -15,19 +15,19 @@ public class ItemGrpcClient implements ItemProtoClient {
     private final ItemGrpcConnectionProperties connectionProperties;
     private final ProtoMapper protoMapper;
 
-    private ItemProtoResourceGrpc.ItemProtoResourceBlockingStub blockingStub;
-    private ItemProtoResourceGrpc.ItemProtoResourceFutureStub futureStub;
+    private ItemResourceGrpc.ItemResourceBlockingStub blockingStub;
+    private ItemResourceGrpc.ItemResourceFutureStub futureStub;//Just to show that we can call with futureStub, we don't use it here.
 
     @Autowired
     public ItemGrpcClient(ItemGrpcConnectionProperties connectionProperties, ProtoMapper protoMapper) {
         this.connectionProperties = connectionProperties;
         this.protoMapper = protoMapper;
-        ManagedChannel channel = ManagedChannelBuilder.forAddress(connectionProperties.getHost(), connectionProperties.getPort())
+        ManagedChannel channel = ManagedChannelBuilder.forAddress(this.connectionProperties.getHost(), this.connectionProperties.getPort())
             .usePlaintext()
             .build();
 
-        blockingStub = ItemProtoResourceGrpc.newBlockingStub(channel);
-        futureStub = ItemProtoResourceGrpc.newFutureStub(channel);
+        blockingStub = ItemResourceGrpc.newBlockingStub(channel);
+        futureStub = ItemResourceGrpc.newFutureStub(channel);
     }
 
 

@@ -12,13 +12,13 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-public class GlobalExceptionAdvice {
-    private static final Logger LOGGER = LoggerFactory.getLogger(GlobalExceptionAdvice.class);
+public class GlobalGrpcAdvice {
+    private static final Logger LOGGER = LoggerFactory.getLogger(GlobalGrpcAdvice.class);
 
     private final ExceptionTranslator exceptionTranslator;
 
     @Autowired
-    public GlobalExceptionAdvice(ExceptionTranslator exceptionTranslator) {
+    public GlobalGrpcAdvice(ExceptionTranslator exceptionTranslator) {
         this.exceptionTranslator = exceptionTranslator;
     }
 

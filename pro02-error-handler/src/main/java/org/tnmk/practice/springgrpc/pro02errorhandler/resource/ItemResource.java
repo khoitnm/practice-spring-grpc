@@ -5,22 +5,22 @@ import org.lognet.springboot.grpc.GRpcService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.tnmk.common.grpc.errorhandler.GlobalInterceptor;
+import org.tnmk.common.grpc.errorhandler.GlobalGrpcInterceptor;
 import org.tnmk.practice.springgrpc.pro02errorhandler.service.ItemProtoService;
 import org.tnmk.practice.springgrpc.protobuf.ItemIdProto;
 import org.tnmk.practice.springgrpc.protobuf.ItemProto;
-import org.tnmk.practice.springgrpc.protobuf.ItemProtoResourceGrpc;
+import org.tnmk.practice.springgrpc.protobuf.ItemResourceGrpc;
 
 import java.util.Optional;
 
 @GRpcService
-public class ItemProtoResource extends ItemProtoResourceGrpc.ItemProtoResourceImplBase {
-    private static final Logger LOGGER = LoggerFactory.getLogger(GlobalInterceptor.class);
+public class ItemResource extends ItemResourceGrpc.ItemResourceImplBase {
+    private static final Logger LOGGER = LoggerFactory.getLogger(GlobalGrpcInterceptor.class);
 
     private final ItemProtoService itemProtoService;
 
     @Autowired
-    public ItemProtoResource(ItemProtoService itemProtoService) {
+    public ItemResource(ItemProtoService itemProtoService) {
         this.itemProtoService = itemProtoService;
     }
 
