@@ -1,3 +1,6 @@
+> If you find there are something which could be improved, please create a Merge Request. 
+> Thank you so much!
+
 # I. Introduction
 
 You can import the whole project with all modules into your IDE, or you can import some modules separately.
