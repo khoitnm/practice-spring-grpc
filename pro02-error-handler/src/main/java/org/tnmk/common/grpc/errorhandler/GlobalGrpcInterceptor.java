@@ -5,7 +5,11 @@ import org.lognet.springboot.grpc.GRpcGlobalInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
+
+import java.lang.invoke.MethodHandles;
+import java.util.UUID;
 
 /**
  * This class is processed before calling ProtoBuf Resource layer.
@@ -15,28 +19,33 @@ import org.springframework.stereotype.Service;
  */
 @GRpcGlobalInterceptor
 public class GlobalGrpcInterceptor implements ServerInterceptor {
-    private static final Logger LOGGER = LoggerFactory.getLogger(GlobalGrpcInterceptor.class);
+    private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final ServerCall.Listener NOOP_LISTENER = new ServerCall.Listener() {};
+    private final ExceptionTranslator exceptionTranslator;
+
+    @Autowired
+    public GlobalGrpcInterceptor(ExceptionTranslator exceptionTranslator) {
+        this.exceptionTranslator = exceptionTranslator;
+    }
 
     @Override
     public <I, O> ServerCall.Listener<I> interceptCall(ServerCall<I, O> call, Metadata headers, ServerCallHandler<I, O> serverCallHandler) {
         try {
+            String correlationId = MetadataUtils.getStringValue(headers, MDCKeyConstants.CORRELATION_ID);
+            if (StringUtils.isEmpty(correlationId)){
+                correlationId = UUID.randomUUID().toString();
+                String message = String.format("Cannot get correlationId from header[%s] of method %s. The new correlationId is generated ", MDCKeyConstants.CORRELATION_ID, call.getMethodDescriptor().getFullMethodName(), correlationId);
+                logger.warn(message);
+            }
+            MDC.put(MDCKeyConstants.CORRELATION_ID, correlationId);
             ServerCall.Listener<I> listener = serverCallHandler.startCall(call, headers);
-            //When starting, the call will be started in another thread, so this method will be continued immediately, and we cannot get response from here.
-            LOGGER.info("GRPC INTERCEPTOR: " +
-                "\n\theader: " + headers +
-                "\n\tcall: " + call +
-                "\n\tattributes: " + call.getAttributes());
             return listener;
         } catch (Exception ex) {
-            //Because the caller was started in another thread, if there's any error, this method also could not able to catch that exception!
-            LOGGER.error("GRPC INTERCEPTOR: ERROR: header: {}, servercall: {}, exception: {}", headers, call, ex.getMessage(), ex);
-            call.close(translateException(ex), headers);
-            return new ServerCall.Listener<I>() {
-            };
+            //The error was actually handled in GlobalGrpcAdvice. This is just for safety protection, maybe someday we don't need that GrpcInterceptor anymore.
+            Status status = exceptionTranslator.translateException(ex);
+            logger.error("Error in gRPC Endpoint",ex);
+            call.close(status, headers);
+            return NOOP_LISTENER;
         }
-    }
-
-    private Status translateException(Exception ex) {
-        return Status.INTERNAL.withCause(ex).withDescription(ex.getMessage());
     }
 }
