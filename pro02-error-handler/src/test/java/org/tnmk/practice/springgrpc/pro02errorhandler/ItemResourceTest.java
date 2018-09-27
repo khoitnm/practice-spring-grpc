@@ -47,6 +47,8 @@ public class ItemResourceTest {
     public void setUp() {
         // Create a server, add grpc resource, start, and register for automatic graceful shutdown.
         grpcServerRule.getServiceRegistry().addService(itemResource);
+
+        //Connect client stub to the server via channel (the combination of address and port)
         stub = ItemResourceGrpc.newBlockingStub(grpcServerRule.getChannel());
     }
 
