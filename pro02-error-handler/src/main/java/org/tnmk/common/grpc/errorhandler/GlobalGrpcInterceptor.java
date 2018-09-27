@@ -4,12 +4,15 @@ import io.grpc.*;
 import org.lognet.springboot.grpc.GRpcGlobalInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 import org.springframework.stereotype.Service;
 
 /**
  * This class is processed before calling ProtoBuf Resource layer.
+ * Note: it seems that this class doesn't work with component test, but only work when really deployed as a grpc server.
+ * You can use AOP ({@link GlobalGrpcAdvice} to handle all exception) without needing this class.<br/>
+ * However, this class helps you to get headers data, which could be very useful in some cases.
  */
-@Service
 @GRpcGlobalInterceptor
 public class GlobalGrpcInterceptor implements ServerInterceptor {
     private static final Logger LOGGER = LoggerFactory.getLogger(GlobalGrpcInterceptor.class);

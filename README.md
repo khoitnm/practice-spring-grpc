@@ -66,3 +66,6 @@ To test the error case:
 
 To test the returning an empty object case:
 ```http://localhost:8080/items/0```
+
+# References
++ https://github.com/LogNet/grpc-spring-boot-starter
