@@ -37,14 +37,14 @@ public class GlobalGrpcInterceptor implements ServerInterceptor {
             String correlationId = MetadataUtils.getStringValue(headers, HeaderConstants.CORRELATION_ID);
             if (StringUtils.isEmpty(correlationId)) {
                 correlationId = UUID.randomUUID().toString();
-                logger.debug(String.join(" ", "Cannot get correlationId from header"
+                logger.info(String.join(" ", "Cannot get correlationId from header"
                     , "header", String.valueOf(headers)
                     , "newCorrelationId", correlationId
                     , "caller", call.getMethodDescriptor().toString()
                     )
                 );
             }
-            logger.debug(String.join(" ", "Receive request "
+            logger.info(String.join(" ", "Receive request "
                 , "header", String.valueOf(headers)
                 , "correlationId", correlationId
                 , "caller", call.getMethodDescriptor().toString()

@@ -2,6 +2,7 @@ package org.tnmk.practice.springgrpc.client.samplestory.grpcclient;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import io.grpc.stub.AbstractStub;
 import org.jboss.logging.MDC;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,7 @@ public class ItemGrpcClient {
         ItemIdProto itemIdProto = itemIdProtoOrBuilder.build();
 
         String correlationId = (String) MDC.get(MDCConstants.CORRELATION_ID);
-        MetadataUtils.attachHeaders(blockingStub, correlationId);
+        blockingStub = MetadataUtils.attachHeaders(blockingStub, correlationId);
         ItemProto itemProto = blockingStub.getItem(itemIdProto);
         return itemMapper.toItem(itemProto);
     }
