@@ -1,4 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  org.tnmk.common.grpc.errorhandler.GlobalGrpcAdvice\
-  ,org.tnmk.common.grpc.errorhandler.GlobalGrpcInterceptor
+  org.tnmk.common.grpc.global.GlobalGrpcAdvice\
+  ,org.tnmk.common.grpc.global.GlobalGrpcInterceptor
 
