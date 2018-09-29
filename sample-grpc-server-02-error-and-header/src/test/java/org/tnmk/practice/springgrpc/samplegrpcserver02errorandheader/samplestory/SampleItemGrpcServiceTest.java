@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import io.grpc.testing.GrpcServerRule;
-import org.tnmk.practice.springgrpc.samplegrpcserver02errorandheader.samplestory.resource.SampleItemGrpcService;
+import org.tnmk.practice.springgrpc.samplegrpcserver02errorandheader.samplestory.grpcservice.SampleItemGrpcService;
 import org.tnmk.practice.springgrpc.protobuf.ItemIdProto;
 import org.tnmk.practice.springgrpc.protobuf.ItemProto;
 import org.tnmk.practice.springgrpc.protobuf.SampleItemGrpcServiceGrpc;
@@ -43,7 +43,7 @@ public class SampleItemGrpcServiceTest {
 
     @Before
     public void setUp() {
-        // Create a server, add grpc resource, start, and register for automatic graceful shutdown.
+        // Create a server, add grpc grpcservice, start, and register for automatic graceful shutdown.
         grpcServerRule.getServiceRegistry().addService(sampleItemGrpcService);
 
         //Connect client stub to the server via channel (the combination of address and port)

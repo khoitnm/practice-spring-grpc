@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.Optional;
 
 @Service
-public class ItemProtoService {
+public class SampleItemService {
     public Optional<ItemProto> getItem(String id) {
         if (!StringUtils.isEmpty(id) && id.matches("[0-9]*")) {
             if (id.equals("0")) {

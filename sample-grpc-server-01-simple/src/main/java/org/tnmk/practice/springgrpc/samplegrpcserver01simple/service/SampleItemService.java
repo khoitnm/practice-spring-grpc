@@ -7,7 +7,7 @@ import org.tnmk.practice.springgrpc.protobuf.ItemProto;
 import java.util.Date;
 
 @Service
-public class ItemProtoService {
+public class SampleItemService {
     public ItemProto getItem(String id){
         if (!StringUtils.isEmpty(id) && id.matches("[0-9]*")) {
             ItemProto itemProto = ItemProto.newBuilder()
