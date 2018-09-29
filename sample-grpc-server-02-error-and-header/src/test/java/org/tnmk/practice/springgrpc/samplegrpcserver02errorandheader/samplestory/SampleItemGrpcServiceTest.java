@@ -10,10 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import io.grpc.testing.GrpcServerRule;
-import org.tnmk.practice.springgrpc.samplegrpcserver02errorandheader.samplestory.resource.ItemResource;
+import org.tnmk.practice.springgrpc.samplegrpcserver02errorandheader.samplestory.resource.SampleItemGrpcService;
 import org.tnmk.practice.springgrpc.protobuf.ItemIdProto;
 import org.tnmk.practice.springgrpc.protobuf.ItemProto;
-import org.tnmk.practice.springgrpc.protobuf.ItemResourceGrpc;
+import org.tnmk.practice.springgrpc.protobuf.SampleItemGrpcServiceGrpc;
 
 /**
  * More additional reference links:
@@ -29,7 +29,7 @@ import org.tnmk.practice.springgrpc.protobuf.ItemResourceGrpc;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ItemResourceTest {
+public class SampleItemGrpcServiceTest {
     /**
      * This rule manages automatic graceful start and shutdown for the registered servers and channels at the end of test.
      */
@@ -37,17 +37,17 @@ public class ItemResourceTest {
     public final GrpcServerRule grpcServerRule = new GrpcServerRule();
 
     @Autowired
-    private ItemResource itemResource;
+    private SampleItemGrpcService sampleItemGrpcService;
 
-    private ItemResourceGrpc.ItemResourceBlockingStub stub;
+    private SampleItemGrpcServiceGrpc.SampleItemGrpcServiceBlockingStub stub;
 
     @Before
     public void setUp() {
         // Create a server, add grpc resource, start, and register for automatic graceful shutdown.
-        grpcServerRule.getServiceRegistry().addService(itemResource);
+        grpcServerRule.getServiceRegistry().addService(sampleItemGrpcService);
 
         //Connect client stub to the server via channel (the combination of address and port)
-        stub = ItemResourceGrpc.newBlockingStub(grpcServerRule.getChannel());
+        stub = SampleItemGrpcServiceGrpc.newBlockingStub(grpcServerRule.getChannel());
     }
 
     @Test

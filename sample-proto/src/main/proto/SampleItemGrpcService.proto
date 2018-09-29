@@ -4,7 +4,7 @@ option java_multiple_files = true;
 option java_package = "org.tnmk.practice.springgrpc.protobuf";
 
 
-service ItemResource {
+service SampleItemGrpcService {
     rpc addItem (ItemProto) returns (ItemProto);
     rpc deleteItem (ItemIdProto) returns (ItemProto);
     rpc getItem (ItemIdProto) returns (ItemProto);

@@ -9,18 +9,18 @@ import org.tnmk.common.grpc.global.GlobalGrpcInterceptor;
 import org.tnmk.practice.springgrpc.samplegrpcserver02errorandheader.samplestory.service.ItemProtoService;
 import org.tnmk.practice.springgrpc.protobuf.ItemIdProto;
 import org.tnmk.practice.springgrpc.protobuf.ItemProto;
-import org.tnmk.practice.springgrpc.protobuf.ItemResourceGrpc;
+import org.tnmk.practice.springgrpc.protobuf.SampleItemGrpcServiceGrpc;
 
 import java.util.Optional;
 
 @GRpcService
-public class ItemResource extends ItemResourceGrpc.ItemResourceImplBase {
+public class SampleItemGrpcService extends SampleItemGrpcServiceGrpc.SampleItemGrpcServiceImplBase {
     private static final Logger LOGGER = LoggerFactory.getLogger(GlobalGrpcInterceptor.class);
 
     private final ItemProtoService itemProtoService;
 
     @Autowired
-    public ItemResource(ItemProtoService itemProtoService) {
+    public SampleItemGrpcService(ItemProtoService itemProtoService) {
         this.itemProtoService = itemProtoService;
     }
 

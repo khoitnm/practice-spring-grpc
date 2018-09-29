@@ -11,7 +11,7 @@ import org.tnmk.common.grpc.support.MetadataUtils;
 import org.tnmk.practice.springgrpc.client.common.MDCConstants;
 import org.tnmk.practice.springgrpc.protobuf.ItemProto;
 import org.tnmk.practice.springgrpc.protobuf.ItemIdProto;
-import org.tnmk.practice.springgrpc.protobuf.ItemResourceGrpc;
+import org.tnmk.practice.springgrpc.protobuf.SampleItemGrpcServiceGrpc;
 
 @Component
 public class ItemSampleGrpcClient {
@@ -19,8 +19,8 @@ public class ItemSampleGrpcClient {
     private final ItemGrpcConnectionProperties connectionProperties;
     private final ItemMapper itemMapper;
 
-    private ItemResourceGrpc.ItemResourceBlockingStub blockingStub;
-    private ItemResourceGrpc.ItemResourceFutureStub futureStub;//Just to show that we can call with futureStub, we don't use it here.
+    private SampleItemGrpcServiceGrpc.SampleItemGrpcServiceBlockingStub blockingStub;
+    private SampleItemGrpcServiceGrpc.SampleItemGrpcServiceFutureStub futureStub;//Just to show that we can call with futureStub, we don't use it here.
 
     @Autowired
     public ItemSampleGrpcClient(ItemGrpcConnectionProperties connectionProperties, ItemMapper itemMapper) {
@@ -30,8 +30,8 @@ public class ItemSampleGrpcClient {
             .usePlaintext()
             .build();
 
-        blockingStub = ItemResourceGrpc.newBlockingStub(channel);
-        futureStub = ItemResourceGrpc.newFutureStub(channel);
+        blockingStub = SampleItemGrpcServiceGrpc.newBlockingStub(channel);
+        futureStub = SampleItemGrpcServiceGrpc.newFutureStub(channel);
     }
 
     public Item getItem(ItemId itemId) {

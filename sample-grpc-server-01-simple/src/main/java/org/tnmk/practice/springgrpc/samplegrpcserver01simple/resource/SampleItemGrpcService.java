@@ -7,14 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.tnmk.practice.springgrpc.samplegrpcserver01simple.service.ItemProtoService;
 import org.tnmk.practice.springgrpc.protobuf.ItemIdProto;
 import org.tnmk.practice.springgrpc.protobuf.ItemProto;
-import org.tnmk.practice.springgrpc.protobuf.ItemResourceGrpc;
+import org.tnmk.practice.springgrpc.protobuf.SampleItemGrpcServiceGrpc;
 
 @GRpcService
-public class ItemResource extends ItemResourceGrpc.ItemResourceImplBase {
+public class SampleItemGrpcService extends SampleItemGrpcServiceGrpc.SampleItemGrpcServiceImplBase {
     private final ItemProtoService itemProtoService;
 
     @Autowired
-    public ItemResource(ItemProtoService itemProtoService) {
+    public SampleItemGrpcService(ItemProtoService itemProtoService) {
         this.itemProtoService = itemProtoService;
     }
 
