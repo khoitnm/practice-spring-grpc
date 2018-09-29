@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.tnmk.skeleton.practice-spring-grpc</groupId>
-    <artifactId>grpc-resource</artifactId>
+    <artifactId>sample-service-proto</artifactId>
 
     <dependencies>
 

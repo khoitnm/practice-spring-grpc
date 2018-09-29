@@ -29,7 +29,7 @@
 
         <dependency>
             <groupId>org.tnmk.skeleton.practice-spring-grpc</groupId>
-            <artifactId>grpc-resource</artifactId>
+            <artifactId>sample-service-proto</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <!-- GRPC SERVICE: SPRING BOOT GRPC -->
