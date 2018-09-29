@@ -10,10 +10,10 @@
 
     <modules>
         <module>common-grpc</module>
-        <module>sample-service-proto</module>
-        <module>grpc-client</module>
-        <module>pro01-simple-grpc</module>
-        <module>pro02-error-handler</module>
+        <module>sample-proto</module>
+        <module>sample-grpc-client</module>
+        <module>sample-grpc-server-01-simple</module>
+        <module>sample-grpc-server-02-error-and-header</module>
     </modules>
 
     <parent>
