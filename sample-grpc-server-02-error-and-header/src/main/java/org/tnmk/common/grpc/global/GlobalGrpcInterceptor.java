@@ -46,10 +46,11 @@ public class GlobalGrpcInterceptor implements ServerInterceptor {
             }
             logger.info(String.join(", ", "Receive request "
                 , "header=" + String.valueOf(headers)
-                , "correlationId=" + correlationId
+//                , "correlationId=" + correlationId
                 , "caller=" + call.getMethodDescriptor().getFullMethodName()
                 )
             );
+
             MDC.put(MDCConstants.CORRELATION_ID, correlationId);
             ServerCall.Listener<I> listener = serverCallHandler.startCall(call, headers);
             return listener;
