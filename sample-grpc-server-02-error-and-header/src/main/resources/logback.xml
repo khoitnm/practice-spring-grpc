@@ -3,15 +3,12 @@
         <layout class="ch.qos.logback.contrib.json.classic.JsonLayout">
             <jsonFormatter
                     class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter">
-                <prettyPrint>true</prettyPrint>
+                <prettyPrint>false</prettyPrint>
             </jsonFormatter>
+            <appendLineSeparator>true</appendLineSeparator><!-- Write each message in a separate line -->
             <timestampFormat>yyyy-MM-dd' 'HH:mm:ss.SSS</timestampFormat>
         </layout>
     </appender>
-
-    <!--<logger name="jsonLogger" level="TRACE">-->
-        <!--<appender-ref ref="json"/>-->
-    <!--</logger>-->
 
     <root level="info">
         <appender-ref ref="json"/>
