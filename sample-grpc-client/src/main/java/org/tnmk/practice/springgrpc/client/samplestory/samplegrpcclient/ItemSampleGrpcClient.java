@@ -1,12 +1,12 @@
 package org.tnmk.practice.springgrpc.client.samplestory.samplegrpcclient;
 
-import io.grpc.ManagedChannel;
-import io.grpc.ManagedChannelBuilder;
+import io.grpc.*;
 import io.grpc.stub.AbstractStub;
 import org.jboss.logging.MDC;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.tnmk.common.grpc.client.GlobalGrpcClientInterceptor;
 import org.tnmk.common.grpc.support.MetadataUtils;
 import org.tnmk.practice.springgrpc.client.common.MDCConstants;
 import org.tnmk.practice.springgrpc.protobuf.ItemProto;
@@ -26,12 +26,15 @@ public class ItemSampleGrpcClient {
     public ItemSampleGrpcClient(ItemGrpcConnectionProperties connectionProperties, ItemMapper itemMapper) {
         this.connectionProperties = connectionProperties;
         this.itemMapper = itemMapper;
+
+        ClientInterceptor interceptor = new GlobalGrpcClientInterceptor();
         ManagedChannel channel = ManagedChannelBuilder.forAddress(this.connectionProperties.getHost(), this.connectionProperties.getPort())
+            .intercept(interceptor)
             .usePlaintext()
             .build();
 
         blockingStub = SampleItemGrpcServiceGrpc.newBlockingStub(channel);
-        futureStub = SampleItemGrpcServiceGrpc.newFutureStub(channel);
+//        futureStub = SampleItemGrpcServiceGrpc.newFutureStub(channel);
     }
 
     public Item getItem(ItemId itemId) {
