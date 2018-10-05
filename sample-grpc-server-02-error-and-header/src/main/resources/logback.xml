@@ -1,12 +1,13 @@
 <configuration>
     <appender name="json" class="ch.qos.logback.core.ConsoleAppender">
-        <layout class="ch.qos.logback.contrib.json.classic.JsonLayout">
+        <layout class="org.tnmk.common.log.json.JsonLayout">
             <jsonFormatter
                     class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter">
                 <prettyPrint>false</prettyPrint>
             </jsonFormatter>
             <appendLineSeparator>true</appendLineSeparator><!-- Write each message in a separate line -->
             <timestampFormat>yyyy-MM-dd'T'HH:mm:ss.SSSXXX</timestampFormat><!-- ISO8601 format -->
+            <timestampFormatTimezoneId>Etc/UTC</timestampFormatTimezoneId>
         </layout>
     </appender>
 
