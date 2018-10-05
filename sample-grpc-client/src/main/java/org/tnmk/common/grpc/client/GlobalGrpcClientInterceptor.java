@@ -4,7 +4,11 @@ import com.google.common.annotations.VisibleForTesting;
 import io.grpc.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
+import org.tnmk.common.grpc.support.HeaderConstants;
+import org.tnmk.common.grpc.support.MetadataUtils;
+import org.tnmk.practice.springgrpc.client.common.MDCConstants;
 
 import java.lang.invoke.MethodHandles;
 
@@ -12,8 +16,9 @@ import java.lang.invoke.MethodHandles;
 public class GlobalGrpcClientInterceptor implements ClientInterceptor {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-    @VisibleForTesting
-    static final Metadata.Key<String> CUSTOM_HEADER_KEY = Metadata.Key.of("custom_client_header_key", Metadata.ASCII_STRING_MARSHALLER);
+//    @VisibleForTesting
+//    static final Metadata.Key<String> CUSTOM_HEADER_KEY = Metadata.Key.of("custom_client_header_key", Metadata.ASCII_STRING_MARSHALLER);
+    private static final Metadata.Key<String> CORRELATION_ID = MetadataUtils.constructKey(HeaderConstants.CORRELATION_ID);
 
     @Override
     public <ReqT, RespT> ClientCall<ReqT, RespT> interceptCall(MethodDescriptor<ReqT, RespT> method,
@@ -23,7 +28,8 @@ public class GlobalGrpcClientInterceptor implements ClientInterceptor {
             @Override
             public void start(Listener<RespT> responseListener, Metadata headers) {
                 /* put custom header */
-                headers.put(CUSTOM_HEADER_KEY, "customRequestValue");
+                String correlationId = MDC.get(MDCConstants.CORRELATION_ID);
+                headers.put(CORRELATION_ID, correlationId);
                 super.start(new ForwardingClientCallListener.SimpleForwardingClientCallListener<RespT>(responseListener) {
                     @Override
                     public void onHeaders(Metadata headers) {

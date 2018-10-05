@@ -42,8 +42,12 @@ public class ItemSampleGrpcClient {
         BeanUtils.copyProperties(itemId, itemIdProtoOrBuilder);
         ItemIdProto itemIdProto = itemIdProtoOrBuilder.build();
 
-        String correlationId = (String) MDC.get(MDCConstants.CORRELATION_ID);
-        blockingStub = MetadataUtils.attachHeaders(blockingStub, correlationId);
+        
+        // WARN: Don't use attachHeaders(blockingStub, correlationId): it will create another correlationId value, with the same key.
+        // so there will be many pairs with the same key correlationId, and the headers will be bigger and bigger.
+
+//        String correlationId = (String) MDC.get(MDCConstants.CORRELATION_ID);
+//        blockingStub = MetadataUtils.attachHeaders(blockingStub, correlationId);
         ItemProto itemProto = blockingStub.getItem(itemIdProto);
         return itemMapper.toItem(itemProto);
     }
