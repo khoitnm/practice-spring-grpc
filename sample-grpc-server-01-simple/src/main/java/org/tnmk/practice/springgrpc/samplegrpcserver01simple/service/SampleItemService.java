@@ -8,8 +8,12 @@ import java.util.Date;
 
 @Service
 public class SampleItemService {
-    public ItemProto getItem(String id){
+    public ItemProto getItem(String id) throws ItemNotFoundException {
         if (!StringUtils.isEmpty(id) && id.matches("[0-9]*")) {
+            if (id.equals("0")) {
+                throw new ItemNotFoundException("Not found item with id 0", id);
+            }
+
             ItemProto itemProto = ItemProto.newBuilder()
                 .setId(id)
                 .setName("Some name " + new Date()).build();

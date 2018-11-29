@@ -42,13 +42,26 @@ public class ItemSampleGrpcClient {
         BeanUtils.copyProperties(itemId, itemIdProtoOrBuilder);
         ItemIdProto itemIdProto = itemIdProtoOrBuilder.build();
 
-        
+
         // WARN: Don't use attachHeaders(blockingStub, correlationId): it will create another correlationId value, with the same key.
         // so there will be many pairs with the same key correlationId, and the headers will be bigger and bigger.
 
 //        String correlationId = (String) MDC.get(MDCConstants.CORRELATION_ID);
 //        blockingStub = MetadataUtils.attachHeaders(blockingStub, correlationId);
-        ItemProto itemProto = blockingStub.getItem(itemIdProto);
+        ItemProto itemProto;
+        try {
+            itemProto = blockingStub.getItem(itemIdProto);
+        } catch (StatusRuntimeException ex) {
+            Metadata metadata = ex.getTrailers();
+            String errorCode = MetadataUtils.getStringValue(metadata, "error-code");
+            String errorDescription = MetadataUtils.getStringValue(metadata, "error-description");
+            String errorDetails = MetadataUtils.getStringValue(metadata, "error-details");
+            if ("ItemNotFound".equalsIgnoreCase(errorCode)) {
+                return null;
+            } else {
+                throw new GetItemException("Cannot get item " + itemIdProto + ". errorDescription: " + errorDescription + ". errorDetails: " + errorDetails, ex);
+            }
+        }
         return itemMapper.toItem(itemProto);
     }
 }
