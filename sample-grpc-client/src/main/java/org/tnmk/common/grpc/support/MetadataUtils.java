@@ -27,10 +27,10 @@ public class MetadataUtils {
         return Metadata.Key.of(key, Metadata.ASCII_STRING_MARSHALLER);
     }
 
-    public static <T extends AbstractStub<T>> T attachHeaders(T stub, String correlationId) {
+    public static <T extends AbstractStub<T>> void attachHeaders(T stub, String correlationId) {
         Map<String, String> metadataMap = new HashMap<>();
         metadataMap.put(HeaderConstants.CORRELATION_ID, correlationId);
         Metadata metadata = MetadataUtils.constructMetadata(metadataMap);
-        return io.grpc.stub.MetadataUtils.attachHeaders(stub, metadata);
+        io.grpc.stub.MetadataUtils.attachHeaders(stub, metadata);
     }
 }

@@ -6,6 +6,7 @@ import io.grpc.stub.StreamObserver;
 import org.lognet.springboot.grpc.GRpcService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.tnmk.common.grpc.support.MetadataUtils;
+import org.tnmk.practice.springgrpc.samplegrpcserver01simple.service.IllegalItemIdException;
 import org.tnmk.practice.springgrpc.samplegrpcserver01simple.service.ItemNotFoundException;
 import org.tnmk.practice.springgrpc.samplegrpcserver01simple.service.SampleItemService;
 import org.tnmk.practice.springgrpc.protobuf.ItemIdProto;
@@ -32,7 +33,7 @@ public class SampleItemGrpcService extends SampleItemGrpcServiceGrpc.SampleItemG
             MetadataUtils.putMetadata(metadata, "error-description", "Not found item " + ex.getItemId());
             MetadataUtils.putMetadata(metadata, "error-detail", ex.getItemId());
             responseObserver.onError(Status.NOT_FOUND.withCause(ex).asException(metadata));
-        } catch (IllegalArgumentException ex) {
+        } catch (IllegalItemIdException ex) {
             responseObserver.onError(
                 Status.INVALID_ARGUMENT.withCause(ex).withDescription(ex.getMessage()).asException()
             );

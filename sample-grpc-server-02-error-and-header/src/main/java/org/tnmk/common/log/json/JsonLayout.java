@@ -5,6 +5,9 @@ import ch.qos.logback.classic.spi.ILoggingEvent;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * This class is used only for logging to JSON format only, nothing to do with gRPC.
+ */
 public class JsonLayout extends ch.qos.logback.contrib.json.classic.JsonLayout {
     private static final String ATTR_TIMESTAMP = "time";
 
