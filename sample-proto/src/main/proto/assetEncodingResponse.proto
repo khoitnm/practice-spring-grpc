@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.test.complicated.structure";
+
+//--- encoding response objects
+message EncodingResponse {
+    string applicationId = 1;
+    string externalId = 2;
+    string correlationId = 3;
+    string bucket = 4;
+    int64 sourceSize = 5;
+    map<string, string> sourceMetadata = 6;
+    oneof response {
+        ImageEncodingResponse imageEncodingResponse = 7;
+        VTEncodingResponse vtEncodingResponse = 8;
+        VideoEncodingResponse videoEncodingResponse = 9;
+        Exception exception = 10;
+    }
+}
+
+message Exception {
+    string type = 1;
+    string description = 2;
+}
+
+message ImageEncodingResponse {
+    repeated ImageEncoding encoding = 1;
+}
+
+message ImageEncoding {
+    string s3key = 1;
+    string code = 2;
+    int64 size = 3;
+    int32 height = 4;
+    int32 width = 5;
+    string filetype = 6;
+}
+
+message VTEncodingResponse {
+    repeated VTEncoding encoding = 1;
+}
+
+message VTEncoding {
+    string s3key = 1;
+    string code = 2;
+    int64 size = 3;
+    int32 height = 4;
+    int32 width = 5;
+    string filetype = 6;
+}
+
+message VideoEncodingResponse {
+    repeated ImageEncoding imageEncoding = 1;
+    repeated VideoEncoding videoEncoding = 2;
+}
+
+message VideoEncoding {
+    string s3key = 1;
+    int32 duration = 2;
+    int32 height = 3;
+    int32 width = 4;
+}
