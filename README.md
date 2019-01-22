@@ -64,6 +64,9 @@ It will send http request to the sample-grpc-client, then sample-grpc-client wil
 To test the error case:
 ```http://localhost:8080/items/any-string-which-is-not-a-number```
 
+To test the returning a null object case:
+```http://localhost:8080/items/null```
+
 To test the returning an empty object case:
 ```http://localhost:8080/items/0```
 
