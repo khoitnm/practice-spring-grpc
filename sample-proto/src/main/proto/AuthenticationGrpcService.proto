@@ -10,5 +10,5 @@ message AuthenticationRequestProto {
     string password = 2;
 }
 message AuthenticationResponseProto {
-    string temp = 1;
+    string jwt = 1;
 }
