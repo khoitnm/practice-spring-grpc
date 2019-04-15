@@ -62,6 +62,10 @@ public class ItemExceptionTranslator implements ExceptionTranslator {
         }
     }
 
+    protected Status createStatusFromException(Throwable throwable, Status status) {
+        return status.withCause(throwable).withDescription(constructExceptionDescriptionWithFieldsData(throwable));
+    }
+
     //TODO should move this to the common library.
     /**
      * This method will return a description with all information inside the exception's fields.
@@ -99,6 +103,6 @@ public class ItemExceptionTranslator implements ExceptionTranslator {
     }
 
     private Function<Throwable, Status> getDefaultInternalErrorConverter() {
-        return throwable -> Status.INTERNAL.withCause(throwable).withDescription(throwable.getMessage());
+        return throwable -> createStatusFromException(throwable, Status.INTERNAL);
     }
 }
