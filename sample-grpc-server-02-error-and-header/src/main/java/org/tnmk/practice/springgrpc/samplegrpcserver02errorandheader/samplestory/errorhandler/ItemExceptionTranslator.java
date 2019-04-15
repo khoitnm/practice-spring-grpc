@@ -3,9 +3,11 @@ package org.tnmk.practice.springgrpc.samplegrpcserver02errorandheader.samplestor
 import io.grpc.Status;
 import org.springframework.stereotype.Component;
 import org.tnmk.common.grpc.global.ExceptionTranslator;
+import org.tnmk.common.grpc.support.ReflectionUtils;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.StringJoiner;
 import java.util.function.Function;
 
 /**
@@ -58,6 +60,42 @@ public class ItemExceptionTranslator implements ExceptionTranslator {
         } else {
             return converter;
         }
+    }
+
+    //TODO should move this to the common library.
+    /**
+     * This method will return a description with all information inside the exception's fields.
+     * You don't have to construct a nice looking exception description by yourself.
+     *
+     * For example:
+     * <pre>
+     * You have an Exception class:
+     * public class MyException {
+     *     private String fieldA
+     *     private String fieldB
+     * }
+     *
+     * In some of your code, you will throw an exception:
+     * throw new MyException("Some thing wrong in my application.", fieldAValue, fieldBValue);
+     *
+     * Then this method will write the description message like this:
+     * "Some thing wrong in my application. fieldA: fieldAValue, fieldB: fieldBValue"
+     *
+     * You don't need to write a pretty description when creating your exception instance like this:
+     * throw new MyException("Some thing wrong in my application. fieldA: "+ fieldAValue +", fieldB: "+fieldBValue, fieldAValue, fieldBValue);
+     * </pre>
+     * @param throwable
+     * @return
+     */
+    protected String constructExceptionDescriptionWithFieldsData(Throwable throwable){
+        StringJoiner stringJoiner = new StringJoiner(", ");
+        stringJoiner.add(throwable.getMessage());
+        StringBuilder description = new StringBuilder(throwable.getMessage());
+        Map<String, Object> fieldValues = ReflectionUtils.getPropertyValuesOfBean(throwable, RuntimeException.class);
+        for (Map.Entry<String, Object> entry : fieldValues.entrySet()) {
+            stringJoiner.add(String.format("%s: %s", entry.getKey(), entry.getValue()));
+        }
+        return description.toString();
     }
 
     private Function<Throwable, Status> getDefaultInternalErrorConverter() {
