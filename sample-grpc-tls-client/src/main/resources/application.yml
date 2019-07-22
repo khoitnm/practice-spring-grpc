@@ -1,0 +1,8 @@
+
+itemgrpc:
+  connection:
+    host: localhost
+    port: 6565
+    ca-cert-file-path: /home/kevintran/Documents/Environments/ssl-certificate/ca/cacert.pem
+server:
+  port: 8081

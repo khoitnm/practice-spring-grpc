@@ -15,6 +15,9 @@
         <module>sample-grpc-server-01-simple</module>
         <module>sample-grpc-server-02-error-and-header</module>
         <module>sample-grpc-tls</module>
+        <module>sample-grpc-tls-server</module>
+        <module>sample-grpc-tls-client</module>
+
     </modules>
 
     <parent>
