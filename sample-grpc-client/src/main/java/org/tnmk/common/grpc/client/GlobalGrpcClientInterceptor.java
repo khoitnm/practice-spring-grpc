@@ -11,6 +11,7 @@ import org.tnmk.common.grpc.support.MetadataUtils;
 import org.tnmk.practice.springgrpc.client.common.MDCConstants;
 
 import java.lang.invoke.MethodHandles;
+import java.util.UUID;
 
 @Component
 public class GlobalGrpcClientInterceptor implements ClientInterceptor {
@@ -29,6 +30,9 @@ public class GlobalGrpcClientInterceptor implements ClientInterceptor {
             public void start(Listener<RespT> responseListener, Metadata headers) {
                 /* put custom header */
                 String correlationId = MDC.get(MDCConstants.CORRELATION_ID);
+                if (correlationId == null){
+                    correlationId = UUID.randomUUID().toString();
+                }
                 headers.put(CORRELATION_ID, correlationId);
                 super.start(new ForwardingClientCallListener.SimpleForwardingClientCallListener<RespT>(responseListener) {
                     @Override

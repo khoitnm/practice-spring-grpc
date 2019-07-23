@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.leonardo.monalisa.contentmanagement.contentsyndication.proto";
+
+import "content.proto";
+import "google/protobuf/descriptor.proto";
+
+extend google.protobuf.MethodOptions {
+    bool anonymous = 50001;
+}
+
+service ContentVscapeSyndicationGrpcService {
+    /**
+     * This method is used for creating Content and its Asset.
+     * After creating Asset, the associated encoding Assets will be updated.
+     */
+    rpc create(ContentProto) returns (ContentProto) {
+        option (anonymous) = true;
+    }
+
+    /**
+     * This method is used for updating Content, its Asset and associated encoding Assets.
+     */
+    rpc update(ContentProto) returns (ContentProto) {
+        option (anonymous) = true;
+    }
+
+    rpc deleteByOidContent(OidContentProto) returns (EmptyProto) {
+        option (anonymous) = true;
+    }
+
+    rpc findContentByHotelViewId(HotelViewIdProto) returns (ContentListProto) {
+        option (anonymous) = true;
+    }
+
+    rpc findContentByOidContent(OidContentProto) returns (ContentProto) {
+        option (anonymous) = true;
+    }
+
+    /**
+     * @param OidRcoComponentProto the oidRcoComponent at element level, not at media level.
+     */
+    rpc findContentByOidRcoComponentElement(OidRcoComponentProto) returns (ContentProto) {
+        option (anonymous) = true;
+    }
+
+    rpc findContentListByOidCollection(OidCollectionProto) returns (ContentListProto) {
+        option (anonymous) = true;
+    }
+}
+
+message OidCollectionProto {
+    string oidCollection = 1;
+}
+
+message OidRcoComponentProto {
+    int32 oidRcoComponent = 1;
+}
+
+message HotelViewIdProto {
+    string oidAccount = 1;
+    string hotelViewId = 2;
+}
+
+message OidContentProto{
+    string oidContent = 1;
+}
+
+message EmptyProto {}
