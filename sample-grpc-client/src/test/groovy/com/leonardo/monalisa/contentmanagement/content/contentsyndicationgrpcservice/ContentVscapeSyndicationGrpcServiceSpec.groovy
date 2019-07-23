@@ -8,6 +8,8 @@ import com.leonardo.monalisa.contentmanagement.proto.HotelViewIdProto
 import org.springframework.beans.factory.annotation.Autowired
 import org.tnmk.practice.springgrpc.client.config.ContentVscapeSyndicatorGrpcClient
 
+import java.util.stream.Collectors
+
 class ContentVscapeSyndicationGrpcServiceSpec extends BaseSpecification {
 
     @Autowired
@@ -25,7 +27,9 @@ class ContentVscapeSyndicationGrpcServiceSpec extends BaseSpecification {
                 .build()
         ContentListProto response = grpcClient.getBlockingStub().findContentByHotelViewId(request)
         System.out.println("number of content "+response.getContentCount());
-        System.out.println(response);
+        String oidContentList = "\""+response.contentList.stream().map{contentProto -> contentProto.oidContent}
+                .collect(Collectors.joining("\",\""))+"\"";
+        System.out.println(oidContentList);
 
 
         then:
