@@ -3,12 +3,8 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "com.leonardo.monalisa.contentmanagement.contentsyndication.proto";
 
+import "commons.proto";
 import "content.proto";
-import "google/protobuf/descriptor.proto";
-
-extend google.protobuf.MethodOptions {
-    bool anonymous = 50001;
-}
 
 service ContentVscapeSyndicationGrpcService {
     /**
@@ -50,21 +46,3 @@ service ContentVscapeSyndicationGrpcService {
     }
 }
 
-message OidCollectionProto {
-    string oidCollection = 1;
-}
-
-message OidRcoComponentProto {
-    int32 oidRcoComponent = 1;
-}
-
-message HotelViewIdProto {
-    string oidAccount = 1;
-    string hotelViewId = 2;
-}
-
-message OidContentProto{
-    string oidContent = 1;
-}
-
-message EmptyProto {}

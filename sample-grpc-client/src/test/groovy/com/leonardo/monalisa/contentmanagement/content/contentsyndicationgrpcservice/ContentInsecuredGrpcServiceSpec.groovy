@@ -20,7 +20,7 @@ class ContentInsecuredGrpcServiceSpec extends BaseSpecification {
                 .addAllOidContent(oidContentList)
                 .build()
 
-        ContentListProto response = grpcClient.getBlockingStub().insecureFindContentListByOidContentList(request)
+        ContentListProto response = grpcClient.getBlockingStub().insecureFindContentListByOidContentList(proto)
         System.out.println("number of content "+response.getContentCount());
         System.out.println(response);
 

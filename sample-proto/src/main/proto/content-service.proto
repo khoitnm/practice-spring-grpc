@@ -2,14 +2,13 @@ syntax = "proto3";
 
 option java_multiple_files = true;
 option java_package = "com.leonardo.monalisa.contentmanagement.content.proto";
+
+import "commons.proto";
 import "content.proto";
 import "asset.proto";
 import "pageable.proto";
-import "google/protobuf/descriptor.proto";
 
-extend google.protobuf.MethodOptions {
-    bool anonymous = 50001;
-}
+
 
 service ContentGrpcService {
     /**
@@ -47,19 +46,6 @@ service ContentInsecureGrpcService {
     }
 }
 
-message OidRcoComponentProto {
-    int32 oidRcoComponent = 1;
-}
-
-message HotelViewIdProto {
-    string oidAccount = 1;
-    string hotelViewId = 2;
-    PageableProto pageableProto = 3;
-}
-
-message OidContentProto {
-    string oidContent = 1;
-}
 
 message OidContentListProto {
     repeated string oidContent = 1;
@@ -101,8 +87,4 @@ message DownloadItem {
 
 message BulkDownloadIdRequestResponseProto {
     string oid = 1;
-}
-
-message EmptyProto {
-
 }
