@@ -1,0 +1,108 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.leonardo.monalisa.contentmanagement.content.proto";
+import "content.proto";
+import "asset.proto";
+import "pageable.proto";
+import "google/protobuf/descriptor.proto";
+
+extend google.protobuf.MethodOptions {
+    bool anonymous = 50001;
+}
+
+service ContentGrpcService {
+    /**
+     * This method is used for creating Content and its Asset.
+     * After creating Asset, the associated encoding Assets will be updated.
+     */
+    rpc create (CreateContentRequestProto) returns (ContentProto);
+
+    /**
+     * This method is used for updating Content, its Asset and associated encoding Assets.
+     */
+    rpc update (ContentProto) returns (ContentProto);
+
+    rpc deleteByOidContent (OidContentProto) returns (EmptyProto);
+
+    rpc findContentByHotelViewId (HotelViewIdProto) returns (ContentListProto);
+    rpc findContentByOidContent (OidContentProto) returns (ContentProto);
+
+    /**
+     * @param OidRcoComponentProto the oidRcoComponent at element level, not at media level.
+     */
+    rpc findContentByOidRcoComponentElement (OidRcoComponentProto) returns (ContentProto);
+
+    rpc bulkDownloadRequest (BulkDownloadRequestProto) returns (BulkDownloadIdRequestResponseProto);
+
+    rpc bulkDownload (BulkDownloadIdRequestResponseProto) returns (stream DataChunkProto);
+}
+
+service ContentInsecureGrpcService {
+    /**
+    * This method is used for getting login and logo images
+    */
+    rpc insecureFindContentListByOidContentList(OidContentListProto) returns (ContentListProto) {
+        option (anonymous) = true;
+    }
+}
+
+message OidRcoComponentProto {
+    int32 oidRcoComponent = 1;
+}
+
+message HotelViewIdProto {
+    string oidAccount = 1;
+    string hotelViewId = 2;
+    PageableProto pageableProto = 3;
+}
+
+message OidContentProto {
+    string oidContent = 1;
+}
+
+message OidContentListProto {
+    repeated string oidContent = 1;
+}
+
+message CreateContentRequestProto {
+    string oidAccount = 1;
+    string oidHotelView = 2;
+    string oidCreatedUser = 3;
+    ContentUsageProto usage = 4;
+    AssetTypeProto assetType = 5;
+    string categoryName = 6;
+    bool distribution = 7;
+    string sourcePath = 8;
+}
+
+message BulkDownloadRequestProto {
+    repeated DownloadItem downloadItem = 1;
+    string containerId = 2;
+    ContainerType containerType = 3;
+    string errorText = 4;
+}
+
+enum ContainerType {
+    CONTAINERTYPE_UNKNOWN = 0;
+    HOTEL_VIEW = 1;
+    COLLECTION = 2;
+}
+
+message DataChunkProto {
+    bytes chunk = 1;
+}
+
+message DownloadItem {
+    string oidContent = 1;
+    string fileName = 2;
+    string url = 3;
+}
+
+message BulkDownloadIdRequestResponseProto {
+    string oid = 1;
+}
+
+message EmptyProto {
+
+}
