@@ -17,8 +17,10 @@ class ContentVscapeSyndicationGrpcServiceSpec extends BaseSpecification {
 
     def 'Verify find content by Hotelview and Oid account'() {
         given:
+        // 819d4fdb-7894-4ede-b113-69eddc414d01 : Lux
+        // 91496704-821d-11e9-97da-270517923c8b : Langham
         UUID oidAccount = UUID.fromString("819d4fdb-7894-4ede-b113-69eddc414d01");
-        String hotelViewId = "LBM"
+        String hotelViewId = "LPQ"
 
         when:
         HotelViewIdProto request = HotelViewIdProto.newBuilder()
@@ -30,7 +32,7 @@ class ContentVscapeSyndicationGrpcServiceSpec extends BaseSpecification {
         String oidContentList = "\""+response.contentList.stream().map{contentProto -> contentProto.oidContent}
                 .collect(Collectors.joining("\",\""))+"\"";
         System.out.println(oidContentList);
-
+        System.out.println(response);
 
         then:
         response.getContentList().size() > 0
