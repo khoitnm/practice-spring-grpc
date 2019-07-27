@@ -107,11 +107,6 @@
         <plugins>
             <!-- GRPC GENERATION: The plugin for generating Java files from ProtoBuf files -->
             <plugin>
-                <groupId>kr.motd.maven</groupId>
-                <artifactId>os-maven-plugin</artifactId>
-                <version>1.6.0</version>
-            </plugin>
-            <plugin>
                 <groupId>org.xolstice.maven.plugins</groupId>
                 <artifactId>protobuf-maven-plugin</artifactId>
                 <version>0.5.1</version>

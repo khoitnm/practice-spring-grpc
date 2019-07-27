@@ -4,6 +4,7 @@ import com.leonardo.monalisa.contentmanagement.BaseSpecification
 import com.leonardo.monalisa.contentmanagement.content.proto.ContentInsecureGrpcServiceGrpc
 import com.leonardo.monalisa.contentmanagement.content.proto.ContentListProto
 import com.leonardo.monalisa.contentmanagement.content.proto.OidContentListProto
+import com.leonardo.monalisa.contentmanagement.contentsyndication.proto.ContentVscapeSyndicationGrpcServiceGrpc
 import org.springframework.beans.factory.annotation.Autowired
 import org.tnmk.practice.springgrpc.grpcclientapp.config.GrpcClientStubFactory
 
@@ -12,9 +13,17 @@ class ContentInsecuredGrpcServiceSpec extends BaseSpecification {
     @Autowired
     GrpcClientStubFactory grpcClientStubFactory;
 
-    ContentInsecureGrpcServiceGrpc.ContentInsecureGrpcServiceBlockingStub stub = grpcClientStubFactory.constructStub(
-            "content-management",
-            ContentInsecureGrpcServiceGrpc.ContentInsecureGrpcServiceBlockingStub.class);
+    private ContentInsecureGrpcServiceGrpc.ContentInsecureGrpcServiceBlockingStub stub;
+
+    /**
+     * run before the first feature method
+     * @return
+     */
+    def setup(){
+        stub = grpcClientStubFactory.constructStub(
+                "content-management",
+                ContentInsecureGrpcServiceGrpc.ContentInsecureGrpcServiceBlockingStub.class);
+    }
 
     def 'Verify find content by Hotelview and Oid account'() {
         given:

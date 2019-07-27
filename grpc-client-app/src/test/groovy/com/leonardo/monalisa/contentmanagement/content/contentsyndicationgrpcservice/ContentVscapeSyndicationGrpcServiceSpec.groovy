@@ -4,6 +4,7 @@ import com.leonardo.monalisa.contentmanagement.BaseSpecification
 import com.leonardo.monalisa.contentmanagement.content.proto.ContentListProto
 import com.leonardo.monalisa.contentmanagement.contentsyndication.proto.ContentVscapeSyndicationGrpcServiceGrpc
 import com.leonardo.monalisa.contentmanagement.proto.HotelViewIdProto
+import org.junit.BeforeClass
 import org.springframework.beans.factory.annotation.Autowired
 import org.tnmk.practice.springgrpc.grpcclientapp.config.GrpcClientStubFactory
 
@@ -12,10 +13,16 @@ import java.util.stream.Collectors
 class ContentVscapeSyndicationGrpcServiceSpec extends BaseSpecification {
 
     @Autowired
-    GrpcClientStubFactory grpcClientStubFactory;
+    private GrpcClientStubFactory grpcClientStubFactory;
 
+    private ContentVscapeSyndicationGrpcServiceGrpc.ContentVscapeSyndicationGrpcServiceBlockingStub stub;
+
+    /**
+     * run before the first feature method
+     * @return
+     */
     def setup(){
-        ContentVscapeSyndicationGrpcServiceGrpc.ContentVscapeSyndicationGrpcServiceBlockingStub stub = grpcClientStubFactory.constructStub(
+        stub = grpcClientStubFactory.constructStub(
                 "content-management",
                 ContentVscapeSyndicationGrpcServiceGrpc.ContentVscapeSyndicationGrpcServiceBlockingStub.class);
     }

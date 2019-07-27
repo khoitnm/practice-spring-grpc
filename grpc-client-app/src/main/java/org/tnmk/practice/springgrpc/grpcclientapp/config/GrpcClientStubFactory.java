@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.tnmk.common.grpc.client.GlobalGrpcClientInterceptor;
 import org.tnmk.common.grpc.client.GrpcConnectionProperties;
-import org.tnmk.common.grpc.client.GrpcConnectionsListProperties;
 
 @Component
 public class GrpcClientStubFactory {
@@ -32,13 +31,19 @@ public class GrpcClientStubFactory {
                     .intercept(interceptor)
                     .usePlaintext()
                     .build();
-            String grpcServiceClassName = stubClass.getCanonicalName().replaceAll("BlockingStub", "Grpc");
-            Class grpcServiceClass = Class.forName(grpcServiceClassName);
+
+            Class grpcServiceClass = getOuterClass(stubClass);
             Method newBlockingStubMethod = grpcServiceClass.getMethod("newBlockingStub", Channel.class);
             T stub = (T) newBlockingStubMethod.invoke(null, channel);
             return stub;
         } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             throw new IllegalStateException("Cannot get grpcClientStub: " + e.getMessage(), e);
         }
+    }
+
+    private static Class getOuterClass(Class innerClass) throws ClassNotFoundException {
+        String outerClassName = innerClass.getCanonicalName().replaceAll("."+innerClass.getSimpleName(), "");
+        Class outerClass = Class.forName(outerClassName);
+        return outerClass;
     }
 }
