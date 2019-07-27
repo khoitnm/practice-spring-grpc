@@ -1,16 +1,14 @@
 package org.tnmk.common.grpc.client;
 
-import com.google.common.annotations.VisibleForTesting;
 import io.grpc.*;
+import java.lang.invoke.MethodHandles;
+import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
 import org.tnmk.common.grpc.support.HeaderConstants;
 import org.tnmk.common.grpc.support.MetadataUtils;
-
-import java.lang.invoke.MethodHandles;
-import java.util.UUID;
 
 @Component
 public class GlobalGrpcClientInterceptor implements ClientInterceptor {

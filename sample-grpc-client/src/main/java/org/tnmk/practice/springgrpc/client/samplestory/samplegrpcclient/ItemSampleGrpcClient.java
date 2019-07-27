@@ -1,15 +1,13 @@
 package org.tnmk.practice.springgrpc.client.samplestory.samplegrpcclient;
 
 import io.grpc.*;
-import io.grpc.stub.AbstractStub;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.tnmk.common.grpc.client.GlobalGrpcClientInterceptor;
 import org.tnmk.common.grpc.support.MetadataUtils;
-import org.tnmk.practice.springgrpc.grpcclientapp.common.MDCConstants;
-import org.tnmk.practice.springgrpc.protobuf.ItemProto;
 import org.tnmk.practice.springgrpc.protobuf.ItemIdProto;
+import org.tnmk.practice.springgrpc.protobuf.ItemProto;
 import org.tnmk.practice.springgrpc.protobuf.SampleItemGrpcServiceGrpc;
 
 @Component

@@ -1,4 +1,4 @@
-itemgrpc:
-  connection:
+grpcConnections:
+  contentManagement:
     host: localhost
     port: 6565

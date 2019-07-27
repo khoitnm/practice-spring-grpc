@@ -7,7 +7,7 @@ import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
 import org.tnmk.common.grpc.support.HeaderConstants;
 import org.tnmk.common.grpc.support.MetadataUtils;
-import org.tnmk.practice.springgrpc.grpcclientapp.common.MDCConstants;
+import org.tnmk.common.grpc.client.MDCConstants;
 
 import java.lang.invoke.MethodHandles;
 

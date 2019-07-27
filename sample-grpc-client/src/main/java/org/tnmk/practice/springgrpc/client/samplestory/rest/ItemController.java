@@ -1,16 +1,15 @@
 package org.tnmk.practice.springgrpc.client.samplestory.rest;
 
+import java.util.UUID;
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.tnmk.practice.springgrpc.grpcclientapp.common.MDCConstants;
+import org.tnmk.common.grpc.client.MDCConstants;
 import org.tnmk.practice.springgrpc.client.samplestory.samplegrpcclient.Item;
-import org.tnmk.practice.springgrpc.client.samplestory.samplegrpcclient.ItemSampleGrpcClient;
 import org.tnmk.practice.springgrpc.client.samplestory.samplegrpcclient.ItemId;
-
-import java.util.UUID;
+import org.tnmk.practice.springgrpc.client.samplestory.samplegrpcclient.ItemSampleGrpcClient;
 
 @RestController
 public class ItemController {

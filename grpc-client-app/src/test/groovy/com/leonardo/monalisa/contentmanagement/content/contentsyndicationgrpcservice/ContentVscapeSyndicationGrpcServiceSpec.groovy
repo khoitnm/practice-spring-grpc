@@ -2,18 +2,20 @@ package com.leonardo.monalisa.contentmanagement.content.contentsyndicationgrpcse
 
 import com.leonardo.monalisa.contentmanagement.BaseSpecification
 import com.leonardo.monalisa.contentmanagement.content.proto.ContentListProto
+import com.leonardo.monalisa.contentmanagement.contentsyndication.proto.ContentVscapeSyndicationGrpcServiceGrpc
 import com.leonardo.monalisa.contentmanagement.proto.HotelViewIdProto
-
-//import com.leonardo.monalisa.contentmanagement.contentsyndication.proto.HotelViewIdProto
 import org.springframework.beans.factory.annotation.Autowired
-import org.tnmk.practice.springgrpc.grpcclientapp.config.ContentVscapeSyndicatorGrpcClient
+import org.tnmk.practice.springgrpc.grpcclientapp.config.GrpcClientStubFactory
 
 import java.util.stream.Collectors
 
 class ContentVscapeSyndicationGrpcServiceSpec extends BaseSpecification {
 
     @Autowired
-    private ContentVscapeSyndicatorGrpcClient grpcClient;
+    GrpcClientStubFactory grpcClientStubFactory;
+    ContentVscapeSyndicationGrpcServiceGrpc.ContentVscapeSyndicationGrpcServiceBlockingStub stub = grpcClientStubFactory.constructStub(
+            "contentManagement",
+            ContentVscapeSyndicationGrpcServiceGrpc.ContentVscapeSyndicationGrpcServiceBlockingStub.class);
 
     def 'Verify find content by Hotelview and Oid account'() {
         given:
@@ -27,10 +29,10 @@ class ContentVscapeSyndicationGrpcServiceSpec extends BaseSpecification {
                 .setOidAccount(oidAccount.toString())
                 .setHotelViewId(hotelViewId)
                 .build()
-        ContentListProto response = grpcClient.getBlockingStub().findContentByHotelViewId(request)
-        System.out.println("number of content "+response.getContentCount());
-        String oidContentList = "\""+response.contentList.stream().map{contentProto -> contentProto.oidContent}
-                .collect(Collectors.joining("\",\""))+"\"";
+        ContentListProto response = stub.findContentByHotelViewId(request)
+        System.out.println("number of content " + response.getContentCount());
+        String oidContentList = "\"" + response.contentList.stream().map { contentProto -> contentProto.oidContent }
+                .collect(Collectors.joining("\",\"")) + "\"";
         System.out.println(oidContentList);
         System.out.println(response);
 
