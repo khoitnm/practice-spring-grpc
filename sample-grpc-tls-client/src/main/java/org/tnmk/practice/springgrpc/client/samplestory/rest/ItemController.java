@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.tnmk.practice.springgrpc.client.common.MDCConstants;
+import org.tnmk.practice.springgrpc.grpcclientapp.common.MDCConstants;
 import org.tnmk.practice.springgrpc.client.samplestory.samplegrpctlsclient.Item;
 import org.tnmk.practice.springgrpc.client.samplestory.samplegrpctlsclient.ItemSampleGrpcTlsClient;
 import org.tnmk.practice.springgrpc.client.samplestory.samplegrpctlsclient.ItemId;

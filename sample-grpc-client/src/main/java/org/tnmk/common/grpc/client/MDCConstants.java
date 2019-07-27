@@ -1,4 +1,4 @@
-package org.tnmk.practice.springgrpc.client.common;
+package org.tnmk.common.grpc.client;
 
 public class MDCConstants {
     public static final String CORRELATION_ID = "correlationId";
