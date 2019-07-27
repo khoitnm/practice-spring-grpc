@@ -14,6 +14,9 @@
         <module>sample-grpc-client</module>
         <module>sample-grpc-server-01-simple</module>
         <module>sample-grpc-server-02-error-and-header</module>
+        <module>sample-grpc-tls</module>
+        <module>sample-grpc-tls-server</module>
+        <module>sample-grpc-tls-client</module>
         <module>grpc-client-app</module>
     </modules>
 
@@ -29,7 +32,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>8</java.version>
         <spring-cloud.version>Finchley.RC1</spring-cloud.version>
-        <grpc.version>1.15.0</grpc.version><!-- https://github.com/grpc/grpc-java/issues/2601 :v1.11.0 looks like has problem sending grpc header -->
+        <grpc.version>1.15.1</grpc.version><!-- https://github.com/grpc/grpc-java/issues/2601 :v1.11.0 looks like has problem sending grpc header -->
 
     </properties>
 

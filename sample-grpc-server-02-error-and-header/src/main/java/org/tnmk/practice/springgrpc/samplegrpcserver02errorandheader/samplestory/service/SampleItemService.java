@@ -1,6 +1,5 @@
 package org.tnmk.practice.springgrpc.samplegrpcserver02errorandheader.samplestory.service;
 
-import io.grpc.Status;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.tnmk.practice.springgrpc.protobuf.ItemProto;

@@ -40,7 +40,8 @@ public class GlobalGrpcInterceptor implements ServerInterceptor {
                 logger.info(String.join(", ", "Cannot get correlationId from header"
                     , "header=" + String.valueOf(headers)
                     , "newCorrelationId=" + correlationId
-                    , "caller=" + call.getMethodDescriptor().getFullMethodName()
+                    , "callerClass=" + call.getMethodDescriptor().getSchemaDescriptor() //the result is the class of your grpc service implementation.
+                    , "callerMethod=" + call.getMethodDescriptor().getFullMethodName()
                     )
                 );
             }

@@ -61,6 +61,7 @@
             <url>https://raw.github.com/dinowernli/maven-repos/master</url>
         </repository>
     </repositories>
+
     <build>
         <extensions>
             <!-- GRPC GENERATION: provides os.detected.classifier (i.e. linux-x86_64, osx-x86_64) property -->

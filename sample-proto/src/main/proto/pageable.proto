@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.leonardo.monalisa.contentmanagement.proto";
+
+message PageableProto {
+    int32 pageIndex = 1;
+    int32 pageSize = 2;
+    repeated SortProto sortProtoList = 3;
+}
+
+message SortProto {
+    string field = 1;
+    Direction direction = 2;
+}
+
+enum Direction {
+    UNKNOWN_DIRECTION = 0;
+    ASCENDING = 1;
+    DESCENDING = 2;
+}

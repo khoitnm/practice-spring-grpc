@@ -62,10 +62,13 @@ After starting successfully, you can open your browser (Chrome) and send a REST 
 It will send http request to the sample-grpc-client, then sample-grpc-client will send a gRPC request to our gRPC server (so you have to start your gRPC server first). 
 
 To test the error case:
-```http://localhost:8080/items/any-string-which-is-not-a-number```
+```http://localhost:8081/items/any-string-which-is-not-a-number```
+
+To test the returning a null object case:
+```http://localhost:8081/items/null```
 
 To test the returning an empty object case:
-```http://localhost:8080/items/0```
+```http://localhost:8081/items/0```
 
 # References
 + https://github.com/LogNet/grpc-spring-boot-starter

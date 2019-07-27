@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @GRpcService
 public class SampleItemGrpcService extends SampleItemGrpcServiceGrpc.SampleItemGrpcServiceImplBase {
-    private static final Logger LOGGER = LoggerFactory.getLogger(GlobalGrpcInterceptor.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(SampleItemGrpcService.class);
 
     private final SampleItemService sampleItemService;
 

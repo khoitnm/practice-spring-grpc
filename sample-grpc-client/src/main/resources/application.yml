@@ -1,4 +1,7 @@
+
 itemgrpc:
   connection:
     host: localhost
     port: 6565
+server:
+  port: 8081
