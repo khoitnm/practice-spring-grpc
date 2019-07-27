@@ -13,9 +13,13 @@ class ContentVscapeSyndicationGrpcServiceSpec extends BaseSpecification {
 
     @Autowired
     GrpcClientStubFactory grpcClientStubFactory;
-    ContentVscapeSyndicationGrpcServiceGrpc.ContentVscapeSyndicationGrpcServiceBlockingStub stub = grpcClientStubFactory.constructStub(
-            "contentManagement",
-            ContentVscapeSyndicationGrpcServiceGrpc.ContentVscapeSyndicationGrpcServiceBlockingStub.class);
+
+    def setup(){
+        ContentVscapeSyndicationGrpcServiceGrpc.ContentVscapeSyndicationGrpcServiceBlockingStub stub = grpcClientStubFactory.constructStub(
+                "content-management",
+                ContentVscapeSyndicationGrpcServiceGrpc.ContentVscapeSyndicationGrpcServiceBlockingStub.class);
+    }
+
 
     def 'Verify find content by Hotelview and Oid account'() {
         given:

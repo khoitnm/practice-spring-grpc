@@ -1,4 +1,4 @@
-grpcConnections:
-  contentManagement:
+grpc-connections:
+  content-management:
     host: localhost
     port: 6565

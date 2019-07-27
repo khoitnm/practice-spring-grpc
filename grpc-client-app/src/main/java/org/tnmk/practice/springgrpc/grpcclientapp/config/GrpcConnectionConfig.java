@@ -11,7 +11,7 @@ import org.tnmk.common.grpc.client.GrpcConnectionsListProperties;
 @Configuration
 public class GrpcConnectionConfig {
     @Bean("grpcConnections")
-    @ConfigurationProperties("grpcConnections")
+    @ConfigurationProperties("grpc-connections")
     public Map<String, GrpcConnectionProperties> grpcConnections() {
         return new HashMap<>();
     }

@@ -13,7 +13,7 @@ class ContentInsecuredGrpcServiceSpec extends BaseSpecification {
     GrpcClientStubFactory grpcClientStubFactory;
 
     ContentInsecureGrpcServiceGrpc.ContentInsecureGrpcServiceBlockingStub stub = grpcClientStubFactory.constructStub(
-            "contentManagement",
+            "content-management",
             ContentInsecureGrpcServiceGrpc.ContentInsecureGrpcServiceBlockingStub.class);
 
     def 'Verify find content by Hotelview and Oid account'() {
