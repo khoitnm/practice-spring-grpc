@@ -1,6 +1,6 @@
 package com.leonardo.monalisa.hotelmanagement
 
-import com.leonardo.monalisa.contentmanagement.BaseSpecification
+import com.leonardo.monalisa.BaseSpecification
 import com.leonardo.monalisa.hotelmanagement.hotelview.proto.HotelViewInsecureGrpcServiceGrpc
 import com.leonardo.monalisa.hotelmanagement.hotelview.proto.HotelViewProto
 import com.leonardo.monalisa.hotelmanagement.hotelview.proto.HotelViewRequestProto

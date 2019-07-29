@@ -1,10 +1,9 @@
 package com.leonardo.monalisa.contentmanagement.content.contentsyndicationgrpcservice
 
-import com.leonardo.monalisa.contentmanagement.BaseSpecification
+import com.leonardo.monalisa.BaseSpecification
 import com.leonardo.monalisa.contentmanagement.content.proto.ContentInsecureGrpcServiceGrpc
 import com.leonardo.monalisa.contentmanagement.content.proto.ContentListProto
 import com.leonardo.monalisa.contentmanagement.content.proto.OidContentListProto
-import com.leonardo.monalisa.contentmanagement.contentsyndication.proto.ContentVscapeSyndicationGrpcServiceGrpc
 import org.springframework.beans.factory.annotation.Autowired
 import org.tnmk.practice.springgrpc.grpcclientapp.config.GrpcClientStubFactory
 

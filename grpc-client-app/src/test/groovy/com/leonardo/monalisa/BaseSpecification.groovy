@@ -1,4 +1,4 @@
-package com.leonardo.monalisa.contentmanagement
+package com.leonardo.monalisa
 
 
 import org.junit.Ignore
