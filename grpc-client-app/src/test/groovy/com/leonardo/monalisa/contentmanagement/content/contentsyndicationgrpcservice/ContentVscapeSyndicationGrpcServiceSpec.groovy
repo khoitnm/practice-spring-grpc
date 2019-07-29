@@ -3,7 +3,7 @@ package com.leonardo.monalisa.contentmanagement.content.contentsyndicationgrpcse
 import com.leonardo.monalisa.BaseSpecification
 import com.leonardo.monalisa.contentmanagement.content.proto.ContentListProto
 import com.leonardo.monalisa.contentmanagement.contentsyndication.proto.ContentVscapeSyndicationGrpcServiceGrpc
-import com.leonardo.monalisa.contentmanagement.proto.HotelViewIdProto
+import com.leonardo.monalisa.contentmanagement.contentsyndication.proto.HotelViewIdProto
 import org.springframework.beans.factory.annotation.Autowired
 import org.tnmk.practice.springgrpc.grpcclientapp.config.GrpcClientStubFactory
 

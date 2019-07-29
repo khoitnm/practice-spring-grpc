@@ -16,7 +16,8 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <grpc.version>1.15.1</grpc.version><!-- https://github.com/grpc/grpc-java/issues/2601 :v1.11.0 looks like has problem sending grpc header -->
+        <grpc.version>1.15.1</grpc.version>
+        <!-- https://github.com/grpc/grpc-java/issues/2601 :v1.11.0 looks like has problem sending grpc header -->
     </properties>
 
     <dependencies>
@@ -80,6 +81,7 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Hotel Management -->
         <dependency>
             <groupId>com.leonardo.mona-lisa.hotel-management.hotel-view</groupId>
             <artifactId>hotel-view-proto</artifactId>
@@ -91,6 +93,22 @@
             <version>1.6.1</version>
         </dependency>
 
+        <!-- Content Management -->
+        <dependency>
+            <groupId>com.leonardo.mona-lisa.content-management.content</groupId>
+            <artifactId>content-service-proto</artifactId>
+            <version>1.15.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.leonardo.mona-lisa.content-management.content</groupId>
+            <artifactId>content-vscape-syndication-service-proto</artifactId>
+            <version>0.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.leonardo.mona-lisa.content-management.collection</groupId>
+            <artifactId>collection-service-proto</artifactId>
+            <version>0.6.0</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
