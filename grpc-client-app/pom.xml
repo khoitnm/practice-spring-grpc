@@ -79,6 +79,18 @@
             <version>1.1-groovy-2.4</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.leonardo.mona-lisa.hotel-management.hotel-view</groupId>
+            <artifactId>hotel-view-proto</artifactId>
+            <version>1.9.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.leonardo.mona-lisa.hotel-management.hotel-view</groupId>
+            <artifactId>hotel-view-service-proto</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
@@ -152,4 +164,24 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>mona-lisa-mvn-virt</id>
+            <name>mona-lisa-mvn-virt</name>
+            <url>https://artifactory.visualfrenzy.com/artifactory/mona-lisa-mvn-virt/</url>
+        </repository>
+
+        <repository>
+            <id>mirror</id>
+            <name>VFML mirror</name>
+            <url>https://artifactory.visualfrenzy.com/artifactory/repo</url>
+        </repository>
+
+        <repository>
+            <id>leo-maven-bintray-remote</id>
+            <name>leo-maven-bintray-remote</name>
+            <url>https://artifactory.visualfrenzy.com/artifactory/leo-maven-bintray-remote/</url>
+        </repository>
+    </repositories>
 </project>

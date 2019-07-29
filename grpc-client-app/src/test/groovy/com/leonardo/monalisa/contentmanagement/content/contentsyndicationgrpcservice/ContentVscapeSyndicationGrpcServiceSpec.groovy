@@ -23,7 +23,7 @@ class ContentVscapeSyndicationGrpcServiceSpec extends BaseSpecification {
      */
     def setup(){
         stub = grpcClientStubFactory.constructStub(
-                "content-management",
+                "hotel-management",
                 ContentVscapeSyndicationGrpcServiceGrpc.ContentVscapeSyndicationGrpcServiceBlockingStub.class);
     }
 
@@ -33,12 +33,12 @@ class ContentVscapeSyndicationGrpcServiceSpec extends BaseSpecification {
         // 819d4fdb-7894-4ede-b113-69eddc414d01 : Lux
         // 91496704-821d-11e9-97da-270517923c8b : Langham
         UUID oidAccount = UUID.fromString("819d4fdb-7894-4ede-b113-69eddc414d01");
-        String hotelViewId = "LPQ"
+        String IPID = "LPQ"
 
         when:
         HotelViewIdProto request = HotelViewIdProto.newBuilder()
                 .setOidAccount(oidAccount.toString())
-                .setHotelViewId(hotelViewId)
+                .setHotelViewId(IPID)
                 .build()
         ContentListProto response = stub.findContentByHotelViewId(request)
         System.out.println("number of content " + response.getContentCount());

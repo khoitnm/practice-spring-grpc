@@ -1,4 +1,7 @@
 grpc-connections:
   content-management:
-    host: localhost
+    host: a19a00e89a33911e9862f060c0fb2306-1628580929.us-east-2.elb.amazonaws.com
+    port: 6565
+  hotel-management:
+    host: a6b4e0af2a73411e9ba1602e3561cac5-677096859.us-east-2.elb.amazonaws.com
     port: 6565
