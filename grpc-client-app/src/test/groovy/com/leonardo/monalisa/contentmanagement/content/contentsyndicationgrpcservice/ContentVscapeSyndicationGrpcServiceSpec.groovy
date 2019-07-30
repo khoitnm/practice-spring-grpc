@@ -1,13 +1,17 @@
 package com.leonardo.monalisa.contentmanagement.content.contentsyndicationgrpcservice
 
 import com.leonardo.monalisa.BaseSpecification
+import com.leonardo.monalisa.contentmanagement.content.proto.AssetProto
+import com.leonardo.monalisa.contentmanagement.content.proto.AssetTypeProto
 import com.leonardo.monalisa.contentmanagement.content.proto.ContentListProto
+import com.leonardo.monalisa.contentmanagement.content.proto.ContentProto
 import com.leonardo.monalisa.contentmanagement.contentsyndication.proto.ContentVscapeSyndicationGrpcServiceGrpc
 import com.leonardo.monalisa.contentmanagement.contentsyndication.proto.EmptyProto
 import com.leonardo.monalisa.contentmanagement.contentsyndication.proto.HotelViewIdProto
 import com.leonardo.monalisa.contentmanagement.contentsyndication.proto.OidContentProto
 import org.springframework.beans.factory.annotation.Autowired
 import org.tnmk.practice.springgrpc.grpcclientapp.config.GrpcClientStubFactory
+import spock.lang.Ignore
 
 import java.util.stream.Collectors
 
@@ -49,7 +53,7 @@ class ContentVscapeSyndicationGrpcServiceSpec extends BaseSpecification {
         System.out.println(oidContentList);
 
         String contentList = response.contentList.stream().map { contentProto ->
-            "oidContent: " + contentProto.oidContent + "\t" + contentProto.getAsset().getAssetType() + "\t" + contentProto.getVscapeFilePath()
+            "oidContent: " + contentProto.oidContent + "\t" + contentProto.getAsset().getAssetType() + "\t encodings: " + countEncodings(contentProto.getAsset()) + "\t" + contentProto.getVscapeFilePath()
         }.collect(Collectors.joining("\n"));
         System.out.println(contentList);
 
@@ -59,7 +63,32 @@ class ContentVscapeSyndicationGrpcServiceSpec extends BaseSpecification {
         response.getContentList().size() > 0
     }
 
+    private int countEncodings(AssetProto assetProto) {
+        AssetTypeProto assetTypeProto = assetProto.getAssetType();
+        if (assetTypeProto == AssetTypeProto.IMAGE_ASSET) {
+            return assetProto.getImageAssetProto().getEncodingsCount();
+        } else if (assetTypeProto == AssetTypeProto.VIDEO_ASSET) {
+            return assetProto.getVideoAssetProto().getVideoEncodingsCount()
+        } else if (assetTypeProto == AssetTypeProto.VIRTUAL_TOUR_ASSET) {
+            return assetProto.getVirtualTourAssetProto().getEncodingsCount()
+        } else {
+            return -1;
+        }
+    }
 
+    def 'Find Content'() {
+        given:
+        String oidContent = "79afe91f-b2e4-11e9-a636-fb56bb11282f";
+
+        when:
+        OidContentProto oidContentProto = OidContentProto.newBuilder().setOidContent(oidContent).build();
+        ContentProto contentProto = stub.findContentByOidContent(oidContentProto)
+        System.out.println("Content: \n" + contentProto);
+        then:
+        noExceptionThrown()
+    }
+
+    @Ignore
     def 'Delete Content'() {
         given:
         String oidContent = "46553c3f-afd0-11e9-a524-612230a08ad8";
