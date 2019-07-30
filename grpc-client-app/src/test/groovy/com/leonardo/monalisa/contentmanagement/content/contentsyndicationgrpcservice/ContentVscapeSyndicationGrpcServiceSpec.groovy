@@ -49,7 +49,7 @@ class ContentVscapeSyndicationGrpcServiceSpec extends BaseSpecification {
         System.out.println(oidContentList);
 
         String contentList = response.contentList.stream().map { contentProto ->
-            "oidContent: " + contentProto.oidContent + ", vscapeFilePath: " + contentProto.getVscapeFilePath()
+            "oidContent: " + contentProto.oidContent + "\t" + contentProto.getAsset().getAssetType() + "\t" + contentProto.getVscapeFilePath()
         }.collect(Collectors.joining("\n"));
         System.out.println(contentList);
 
