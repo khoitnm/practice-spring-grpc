@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Service
 public class SampleItemService {
-    public ItemProto getItem(String id) throws ItemNotFoundException {
+    public ItemProto getItem(String id) throws ItemNotFoundException, IllegalItemIdException {
         if ("null".equalsIgnoreCase(id)) {
             return null;
         } else if (StringUtils.isEmpty(id) || !id.matches("[0-9]*")) {
