@@ -12,8 +12,12 @@
         <module>common-grpc</module>
         <module>sample-proto</module>
         <module>sample-grpc-client</module>
-        <module>sample-grpc-server-01-simple</module>
-        <module>sample-grpc-server-02-error-and-header</module>
+        <module>pro-01-server-simple</module>
+        <module>pro-02-server-simple-header-and-error</module>
+        <module>pro-04-server-interceptor-header-and-error</module>
+
+<!--        <module>sample-grpc-server-01-simple</module>-->
+<!--        <module>sample-grpc-server-02-error-and-header</module>-->
         <module>sample-grpc-tls</module>
         <module>sample-grpc-tls-server</module>
         <module>sample-grpc-tls-client</module>
