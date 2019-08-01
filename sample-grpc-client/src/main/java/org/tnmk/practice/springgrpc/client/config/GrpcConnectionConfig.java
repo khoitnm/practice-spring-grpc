@@ -7,9 +7,9 @@ import org.tnmk.common.grpc.client.GrpcConnectionProperties;
 
 @Configuration
 public class GrpcConnectionConfig {
-    @Bean("contentManagementConnectionProperties")
-    @ConfigurationProperties("content-management")
-    public GrpcConnectionProperties contentManagementConnectionProperties() {
+    @Bean
+    @ConfigurationProperties("itemgrpc")
+    public GrpcConnectionProperties grpcConnectionProperties() {
         return new GrpcConnectionProperties();
     }
 }

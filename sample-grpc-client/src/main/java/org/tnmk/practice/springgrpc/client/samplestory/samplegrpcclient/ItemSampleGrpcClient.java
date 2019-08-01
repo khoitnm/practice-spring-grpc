@@ -5,6 +5,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.tnmk.common.grpc.client.GlobalGrpcClientInterceptor;
+import org.tnmk.common.grpc.client.GrpcConnectionProperties;
 import org.tnmk.common.grpc.support.MetadataUtils;
 import org.tnmk.practice.springgrpc.protobuf.ItemIdProto;
 import org.tnmk.practice.springgrpc.protobuf.ItemProto;
@@ -13,14 +14,14 @@ import org.tnmk.practice.springgrpc.protobuf.SampleItemGrpcServiceGrpc;
 @Component
 public class ItemSampleGrpcClient {
 
-    private final ItemGrpcConnectionProperties connectionProperties;
+    private final GrpcConnectionProperties connectionProperties;
     private final ItemMapper itemMapper;
 
     private SampleItemGrpcServiceGrpc.SampleItemGrpcServiceBlockingStub blockingStub;
     private SampleItemGrpcServiceGrpc.SampleItemGrpcServiceFutureStub futureStub;//Just to show that we can call with futureStub, we don't use it here.
 
     @Autowired
-    public ItemSampleGrpcClient(ItemGrpcConnectionProperties connectionProperties, ItemMapper itemMapper) {
+    public ItemSampleGrpcClient(GrpcConnectionProperties connectionProperties, ItemMapper itemMapper) {
         this.connectionProperties = connectionProperties;
         this.itemMapper = itemMapper;
 
