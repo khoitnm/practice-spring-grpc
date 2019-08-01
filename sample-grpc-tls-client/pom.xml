@@ -38,7 +38,8 @@
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-tcnative-boringssl-static</artifactId>
-            <version>2.0.22.Final</version>
+            <!-- I won't work with 2.0.22.Final -->
+            <version>2.0.25.Final</version>
         </dependency>
     </dependencies>
 </project>

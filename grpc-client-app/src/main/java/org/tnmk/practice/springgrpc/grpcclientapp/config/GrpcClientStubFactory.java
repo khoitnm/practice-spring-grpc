@@ -3,15 +3,17 @@ package org.tnmk.practice.springgrpc.grpcclientapp.config;
 import io.grpc.Channel;
 import io.grpc.ClientInterceptor;
 import io.grpc.ManagedChannel;
-import io.grpc.ManagedChannelBuilder;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Map;
+import io.grpc.netty.NettyChannelBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 import org.tnmk.common.grpc.client.GlobalGrpcClientInterceptor;
 import org.tnmk.common.grpc.client.GrpcConnectionProperties;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Map;
 
 @Component
 public class GrpcClientStubFactory {
@@ -24,13 +26,16 @@ public class GrpcClientStubFactory {
 
     public <T, S> T constructStub(String connectionName, Class<? extends S> stubClass) {
         try {
-            GrpcConnectionProperties grpcConnectionProperties= grpcConnectionsListProperties.get(connectionName);
+            GrpcConnectionProperties grpcConnectionProperties = grpcConnectionsListProperties.get(connectionName);
 
             ClientInterceptor interceptor = new GlobalGrpcClientInterceptor();
-            ManagedChannel channel = ManagedChannelBuilder.forAddress(grpcConnectionProperties.getHost(), grpcConnectionProperties.getPort())
-                    .intercept(interceptor)
-                    .usePlaintext()
-                    .build();
+            NettyChannelBuilder channelBuilder;
+            if (StringUtils.isEmpty(grpcConnectionProperties.getTlsCertificateFilePath())) {
+                channelBuilder = GrpcClientPlainTextChannelHelper.createPainTextChannelBuilder(grpcConnectionProperties, interceptor);
+            } else {
+                channelBuilder = GrpcClientTlsChannelHelper.createTlsChannelBuilder(grpcConnectionProperties, interceptor);
+            }
+            ManagedChannel channel = channelBuilder.build();
 
             Class grpcServiceClass = getOuterClass(stubClass);
             Method newBlockingStubMethod = grpcServiceClass.getMethod("newBlockingStub", Channel.class);
@@ -42,7 +47,7 @@ public class GrpcClientStubFactory {
     }
 
     private static Class getOuterClass(Class innerClass) throws ClassNotFoundException {
-        String outerClassName = innerClass.getCanonicalName().replaceAll("."+innerClass.getSimpleName(), "");
+        String outerClassName = innerClass.getCanonicalName().replaceAll("." + innerClass.getSimpleName(), "");
         Class outerClass = Class.forName(outerClassName);
         return outerClass;
     }

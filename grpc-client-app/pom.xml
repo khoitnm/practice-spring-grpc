@@ -40,6 +40,14 @@
             <version>${grpc.version}</version>
         </dependency>
 
+        <!-- Grpc TLS -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-tcnative-boringssl-static</artifactId>
+            <!-- I won't work with 2.0.22.Final -->
+            <version>2.0.25.Final</version>
+        </dependency>
+
         <!-- gRPC testing -->
         <dependency>
             <groupId>io.grpc</groupId>
@@ -174,6 +182,7 @@
         </plugins>
     </build>
 
+    <!-- Repositories to get shared gRPC proto artifacts -->
     <repositories>
         <repository>
             <id>mona-lisa-mvn-virt</id>

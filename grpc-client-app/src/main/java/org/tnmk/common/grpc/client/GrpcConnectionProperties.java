@@ -3,7 +3,12 @@ package org.tnmk.common.grpc.client;
 public class GrpcConnectionProperties {
     private String host;
     private int port;
-    private boolean tls = false;
+    /**
+     * In the future, we may want to support both absolute file path and class path.
+     * Howerver, for now, we only support absolute file path.
+     */
+    private String tlsCertificateFilePath;
+
     public String getHost() {
         return host;
     }
@@ -20,11 +25,12 @@ public class GrpcConnectionProperties {
         this.port = port;
     }
 
-    public boolean isTls() {
-        return tls;
+
+    public String getTlsCertificateFilePath() {
+        return tlsCertificateFilePath;
     }
 
-    public void setTls(boolean tls) {
-        this.tls = tls;
+    public void setTlsCertificateFilePath(String tlsCertificateFilePath) {
+        this.tlsCertificateFilePath = tlsCertificateFilePath;
     }
 }
