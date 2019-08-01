@@ -16,6 +16,13 @@
 
     <dependencies>
         <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-testing</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+
+        <dependency>
             <groupId>org.tnmk.skeleton.practice-spring-grpc</groupId>
             <artifactId>common-grpc</artifactId>
             <version>${project.version}</version>

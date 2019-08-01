@@ -13,7 +13,9 @@ public class SampleItemService {
             return null;
         } else if (StringUtils.isEmpty(id) || !id.matches("[0-9]*")) {
             throw new IllegalItemIdException("Item Id must be not null and contains only number digit", id);
-        } else if (id.equals("0")) {
+        } else if (id.equals(ItemIdConstants.EMPTY_ITEM_ID)) {
+            return ItemProto.newBuilder().build();
+        } else if (id.equals(ItemIdConstants.NOT_FOUND_ITEM_ID)) {
             throw new ItemNotFoundException("Not found item with id 0", id);
         }
 
