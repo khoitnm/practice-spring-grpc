@@ -56,7 +56,7 @@ class ContentVscapeSyndicationGrpcServiceSpec extends BaseSpecification {
         }.collect(Collectors.joining("\n"));
         System.out.println(contentList);
 
-//        System.out.println("Full Content"+response);
+        System.out.println("Full Content"+response);
 
         then:
         response.getContentList().size() > 0

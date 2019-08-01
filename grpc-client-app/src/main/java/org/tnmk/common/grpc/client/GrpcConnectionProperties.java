@@ -5,7 +5,8 @@ public class GrpcConnectionProperties {
     private int port;
     /**
      * In the future, we may want to support both absolute file path and class path.
-     * Howerver, for now, we only support absolute file path.
+     * However, for now, we only support absolute file path.
+     * Note: this is the path to TLS's ca certificate (cacert.pem)
      */
     private String tlsCertificateFilePath;
 
