@@ -32,7 +32,6 @@ class ContentVscapeSyndicationGrpcServiceSpec extends BaseSpecification {
                 ContentVscapeSyndicationGrpcServiceGrpc.ContentVscapeSyndicationGrpcServiceBlockingStub.class);
     }
 
-
     def 'Verify find content by Hotelview and Oid account'() {
         given:
         // 819d4fdb-7894-4ede-b113-69eddc414d01 : Lux
@@ -53,7 +52,7 @@ class ContentVscapeSyndicationGrpcServiceSpec extends BaseSpecification {
         System.out.println(oidContentList);
 
         String contentList = response.contentList.stream().map { contentProto ->
-            "oidContent: " + contentProto.oidContent + "\t" + contentProto.getAsset().getAssetType() + "\t encodings: " + countEncodings(contentProto.getAsset()) + "\t" + contentProto.getVscapeFilePath()
+            "oidContent: " + contentProto.oidContent + "\t" + contentProto.getAsset().getAssetType() + "\t encodings: " + countEncodings(contentProto.getAsset()) + "\t" + contentProto.getVscapeVmmFilePath()
         }.collect(Collectors.joining("\n"));
         System.out.println(contentList);
 

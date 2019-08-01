@@ -1,6 +1,7 @@
 package com.leonardo.monalisa.hotelmanagement
 
 import com.leonardo.monalisa.BaseSpecification
+import com.leonardo.monalisa.hotelmanagement.hotelview.proto.HotelViewGrpcServiceGrpc
 import com.leonardo.monalisa.hotelmanagement.hotelview.proto.HotelViewInsecureGrpcServiceGrpc
 import com.leonardo.monalisa.hotelmanagement.hotelview.proto.HotelViewProto
 import com.leonardo.monalisa.hotelmanagement.hotelview.proto.HotelViewRequestProto
@@ -12,7 +13,7 @@ class HotelManagementGrpcServiceSpec extends BaseSpecification {
     @Autowired
     private GrpcClientStubFactory grpcClientStubFactory;
 
-    private HotelViewInsecureGrpcServiceGrpc.HotelViewInsecureGrpcServiceBlockingStub stub;
+    private HotelViewGrpcServiceGrpc.HotelViewGrpcServiceBlockingStub stub;
 
     /**
      * run before the first feature method
@@ -21,7 +22,7 @@ class HotelManagementGrpcServiceSpec extends BaseSpecification {
     def setup(){
         stub = grpcClientStubFactory.constructStub(
                 "hotel-management",
-                HotelViewInsecureGrpcServiceGrpc.HotelViewInsecureGrpcServiceBlockingStub.class);
+                HotelViewGrpcServiceGrpc.HotelViewGrpcServiceBlockingStub.class);
     }
 
 
