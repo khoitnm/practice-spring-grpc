@@ -14,7 +14,7 @@ import java.lang.invoke.MethodHandles;
  * However, this class helps you to get headers data, which could be very useful in some cases.
  */
 @GRpcGlobalInterceptor
-public class GlobalGrpcInterceptor implements ServerInterceptor {
+public class GlobalGrpcServerInterceptor implements ServerInterceptor {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private static final ServerCall.Listener NOOP_LISTENER = new ServerCall.Listener() {
     };
