@@ -54,7 +54,7 @@ public class SampleItemGrpcServiceTest {
     public void test_GetItem_Success() {
         ItemIdProto itemIdProto = ItemIdProto.newBuilder().setId(""+System.nanoTime()).build();
         ItemProto itemProto = stub.getItem(itemIdProto);
-        Assert.assertNotNull(itemProto.getId());
+        Assert.assertNotNull(itemProto.getDescription());
     }
 
 }

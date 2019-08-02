@@ -4,8 +4,13 @@ import io.grpc.*;
 import org.lognet.springboot.grpc.GRpcGlobalInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
+import org.springframework.stereotype.Component;
 
 import java.lang.invoke.MethodHandles;
+import java.util.UUID;
+
+import static org.tnmk.common.grpc.global.MDCConstants.CORRELATION_ID;
 
 /**
  * This class is processed before calling ProtoBuf Resource layer.
@@ -14,7 +19,7 @@ import java.lang.invoke.MethodHandles;
  * However, this class helps you to get headers data, which could be very useful in some cases.
  */
 @GRpcGlobalInterceptor
-public class GlobalGrpcInterceptor implements ServerInterceptor {
+public class GlobalGrpcServerInterceptor implements ServerInterceptor {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private static final ServerCall.Listener NOOP_LISTENER = new ServerCall.Listener() {
     };
@@ -22,12 +27,9 @@ public class GlobalGrpcInterceptor implements ServerInterceptor {
     @Override
     public <I, O> ServerCall.Listener<I> interceptCall(ServerCall<I, O> call, Metadata headers, ServerCallHandler<I, O> serverCallHandler) {
         try {
-            logger.info("Delegate message to call: {}", call.getMethodDescriptor());
-            /**
-             * NOTE:
-             * serverCallHandler.startCall() doesn't really trigger the code in GrpcService layer yet.
-             * It's only triggered after this method is finished (could be in another thread).
-             */
+            String correlationId = UUID.randomUUID().toString();
+            MDC.put(CORRELATION_ID, correlationId);
+            logger.info("GrpcInterceptor. newCorrelationId: {}", correlationId);
             ServerCall.Listener<I> listener = serverCallHandler.startCall(call, headers);
             return listener;
         } catch (Exception ex) {

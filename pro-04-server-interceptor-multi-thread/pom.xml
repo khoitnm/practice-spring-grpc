@@ -105,9 +105,6 @@
     </repositories>
 
     <build>
-        <extensions>
-
-        </extensions>
         <plugins>
             <!-- SPRING PLUGIN -->
             <plugin>
