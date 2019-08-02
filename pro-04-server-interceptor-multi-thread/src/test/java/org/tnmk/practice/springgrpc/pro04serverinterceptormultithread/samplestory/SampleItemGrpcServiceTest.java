@@ -1,6 +1,7 @@
 package org.tnmk.practice.springgrpc.pro04serverinterceptormultithread.samplestory;
 
-import io.grpc.StatusRuntimeException;
+import io.grpc.ManagedChannel;
+import io.grpc.testing.GrpcServerRule;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
@@ -9,11 +10,13 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import io.grpc.testing.GrpcServerRule;
+import org.tnmk.common.grpc.global.GlobalGrpcServerInterceptor;
 import org.tnmk.practice.springgrpc.pro04serverinterceptormultithread.samplestory.grpcservice.SampleItemGrpcService;
 import org.tnmk.practice.springgrpc.protobuf.ItemIdProto;
 import org.tnmk.practice.springgrpc.protobuf.ItemProto;
 import org.tnmk.practice.springgrpc.protobuf.SampleItemGrpcServiceGrpc;
+
+import java.io.IOException;
 
 /**
  * More additional reference links:
@@ -39,20 +42,22 @@ public class SampleItemGrpcServiceTest {
     @Autowired
     private SampleItemGrpcService sampleItemGrpcService;
 
+    @Autowired
+    private GlobalGrpcServerInterceptor globalGrpcServerInterceptor;
+
     private SampleItemGrpcServiceGrpc.SampleItemGrpcServiceBlockingStub stub;
 
     @Before
-    public void setUp() {
-        // Create a server, add grpc grpcservice, start, and register for automatic graceful shutdown.
-        grpcServerRule.getServiceRegistry().addService(sampleItemGrpcService);
+    public void setUp() throws IOException {
+        ManagedChannel channel = GrpcServerChannelFactory.createChannel(grpcServerRule, sampleItemGrpcService, globalGrpcServerInterceptor);
 
         //Connect client stub to the server via channel (the combination of address and port)
-        stub = SampleItemGrpcServiceGrpc.newBlockingStub(grpcServerRule.getChannel());
+        stub = SampleItemGrpcServiceGrpc.newBlockingStub(channel);
     }
 
     @Test
     public void test_GetItem_Success() {
-        ItemIdProto itemIdProto = ItemIdProto.newBuilder().setId(""+System.nanoTime()).build();
+        ItemIdProto itemIdProto = ItemIdProto.newBuilder().setId("" + System.nanoTime()).build();
         ItemProto itemProto = stub.getItem(itemIdProto);
         Assert.assertNotNull(itemProto.getDescription());
     }

@@ -14,7 +14,9 @@ import static org.tnmk.common.grpc.global.MDCConstants.CORRELATION_ID;
 
 /**
  * This class is processed before calling ProtoBuf Resource layer.
- * Note: it seems that this class doesn't work with component test, but only work when really deployed as a grpc server.
+ * Note: To make this class works in UnitTest, you must register ServerInterceptor into {@link GrpcServerRule} or {@link GrpcCleanupRule}.
+ * Please view more at {@link SampleItemGrpcServiceTest}.
+ *
  * You can use AOP ({@link GlobalGrpcAdvice} to handle all exception) without needing this class.<br/>
  * However, this class helps you to get headers data, which could be very useful in some cases.
  */

@@ -13,10 +13,9 @@ import org.tnmk.practice.springgrpc.protobuf.ItemProto;
 import org.tnmk.practice.springgrpc.protobuf.SampleItemGrpcServiceGrpc;
 
 import static org.tnmk.common.grpc.global.MDCConstants.CORRELATION_ID;
-
-//If we don't declare interceptors here, the GlobalGrpcServerInterceptor still works when deploying the real application (because we config it in META-INF/spring.factories), but it won't work in Unit Test!???
-//Adding this doesn't help either! :(
-@GRpcService(interceptors = GlobalGrpcServerInterceptor.class)
+//We don't need to declare the GlobalGrpcServerInterceptor here.
+//@GRpcService(interceptors = GlobalGrpcServerInterceptor.class)
+@GRpcService
 public class SampleItemGrpcService extends SampleItemGrpcServiceGrpc.SampleItemGrpcServiceImplBase {
     private static final Logger logger = LoggerFactory.getLogger(SampleItemGrpcService.class);
 
