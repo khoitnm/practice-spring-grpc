@@ -17,9 +17,14 @@ public class GrpcClientThread extends Thread {
 
     @Override
     public void run() {
-        ItemIdProto itemIdProto = ItemIdProto.newBuilder().setId("" + System.nanoTime()).build();
-        ItemProto itemProto = stub.getItem(itemIdProto);
-        logger.info("correlationId from response: "+itemProto.getDescription());
-        Assert.assertNotNull(itemProto.getDescription());
+        try {
+            ItemIdProto itemIdProto = ItemIdProto.newBuilder().setId("" + System.nanoTime()).build();
+            logger.info("start request: " + itemIdProto);
+            ItemProto itemProto = stub.getItem(itemIdProto);
+            logger.info("correlationId from response: " + itemProto.getDescription());
+            Assert.assertNotNull(itemProto.getDescription());
+        } catch (Exception ex) {
+            logger.error("GrpcClientThread error: " + ex.getMessage(), ex);
+        }
     }
 }
