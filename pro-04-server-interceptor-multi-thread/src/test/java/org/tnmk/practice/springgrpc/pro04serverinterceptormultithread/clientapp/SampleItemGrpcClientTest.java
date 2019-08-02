@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * You need to start the server before running this test.
  */
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 public class SampleItemGrpcClientTest {
 
     private SampleItemGrpcServiceGrpc.SampleItemGrpcServiceBlockingStub stub;
@@ -32,11 +32,19 @@ public class SampleItemGrpcClientTest {
 
         List<Thread> threads = new ArrayList<>();
         for (int i = 0; i < 2; i++) {
-            Thread clientThread = new GrpcClientThread(stub);
+            Thread clientThread = new GrpcClientThread(stub, i);
             threads.add(clientThread);
         }
 
         threads.stream().forEach(thread -> thread.start());
+        threads.stream().forEach(thread -> {
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+
     }
 
 }

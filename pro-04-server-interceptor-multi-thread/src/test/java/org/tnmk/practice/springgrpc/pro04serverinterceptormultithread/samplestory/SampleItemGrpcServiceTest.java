@@ -59,7 +59,7 @@ public class SampleItemGrpcServiceTest {
 
         List<Thread> threads = new ArrayList<>();
         for (int i = 0; i < 1; i++) {
-            Thread clientThread = new GrpcClientThread(stub);
+            Thread clientThread = new GrpcClientThread(stub, i);
             threads.add(clientThread);
         }
 

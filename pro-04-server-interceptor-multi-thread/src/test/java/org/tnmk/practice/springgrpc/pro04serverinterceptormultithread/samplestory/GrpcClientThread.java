@@ -9,20 +9,22 @@ import org.tnmk.practice.springgrpc.protobuf.SampleItemGrpcServiceGrpc;
 
 public class GrpcClientThread extends Thread {
     public static final Logger logger = LoggerFactory.getLogger(GrpcClientThread.class);
+    public static int itemId;
     private final SampleItemGrpcServiceGrpc.SampleItemGrpcServiceBlockingStub stub;
 
-    public GrpcClientThread(SampleItemGrpcServiceGrpc.SampleItemGrpcServiceBlockingStub stub) {
+    public GrpcClientThread(SampleItemGrpcServiceGrpc.SampleItemGrpcServiceBlockingStub stub, int itemId) {
         this.stub = stub;
+        this.itemId = itemId;
     }
 
     @Override
     public void run() {
         try {
-            ItemIdProto itemIdProto = ItemIdProto.newBuilder().setId("" + System.nanoTime()).build();
-            logger.info("start request: " + itemIdProto);
-            ItemProto itemProto = stub.getItem(itemIdProto);
-            logger.info("correlationId from response: " + itemProto.getDescription());
-            Assert.assertNotNull(itemProto.getDescription());
+            ItemIdProto requestProto = ItemIdProto.newBuilder().setId("" + itemId).build();
+            logger.info("start request: " + requestProto);
+            ItemProto resultProto = stub.getItem(requestProto);
+            logger.info("correlationId from response: [{}] {}", resultProto.getId(), resultProto.getDescription());
+            Assert.assertNotNull(resultProto.getDescription());
         } catch (Exception ex) {
             logger.error("GrpcClientThread error: " + ex.getMessage(), ex);
         }
