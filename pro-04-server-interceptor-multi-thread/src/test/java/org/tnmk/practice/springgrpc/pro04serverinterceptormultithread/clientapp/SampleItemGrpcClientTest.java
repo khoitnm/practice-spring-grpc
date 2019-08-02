@@ -31,7 +31,7 @@ public class SampleItemGrpcClientTest {
     public void test_GetItem_Success() {
 
         List<Thread> threads = new ArrayList<>();
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 10; i++) {
             Thread clientThread = new GrpcClientThread(stub, i);
             threads.add(clientThread);
         }

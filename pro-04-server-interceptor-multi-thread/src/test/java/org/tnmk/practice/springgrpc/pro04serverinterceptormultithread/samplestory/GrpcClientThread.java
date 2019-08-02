@@ -9,7 +9,7 @@ import org.tnmk.practice.springgrpc.protobuf.SampleItemGrpcServiceGrpc;
 
 public class GrpcClientThread extends Thread {
     public static final Logger logger = LoggerFactory.getLogger(GrpcClientThread.class);
-    public static int itemId;
+    private final int itemId;
     private final SampleItemGrpcServiceGrpc.SampleItemGrpcServiceBlockingStub stub;
 
     public GrpcClientThread(SampleItemGrpcServiceGrpc.SampleItemGrpcServiceBlockingStub stub, int itemId) {
