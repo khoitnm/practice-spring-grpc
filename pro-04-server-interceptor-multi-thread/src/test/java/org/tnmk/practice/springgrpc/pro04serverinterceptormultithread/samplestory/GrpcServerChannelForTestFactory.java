@@ -8,7 +8,7 @@ import io.grpc.testing.GrpcServerRule;
 
 import java.io.IOException;
 
-public class GrpcServerChannelFactory {
+public class GrpcServerChannelForTestFactory {
     public static ManagedChannel createChannel(GrpcCleanupRule grpcCleanup, BindableService grpcService, ServerInterceptor serverInterceptor, ClientInterceptor... clientInterceptors) throws IOException {
         // Generate a unique in-process server name.
         String serverName = InProcessServerBuilder.generateName();

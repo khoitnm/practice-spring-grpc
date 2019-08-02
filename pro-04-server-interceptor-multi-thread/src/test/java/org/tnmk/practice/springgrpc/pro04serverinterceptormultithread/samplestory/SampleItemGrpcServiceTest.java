@@ -2,7 +2,6 @@ package org.tnmk.practice.springgrpc.pro04serverinterceptormultithread.samplesto
 
 import io.grpc.ManagedChannel;
 import io.grpc.testing.GrpcServerRule;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -11,12 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.tnmk.common.grpc.global.GlobalGrpcServerInterceptor;
+import org.tnmk.practice.springgrpc.pro04serverinterceptormultithread.clientapp.GrpcClientStubFactory;
+import org.tnmk.practice.springgrpc.pro04serverinterceptormultithread.clientapp.GrpcConnectionProperties;
 import org.tnmk.practice.springgrpc.pro04serverinterceptormultithread.samplestory.grpcservice.SampleItemGrpcService;
-import org.tnmk.practice.springgrpc.protobuf.ItemIdProto;
-import org.tnmk.practice.springgrpc.protobuf.ItemProto;
 import org.tnmk.practice.springgrpc.protobuf.SampleItemGrpcServiceGrpc;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * More additional reference links:
@@ -49,18 +50,20 @@ public class SampleItemGrpcServiceTest {
 
     @Before
     public void setUp() throws IOException {
-        ManagedChannel channel = GrpcServerChannelFactory.createChannel(grpcServerRule, sampleItemGrpcService, globalGrpcServerInterceptor);
-
-        //Connect client stub to the server via channel (the combination of address and port)
+        ManagedChannel channel = GrpcServerChannelForTestFactory.createChannel(grpcServerRule, sampleItemGrpcService, globalGrpcServerInterceptor);
         stub = SampleItemGrpcServiceGrpc.newBlockingStub(channel);
     }
 
     @Test
-    public void test_GetItem_Success() {
-        for (int i = 0; i < 100; i++) {
+    public void test_GetItem_Success() throws IOException {
+
+        List<Thread> threads = new ArrayList<>();
+        for (int i = 0; i < 1; i++) {
             Thread clientThread = new GrpcClientThread(stub);
-            clientThread.start();
+            threads.add(clientThread);
         }
+
+        threads.stream().forEach(thread -> thread.start());
     }
 
 }
