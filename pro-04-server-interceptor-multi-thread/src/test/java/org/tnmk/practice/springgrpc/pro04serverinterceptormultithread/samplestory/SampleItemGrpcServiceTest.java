@@ -57,9 +57,10 @@ public class SampleItemGrpcServiceTest {
 
     @Test
     public void test_GetItem_Success() {
-        ItemIdProto itemIdProto = ItemIdProto.newBuilder().setId("" + System.nanoTime()).build();
-        ItemProto itemProto = stub.getItem(itemIdProto);
-        Assert.assertNotNull(itemProto.getDescription());
+        for (int i = 0; i < 100; i++) {
+            Thread clientThread = new GrpcClientThread(stub);
+            clientThread.start();
+        }
     }
 
 }
