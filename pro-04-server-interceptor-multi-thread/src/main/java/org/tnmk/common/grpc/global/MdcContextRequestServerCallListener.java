@@ -12,10 +12,10 @@ import java.util.Map;
  * That's why we need to copy the MDC's contextMap to grpcService's thread by using this class.
  * Please see an example how to use this class in {@link GlobalGrpcServerInterceptor}
  */
-public class MdcContextForwardingServerCallListener<ReqT> extends ForwardingServerCallListener.SimpleForwardingServerCallListener<ReqT> {
+public class MdcContextRequestServerCallListener<ReqT> extends ForwardingServerCallListener.SimpleForwardingServerCallListener<ReqT> {
     private final Map<String, String> mdcContext;
 
-    public MdcContextForwardingServerCallListener(ServerCall.Listener<ReqT> original, Map<String, String> mdcContext) {
+    public MdcContextRequestServerCallListener(ServerCall.Listener<ReqT> original, Map<String, String> mdcContext) {
         super(original);
         this.mdcContext = mdcContext;
     }

@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 
 import java.lang.invoke.MethodHandles;
+import java.util.Map;
 import java.util.UUID;
 
 import static org.tnmk.common.grpc.global.MDCConstants.CORRELATION_ID;
@@ -32,12 +33,14 @@ public class GlobalGrpcServerInterceptor implements ServerInterceptor {
             /**
              * If we just use MDC.put(...) here, in grpcService layer, we cannot get data from MDC because they are on different threads.
              * https://github.com/grpc/grpc-java/issues/2280
-             * That's why we need to copy the MDC's contextMap to grpcService's thread by using {@link MdcContextForwardingServerCallListener}
+             * That's why we need to copy the MDC's contextMap to grpcService's thread by using {@link MdcContextRequestServerCallListener}
              */
             MDC.put(CORRELATION_ID, correlationId);
             logger.info("GrpcInterceptor. newCorrelationId: {}", correlationId);
-            ServerCall.Listener<I> originalListener = serverCallHandler.startCall(call, headers);
-            ServerCall.Listener<I> forwardListener = new MdcContextForwardingServerCallListener(originalListener, MDC.getCopyOfContextMap());
+
+            Map<String, String> mdcContext = MDC.getCopyOfContextMap();
+            ServerCall.Listener<I> originalListener = serverCallHandler.startCall(new MdcContextResponseServerCall<>(call, mdcContext), headers);
+            ServerCall.Listener<I> forwardListener = new MdcContextRequestServerCallListener(originalListener, mdcContext);
             return forwardListener;
         } catch (Exception ex) {
             /**
