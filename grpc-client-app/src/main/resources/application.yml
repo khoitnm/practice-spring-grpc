@@ -1,9 +1,9 @@
 grpc-connections:
   content-management:
-    host: a3af1fe39b5b411e9b4590a98c564d12-1610194442.us-east-2.elb.amazonaws.com
+    host: mobias-mona-lisa-api-gateway.dev.leonardo.com
     port: 6565
     tls-certificate-file-path: "/opt/apps/resource/mobias-mona-lisa-syndicator/mobias_monalisa_api_gateway_cacert.pem"
   hotel-management:
-    host: a3af1fe39b5b411e9b4590a98c564d12-1610194442.us-east-2.elb.amazonaws.com
+    host: mobias-mona-lisa-api-gateway.dev.leonardo.com
     port: 6565
     tls-certificate-file-path: "/opt/apps/resource/mobias-mona-lisa-syndicator/mobias_monalisa_api_gateway_cacert.pem"
