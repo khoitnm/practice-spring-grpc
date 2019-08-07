@@ -3,6 +3,6 @@ itemgrpc:
   connection:
     host: localhost
     port: 6565
-    ca-cert-file-path: /home/kevintran/Documents/Environments/ssl-certificate/ca/cacert.pem
+    ca-cert-file-path: /home/kevintran/SourceCode/Personal/Practice/practice-spring-grpc/sample-grpc-tls-client/certificates/ca/cacert.pem
 server:
   port: 8081

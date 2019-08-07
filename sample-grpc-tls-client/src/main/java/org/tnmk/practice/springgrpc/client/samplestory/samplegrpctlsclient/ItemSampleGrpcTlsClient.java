@@ -1,19 +1,19 @@
 package org.tnmk.practice.springgrpc.client.samplestory.samplegrpctlsclient;
 
 import io.grpc.*;
-import io.grpc.stub.AbstractStub;
-import org.springframework.beans.BeanUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.tnmk.common.grpc.client.GlobalGrpcClientInterceptor;
 import org.tnmk.common.grpc.support.MetadataUtils;
-import org.tnmk.practice.springgrpc.protobuf.ItemProto;
 import org.tnmk.practice.springgrpc.protobuf.ItemIdProto;
+import org.tnmk.practice.springgrpc.protobuf.ItemProto;
 import org.tnmk.practice.springgrpc.protobuf.SampleItemGrpcServiceGrpc;
 
 @Component
 public class ItemSampleGrpcTlsClient {
-
+    public static final Logger logger = LoggerFactory.getLogger(ItemSampleGrpcTlsClient.class);
     private final ItemGrpcConnectionProperties connectionProperties;
     private final ItemMapper itemMapper;
 
@@ -35,11 +35,10 @@ public class ItemSampleGrpcTlsClient {
 //        futureStub = SampleItemGrpcServiceGrpc.newFutureStub(channel);
     }
 
-    public Item getItem(ItemId itemId) {
-        ItemIdProto.Builder itemIdProtoOrBuilder = ItemIdProto.newBuilder();
-        BeanUtils.copyProperties(itemId, itemIdProtoOrBuilder);
-        ItemIdProto itemIdProto = itemIdProtoOrBuilder.build();
+    public Item getItem(String itemId) {
 
+        ItemIdProto.Builder itemIdProtoOrBuilder = ItemIdProto.newBuilder().setId(itemId);
+        ItemIdProto itemIdProto = itemIdProtoOrBuilder.build();
 
         // WARN: Don't use attachHeaders(blockingStub, correlationId): it will create another correlationId value, with the same key.
         // so there will be many pairs with the same key correlationId, and the headers will be bigger and bigger.
@@ -57,9 +56,10 @@ public class ItemSampleGrpcTlsClient {
             if ("ItemNotFound".equalsIgnoreCase(errorCode)) {
                 return null;
             } else {
-                throw new GetItemException("Cannot get item " + itemIdProto + ". errorDescription: " + errorDescription + ". errorDetails: " + errorDetails, ex);
+                throw new GetItemException("Cannot get item " + itemIdProto + ". errorDescription: " + errorDescription + ". errorDetails: " + errorDetails+". ExceptionMessage: "+ex.getMessage(), ex);
             }
         }
+        logger.info("Get Item from Server: "+itemProto);
         return itemMapper.toItem(itemProto);
     }
 }

@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.tnmk.common.grpc.client.MDCConstants;
 import org.tnmk.practice.springgrpc.client.samplestory.samplegrpctlsclient.Item;
 import org.tnmk.practice.springgrpc.client.samplestory.samplegrpctlsclient.ItemSampleGrpcTlsClient;
-import org.tnmk.practice.springgrpc.client.samplestory.samplegrpctlsclient.ItemId;
 
 import java.util.UUID;
 
@@ -25,9 +24,7 @@ public class ItemController {
     public Item getItems(@PathVariable("id") String id) {
         String correlationId = UUID.randomUUID().toString();
         MDC.put(MDCConstants.CORRELATION_ID, correlationId);
-        ItemId itemId = new ItemId();
-        itemId.setId(id);
-        Item item = itemProtoClient.getItem(itemId);
+        Item item = itemProtoClient.getItem(id);
         return item;
     }
 

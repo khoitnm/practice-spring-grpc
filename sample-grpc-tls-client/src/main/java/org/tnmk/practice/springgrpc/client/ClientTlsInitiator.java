@@ -5,7 +5,6 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 import org.tnmk.practice.springgrpc.client.samplestory.samplegrpctlsclient.Item;
-import org.tnmk.practice.springgrpc.client.samplestory.samplegrpctlsclient.ItemId;
 import org.tnmk.practice.springgrpc.client.samplestory.samplegrpctlsclient.ItemSampleGrpcTlsClient;
 
 @Service
@@ -20,8 +19,6 @@ public class ClientTlsInitiator {
 
     @EventListener(ApplicationReadyEvent.class)
     public void init(){
-        ItemId itemId = new ItemId();
-        itemId.setId("1");
-        itemSampleGrpcTlsClient.getItem(itemId);
+        Item item = itemSampleGrpcTlsClient.getItem(""+System.nanoTime());
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.validation.annotation.Validated;
 @Configuration
 @ConfigurationProperties("grpc-server-tls")
 public class GrpcServerProperties {
+    private boolean enable;
 
     private String certChain;
 
@@ -37,5 +38,13 @@ public class GrpcServerProperties {
 
     public void setTrustCertCollection(String trustCertCollection) {
         this.trustCertCollection = trustCertCollection;
+    }
+
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
     }
 }
