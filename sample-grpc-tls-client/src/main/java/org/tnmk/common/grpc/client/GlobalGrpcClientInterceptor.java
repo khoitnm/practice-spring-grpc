@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 import org.tnmk.common.grpc.support.HeaderConstants;
 import org.tnmk.common.grpc.support.MetadataUtils;
 import org.tnmk.common.grpc.client.MDCConstants;
@@ -28,7 +29,9 @@ public class GlobalGrpcClientInterceptor implements ClientInterceptor {
             public void start(Listener<RespT> responseListener, Metadata headers) {
                 /* put custom header */
                 String correlationId = MDC.get(MDCConstants.CORRELATION_ID);
-                headers.put(CORRELATION_ID, correlationId);
+                if (!StringUtils.isEmpty(correlationId)) {
+                    headers.put(CORRELATION_ID, correlationId);
+                }
                 super.start(new ForwardingClientCallListener.SimpleForwardingClientCallListener<RespT>(responseListener) {
                     @Override
                     public void onHeaders(Metadata headers) {

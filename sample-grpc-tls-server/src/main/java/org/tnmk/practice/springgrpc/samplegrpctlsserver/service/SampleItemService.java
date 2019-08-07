@@ -1,5 +1,7 @@
 package org.tnmk.practice.springgrpc.samplegrpctlsserver.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.tnmk.practice.springgrpc.protobuf.ItemProto;
@@ -8,7 +10,10 @@ import java.util.Date;
 
 @Service
 public class SampleItemService {
+    public static final Logger logger = LoggerFactory.getLogger(SampleItemService.class);
+
     public ItemProto getItem(String id) throws ItemNotFoundException {
+        logger.info("Start getting item " + id);
         if ("null".equalsIgnoreCase(id)) {
             return null;
         } else if (StringUtils.isEmpty(id) || !id.matches("[0-9]*")) {

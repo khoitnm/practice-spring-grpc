@@ -12,6 +12,7 @@ import org.springframework.util.StringUtils;
 
 import javax.net.ssl.SSLException;
 import java.io.ByteArrayInputStream;
+import java.io.File;
 
 
 /**
@@ -35,8 +36,10 @@ public class TLSGrpcServerBuilderConfigurer extends GRpcServerBuilderConfigurer 
 
     private SslContext getSslContext() {
         SslContextBuilder sslContextBuilder = SslContextBuilder.forServer(
-            new ByteArrayInputStream(grpcServerProperties.getCertChain().getBytes()),
-            new ByteArrayInputStream(grpcServerProperties.getPrivateKey().getBytes())
+            new File("/home/kevintran/SourceCode/Personal/Practice/practice-spring-grpc/sample-grpc-tls-client/certificates/server/cert.pem"),
+            new File("/home/kevintran/SourceCode/Personal/Practice/practice-spring-grpc/sample-grpc-tls-client/certificates/server/private_key.pkcs8.pem")
+//            new ByteArrayInputStream(grpcServerProperties.getCertChain().getBytes()),
+//            new ByteArrayInputStream(grpcServerProperties.getPrivateKey().getBytes())
         );
 
         // Optionally enable client authentication.
