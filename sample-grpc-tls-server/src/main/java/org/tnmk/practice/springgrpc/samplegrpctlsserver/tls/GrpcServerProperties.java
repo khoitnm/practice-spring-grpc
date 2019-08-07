@@ -8,7 +8,7 @@ import org.springframework.validation.annotation.Validated;
 @Configuration
 @ConfigurationProperties("grpc-server-tls")
 public class GrpcServerProperties {
-    private boolean enable;
+    private boolean enabled;
 
     /**
      * The path to server/cert.pem file
@@ -50,12 +50,12 @@ public class GrpcServerProperties {
         this.trustCertCollection = trustCertCollection;
     }
 
-    public boolean isEnable() {
-        return enable;
+    public boolean isEnabled() {
+        return enabled;
     }
 
-    public void setEnable(boolean enable) {
-        this.enable = enable;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public String getCertChainFilePath() {

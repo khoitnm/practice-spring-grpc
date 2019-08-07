@@ -31,7 +31,7 @@ public class TLSGrpcServerBuilderConfigurer extends GRpcServerBuilderConfigurer 
 
     @Override
     public void configure(ServerBuilder<?> serverBuilder) {
-        if (grpcServerProperties.isEnable()){
+        if (grpcServerProperties.isEnabled()){
             ((NettyServerBuilder) serverBuilder).sslContext(getSslContext());
         }
     }
