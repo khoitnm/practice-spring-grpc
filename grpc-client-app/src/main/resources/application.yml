@@ -7,3 +7,7 @@ grpc-connections:
     host: mobias-mona-lisa-api-gateway.dev.leonardo.com
     port: 6565
     tls-certificate-file-path: "/opt/apps/resource/mobias-mona-lisa-syndicator/mobias_monalisa_api_gateway_cacert.pem"
+  sample-item:
+    host: localhost
+    port: 6565
+    tls-certificate-file-path: "/home/kevintran/SourceCode/Personal/Practice/practice-spring-grpc/sample-grpc-tls-client/certificates/ca/cacert.pem"

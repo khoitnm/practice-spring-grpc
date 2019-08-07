@@ -89,6 +89,12 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.tnmk.skeleton.practice-spring-grpc</groupId>
+            <artifactId>sample-proto</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
         <!-- Hotel Management -->
         <dependency>
             <groupId>com.leonardo.mona-lisa.mobias-mona-lisa-syndicator-api-gateway</groupId>
