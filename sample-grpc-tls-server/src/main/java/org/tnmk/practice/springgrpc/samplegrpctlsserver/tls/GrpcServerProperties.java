@@ -10,6 +10,16 @@ import org.springframework.validation.annotation.Validated;
 public class GrpcServerProperties {
     private boolean enable;
 
+    /**
+     * The path to server/cert.pem file
+     */
+    private String certChainFilePath;
+
+    /**
+     * The path to server/private_key.pkcs8.pem file
+     */
+    private String privateKeyFilePath;
+
     private String certChain;
 
     private String privateKey;
@@ -46,5 +56,21 @@ public class GrpcServerProperties {
 
     public void setEnable(boolean enable) {
         this.enable = enable;
+    }
+
+    public String getCertChainFilePath() {
+        return certChainFilePath;
+    }
+
+    public void setCertChainFilePath(String certChainFilePath) {
+        this.certChainFilePath = certChainFilePath;
+    }
+
+    public String getPrivateKeyFilePath() {
+        return privateKeyFilePath;
+    }
+
+    public void setPrivateKeyFilePath(String privateKeyFilePath) {
+        this.privateKeyFilePath = privateKeyFilePath;
     }
 }
