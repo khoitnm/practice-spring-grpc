@@ -5,8 +5,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.tnmk.common.grpc.client.GlobalGrpcClientInterceptor;
 import org.tnmk.common.grpc.support.MetadataUtils;
+import org.tnmk.practice.springgrpc.client.config.GrpcClientStubFactory;
 import org.tnmk.practice.springgrpc.protobuf.ItemIdProto;
 import org.tnmk.practice.springgrpc.protobuf.ItemProto;
 import org.tnmk.practice.springgrpc.protobuf.SampleItemGrpcServiceGrpc;
@@ -14,25 +14,16 @@ import org.tnmk.practice.springgrpc.protobuf.SampleItemGrpcServiceGrpc;
 @Component
 public class ItemSampleGrpcTlsClient {
     public static final Logger logger = LoggerFactory.getLogger(ItemSampleGrpcTlsClient.class);
-    private final ItemGrpcConnectionProperties connectionProperties;
     private final ItemMapper itemMapper;
 
     private SampleItemGrpcServiceGrpc.SampleItemGrpcServiceBlockingStub blockingStub;
     private SampleItemGrpcServiceGrpc.SampleItemGrpcServiceFutureStub futureStub;//Just to show that we can call with futureStub, we don't use it here.
 
     @Autowired
-    public ItemSampleGrpcTlsClient(ItemGrpcConnectionProperties connectionProperties, ItemMapper itemMapper) {
-        this.connectionProperties = connectionProperties;
+    public ItemSampleGrpcTlsClient(GrpcClientStubFactory grpcClientStubFactory, ItemMapper itemMapper) {
         this.itemMapper = itemMapper;
 
-        ClientInterceptor interceptor = new GlobalGrpcClientInterceptor();
-        ManagedChannel channel = ManagedChannelBuilder.forAddress(this.connectionProperties.getHost(), this.connectionProperties.getPort())
-            .intercept(interceptor)
-            .usePlaintext()
-            .build();
-
-        blockingStub = SampleItemGrpcServiceGrpc.newBlockingStub(channel);
-//        futureStub = SampleItemGrpcServiceGrpc.newFutureStub(channel);
+        blockingStub = grpcClientStubFactory.constructStub("sample-item", SampleItemGrpcServiceGrpc.SampleItemGrpcServiceBlockingStub.class);
     }
 
     public Item getItem(String itemId) {

@@ -42,6 +42,13 @@
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-tcnative-boringssl-static</artifactId>
+            <!--
+                In my grpc-client-app, I'm using 2.0.25.Final, and it works fine.
+                If I change the server to 2.0.25.Final, it will get error: Caused by: java.nio.channels.ClosedChannelException (!!!)
+                The root cause is incompatible version between grpc and tcnative-boringssl:
+                https://github.com/grpc/grpc-java/blob/v1.15.1/SECURITY.md#troubleshooting
+                For grpc-netty 1.10.0, it's compatible with netty-tcnative-boringssl-static 2.0.7.Final to 2.0.22.Final
+             -->
             <version>2.0.22.Final</version>
         </dependency>
     </dependencies>

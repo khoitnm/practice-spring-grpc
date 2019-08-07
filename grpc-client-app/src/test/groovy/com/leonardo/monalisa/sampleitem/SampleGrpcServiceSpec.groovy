@@ -28,7 +28,7 @@ class SampleGrpcServiceSpec extends BaseSpecification {
     }
 
 
-    def 'Verify find content by Hotelview and Oid account'() {
+    def 'Get Sampe Item via TLS gRPC'() {
         given:
 
         when:

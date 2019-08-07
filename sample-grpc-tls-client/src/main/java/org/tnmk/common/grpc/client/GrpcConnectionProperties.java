@@ -3,7 +3,12 @@ package org.tnmk.common.grpc.client;
 public class GrpcConnectionProperties {
     private String host;
     private int port;
-    private String caCertFilePath;
+    /**
+     * In the future, we may want to support both absolute file path and class path.
+     * However, for now, we only support absolute file path.
+     * Note: this is the path to TLS's ca certificate (cacert.pem)
+     */
+    private String tlsCertificateFilePath;
 
     public String getHost() {
         return host;
@@ -21,11 +26,12 @@ public class GrpcConnectionProperties {
         this.port = port;
     }
 
-    public String getCaCertFilePath() {
-        return caCertFilePath;
+
+    public String getTlsCertificateFilePath() {
+        return tlsCertificateFilePath;
     }
 
-    public void setCaCertFilePath(String caCertFilePath) {
-        this.caCertFilePath = caCertFilePath;
+    public void setTlsCertificateFilePath(String tlsCertificateFilePath) {
+        this.tlsCertificateFilePath = tlsCertificateFilePath;
     }
 }
