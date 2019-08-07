@@ -38,8 +38,8 @@
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-tcnative-boringssl-static</artifactId>
-            <!-- We are using grpc-netty 1.15.1, it's only compatible with netty-tcnative-boringssl-static 2.0.22.Final https://github.com/grpc/grpc-java/blob/v1.15.1/SECURITY.md#troubleshooting) -->
-            <version>2.0.22.Final</version>
+            <!-- We are using grpc-netty 1.15.1, it's only compatible with netty-tcnative-boringssl-static 2.0.12.Final https://github.com/grpc/grpc-java/blob/v1.15.1/SECURITY.md#troubleshooting) -->
+            <version>2.0.12.Final</version>
         </dependency>
     </dependencies>
 </project>
