@@ -11,6 +11,7 @@
 
     <groupId>org.tnmk.skeleton.practice-spring-grpc</groupId>
     <artifactId>sample-proto</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
 
     <properties>
         <io.grpc-version>1.22.1</io.grpc-version>
@@ -23,12 +24,14 @@
             <groupId>io.grpc</groupId>
             <artifactId>grpc-stub</artifactId>
             <version>${io.grpc-version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-protobuf</artifactId>
             <version>${io.grpc-version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

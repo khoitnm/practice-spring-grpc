@@ -14,8 +14,8 @@
 
     <properties>
         <org.mapstruct.version>1.2.0.Final</org.mapstruct.version>
+        <io.grpc-version>1.22.1</io.grpc-version>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -27,6 +27,22 @@
             <artifactId>sample-proto</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
+        <!-- GRPC GENERATION: GENERATED STUB -->
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-stub</artifactId>
+            <version>${io.grpc-version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-protobuf</artifactId>
+            <version>${io.grpc-version}</version>
+            <scope>provided</scope>
+        </dependency>
+
 
         <!-- GRPC CLIENT CONNECTION-->
         <dependency>
