@@ -11,7 +11,7 @@ import spock.lang.Specification
 
 @Ignore
 @DirtiesContext
-@ActiveProfiles("componenttest")
+@ActiveProfiles("prdgenerateddns")
 @ContextConfiguration(initializers = [])
 @SpringBootTest(classes = GrpcClientApplication.class)
 abstract class BaseSpecification extends Specification {
