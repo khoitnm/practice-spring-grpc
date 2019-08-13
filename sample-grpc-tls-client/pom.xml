@@ -18,15 +18,8 @@
 
         <spring-boot-version>2.1.6.RELEASE</spring-boot-version>
         <io.grpc-version>1.22.1</io.grpc-version>
-
-        <!--
-        In my grpc-client-app, I'm using 2.0.25.Final, and it works fine.
-        If I change the server to 2.0.25.Final, it will get error: Caused by: java.nio.channels.ClosedChannelException (!!!)
-        The root cause is incompatible version between grpc and tcnative-boringssl:
-        https://github.com/grpc/grpc-java/blob/v1.15.1/SECURITY.md#troubleshooting
-        For grpc-netty 1.10.0, it's compatible with netty-tcnative-boringssl-static 2.0.7.Final to 2.0.22.Final
-        -->
         <io.netty-version>2.0.25.Final</io.netty-version>
+
 
         <org.mapstruct.version>1.2.0.Final</org.mapstruct.version>
     </properties>
@@ -58,7 +51,8 @@
         <!-- GRPC CLIENT CONNECTION-->
         <dependency>
             <groupId>io.grpc</groupId>
-            <artifactId>grpc-netty</artifactId>
+            <!-- Use grpc-netty-shaded instead of grpc-netty to resolve incompatible versions https://github.com/grpc/grpc-java/blob/master/SECURITY.md -->
+            <artifactId>grpc-netty-shaded</artifactId>
             <version>${io.grpc-version}</version>
         </dependency>
 

@@ -1,7 +1,8 @@
 package org.tnmk.practice.springgrpc.client.config;
 
 import io.grpc.ClientInterceptor;
-import io.grpc.netty.NettyChannelBuilder;
+//import io.grpc.netty.NettyChannelBuilder;
+import io.grpc.netty.shaded.io.grpc.netty.NettyChannelBuilder;
 import org.tnmk.common.grpc.client.GrpcConnectionProperties;
 
 public class GrpcClientPlainTextChannelHelper {
