@@ -9,7 +9,7 @@
     <artifactId>sample-proto</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <properties>
-        <io.grpc-version>1.15.1</io.grpc-version>
+        <io.grpc-version>1.11.0</io.grpc-version>
     </properties>
 
     <dependencies>
@@ -48,7 +48,7 @@
                 <configuration>
                     <protocArtifact>com.google.protobuf:protoc:3.5.1-1:exe:${os.detected.classifier}</protocArtifact>
                     <pluginId>grpc-java</pluginId>
-                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.11.0:exe:${os.detected.classifier}</pluginArtifact>
+                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:${io.grpc-version}:exe:${os.detected.classifier}</pluginArtifact>
                 </configuration>
                 <executions>
                     <execution>

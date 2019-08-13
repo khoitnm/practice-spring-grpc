@@ -20,9 +20,8 @@
 
         <!-- The compatible between grpc-version & netty-version: https://github.com/grpc/grpc-java/blob/master/SECURITY.md -->
         <!-- We cannot use netty-version 2.0.12.Final because it doesn't compatible with netty-tcnative-boringssl-static -->
-        <io.grpc-version>1.22.1</io.grpc-version>
+        <io.grpc-version>1.11.0</io.grpc-version>
         <io.netty-version>2.0.25.Final</io.netty-version>
-
     </properties>
 
     <dependencies>
@@ -39,6 +38,11 @@
 
         <!-- GRPC -->
         <!-- gRPC client -->
+<!--        <dependency>-->
+<!--            <groupId>io.grpc</groupId>-->
+<!--            <artifactId>grpc-netty</artifactId>-->
+<!--            <version>${io.grpc-version}</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-netty-shaded</artifactId>
@@ -152,7 +156,7 @@
                 <configuration>
                     <protocArtifact>com.google.protobuf:protoc:3.5.1-1:exe:${os.detected.classifier}</protocArtifact>
                     <pluginId>grpc-java</pluginId>
-                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.11.0:exe:${os.detected.classifier}</pluginArtifact>
+                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:${io.netty-version}:exe:${os.detected.classifier}</pluginArtifact>
                 </configuration>
                 <executions>
                     <execution>

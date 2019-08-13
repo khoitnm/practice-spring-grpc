@@ -76,3 +76,11 @@ To test the returning an empty object case:
 # TLS gRPC 
 Note: To make TLS gRPC works, the versions of dependencies must be compatible. Please look at the table in this link:
 https://github.com/grpc/grpc-java/blob/master/SECURITY.md 
+However, when running, here's what happenings:
+Case 1: Works
+    io.grpc-version: 1.11.0
+    io.netty-version: 2.0.25.Final
+
+Case 2: Doesn't Work
+    io.grpc-version: 1.11.0
+    io.netty-version: 2.0.7.Final (follow the compatible versions table)    

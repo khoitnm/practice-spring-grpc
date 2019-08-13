@@ -11,6 +11,7 @@ import spock.lang.Specification
 
 @Ignore
 @DirtiesContext
+//@ActiveProfiles("dev")
 @ActiveProfiles("prdgenerateddns")
 //@ActiveProfiles("prdexternaldns")
 @ContextConfiguration(initializers = [])

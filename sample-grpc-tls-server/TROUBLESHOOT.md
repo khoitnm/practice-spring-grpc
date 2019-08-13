@@ -1,7 +1,7 @@
 Incompatible version of:
-<io.grpc-version>1.15.1</io.grpc-version>
-<io.netty-version>2.0.12.Final</io.netty-version>
-
+io.grpc-version: 1.15.1
+io.netty-version: 2.0.12.Final
+When starting the ServerTlsApplication, we get this error:
 ```
 ***************************
 APPLICATION FAILED TO START
