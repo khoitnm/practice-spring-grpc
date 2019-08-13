@@ -16,8 +16,9 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <grpc.version>1.15.1</grpc.version>
-        <!-- https://github.com/grpc/grpc-java/issues/2601 :v1.11.0 looks like has problem sending grpc header -->
+        <spring-boot-version>2.1.6.RELEASE</spring-boot-version>
+        <io.grpc-version>1.22.1</io.grpc-version>
+        <io.netty-version>2.0.25.Final</io.netty-version>
     </properties>
 
     <dependencies>
@@ -37,22 +38,21 @@
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-netty</artifactId>
-            <version>${grpc.version}</version>
+            <version>${io.grpc-version}</version>
         </dependency>
 
         <!-- Grpc TLS -->
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-tcnative-boringssl-static</artifactId>
-            <!-- I won't work with 2.0.22.Final -->
-            <version>2.0.25.Final</version>
+            <version>${io.netty-version}</version>
         </dependency>
 
         <!-- gRPC testing -->
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-testing</artifactId>
-            <version>${grpc.version}</version>
+            <version>${io.grpc-version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -60,12 +60,12 @@
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-stub</artifactId>
-            <version>${grpc.version}</version>
+            <version>${io.grpc-version}</version>
         </dependency>
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-protobuf</artifactId>
-            <version>${grpc.version}</version>
+            <version>${io.grpc-version}</version>
         </dependency>
 
 
