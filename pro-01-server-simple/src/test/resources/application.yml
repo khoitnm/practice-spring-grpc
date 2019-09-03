@@ -1,0 +1,7 @@
+grpc:
+  server:
+    port: 6565
+    
+sample-item-grpc-server:
+  host: localhost
+  port: 6565

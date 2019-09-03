@@ -1,4 +1,4 @@
-package org.tnmk.practice.springgrpc.pro01serversimple;
+package org.tnmk.practice.springgrpc.pro01serversimple.client;
 
 import io.grpc.testing.GrpcServerRule;
 import org.junit.Assert;
