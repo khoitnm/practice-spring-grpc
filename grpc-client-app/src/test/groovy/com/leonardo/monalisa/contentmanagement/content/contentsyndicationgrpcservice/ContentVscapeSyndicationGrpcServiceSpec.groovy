@@ -32,12 +32,13 @@ class ContentVscapeSyndicationGrpcServiceSpec extends BaseSpecification {
                 ContentVscapeSyndicationGrpcServiceGrpc.ContentVscapeSyndicationGrpcServiceBlockingStub.class);
     }
 
+    @Ignore
     def 'Verify find content by Hotelview and Oid account'() {
         given:
         // 819d4fdb-7894-4ede-b113-69eddc414d01 : Lux
         // 91496704-821d-11e9-97da-270517923c8b : Langham
-        UUID oidAccount = UUID.fromString("819d4fdb-7894-4ede-b113-69eddc414d01");
-        String IPID = "HLR"
+        UUID oidAccount = UUID.fromString("91496704-821d-11e9-97da-270517923c8b");
+        String IPID = "CDAKL"
 
         when:
         HotelViewIdProto request = HotelViewIdProto.newBuilder()
@@ -75,6 +76,7 @@ class ContentVscapeSyndicationGrpcServiceSpec extends BaseSpecification {
         }
     }
 
+    @Ignore
     def 'Find Content'() {
         given:
         String oidContent = "79afe91f-b2e4-11e9-a636-fb56bb11282f";

@@ -1,6 +1,7 @@
 package org.tnmk.practice.springgrpc.pro04serverinterceptormultithread.clientapp;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -11,8 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * You need to start the server before running this test.
+ * This class is used for manual test. You need to start the server before running this test.
  */
+@Ignore
 //@RunWith(SpringRunner.class)
 public class SampleItemGrpcClientTest {
 
@@ -26,7 +28,6 @@ public class SampleItemGrpcClientTest {
         stub =  GrpcClientStubFactory.constructStub(connection, SampleItemGrpcServiceGrpc.SampleItemGrpcServiceBlockingStub.class);
     }
 
-//    @Ignore
     @Test
     public void test_GetItem_Success() {
 

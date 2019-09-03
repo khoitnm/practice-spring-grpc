@@ -9,7 +9,7 @@ You can import the whole project with all modules into your IDE, or you can impo
 
 2. `sample-proto`: Declare the grpc servers in *.proto file.
     
-3. `sample-grpc-client`: The client application which will connect to grpc servers.
+3. `pro-01-client-simple`: The client application which will connect to grpc servers.
 
 4. `sample-grpc-server-01-simple`: Provides some simple gRPC endpoints
 
@@ -55,11 +55,11 @@ To stop it, press `Ctrl-C`
 ### Start the client
 Similar to the server, you now can start a client
 ```
-cd sample-grpc-client
+cd pro-01-client-simple
 mvn spring-boot:run
 ```
 After starting successfully, you can open your browser (Chrome) and send a REST request to ```http://localhost:8080/items/1```
-It will send http request to the sample-grpc-client, then sample-grpc-client will send a gRPC request to our gRPC server (so you have to start your gRPC server first). 
+It will send http request to the pro-01-client-simple, then pro-01-client-simple will send a gRPC request to our gRPC server (so you have to start your gRPC server first). 
 
 To test the error case:
 ```http://localhost:8081/items/any-string-which-is-not-a-number```

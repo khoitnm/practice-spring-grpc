@@ -11,33 +11,31 @@
     <modules>
         <module>common-grpc</module>
         <module>sample-proto</module>
-        <module>sample-grpc-client</module>
+        <module>pro-01-client-simple</module>
         <module>pro-01-server-simple</module>
         <module>pro-02-server-simple-header-and-error</module>
         <module>pro-03-server-interceptor</module>
         <module>pro-04-server-interceptor-multi-thread</module>
         <module>pro-04-server-interceptor-header-and-error</module>
-
-        <module>sample-grpc-tls</module>
-        <module>sample-grpc-tls-server</module>
-        <module>sample-grpc-tls-client</module>
+        <module>pro-05-grpc-tls</module>
         <module>grpc-client-app</module>
     </modules>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.2.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
+<!--    <parent>-->
+<!--        <groupId>org.springframework.boot</groupId>-->
+<!--        <artifactId>spring-boot-starter-parent</artifactId>-->
+<!--        <version>2.0.2.RELEASE</version>-->
+<!--        <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
+<!--    </parent>-->
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>8</java.version>
-        <spring-cloud.version>Finchley.RC1</spring-cloud.version>
-        <grpc.version>1.15.1</grpc.version><!-- https://github.com/grpc/grpc-java/issues/2601 :v1.11.0 looks like has problem sending grpc header -->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
 
+        <grpc.version>1.15.1</grpc.version><!-- https://github.com/grpc/grpc-java/issues/2601 :v1.11.0 looks like has problem sending grpc header -->
     </properties>
 
     <dependencies>
@@ -86,27 +84,27 @@
                 <version>2.2.0</version>
             </dependency>
 
+            <!-- SPRING FRAMEWORK DEPENDENCIES MANAGEMENT-->
             <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.0.2.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
+    <!--    <repositories>-->
+    <!--        <repository>-->
+    <!--            <id>spring-milestones</id>-->
+    <!--            <name>Spring Milestones</name>-->
+    <!--            <url>https://repo.spring.io/milestone</url>-->
+    <!--            <snapshots>-->
+    <!--                <enabled>false</enabled>-->
+    <!--            </snapshots>-->
+    <!--        </repository>-->
+    <!--    </repositories>-->
 
 </project>
 

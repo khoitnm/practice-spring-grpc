@@ -7,6 +7,7 @@ import com.leonardo.monalisa.hotelmanagement.hotelview.proto.HotelViewProto
 import com.leonardo.monalisa.hotelmanagement.hotelview.proto.HotelViewRequestProto
 import org.springframework.beans.factory.annotation.Autowired
 import org.tnmk.practice.springgrpc.grpcclientapp.config.GrpcClientStubFactory
+import spock.lang.Ignore
 
 class HotelManagementGrpcServiceSpec extends BaseSpecification {
 
@@ -25,7 +26,7 @@ class HotelManagementGrpcServiceSpec extends BaseSpecification {
                 HotelViewGrpcServiceGrpc.HotelViewGrpcServiceBlockingStub.class);
     }
 
-
+    @Ignore
     def 'Verify find content by Hotelview and Oid account'() {
         given:
         // 819d4fdb-7894-4ede-b113-69eddc414d01 : Lux

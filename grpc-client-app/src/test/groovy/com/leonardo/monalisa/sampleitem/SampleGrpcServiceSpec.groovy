@@ -9,6 +9,7 @@ import org.tnmk.practice.springgrpc.grpcclientapp.config.GrpcClientStubFactory
 import org.tnmk.practice.springgrpc.protobuf.ItemIdProto
 import org.tnmk.practice.springgrpc.protobuf.ItemProto
 import org.tnmk.practice.springgrpc.protobuf.SampleItemGrpcServiceGrpc
+import spock.lang.Ignore
 
 class SampleGrpcServiceSpec extends BaseSpecification {
 
@@ -27,7 +28,7 @@ class SampleGrpcServiceSpec extends BaseSpecification {
                 SampleItemGrpcServiceGrpc.SampleItemGrpcServiceBlockingStub.class);
     }
 
-
+    @Ignore
     def 'Get Sampe Item via TLS gRPC'() {
         given:
 

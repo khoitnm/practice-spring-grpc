@@ -1,1 +1,0 @@
-This project was copied from example code of grpc project.
