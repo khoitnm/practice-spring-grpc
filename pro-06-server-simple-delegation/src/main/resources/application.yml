@@ -1,0 +1,7 @@
+grpc:
+  server:
+    port: 6565
+    
+external-grpc-server:
+  host: localhost
+  port: 6565

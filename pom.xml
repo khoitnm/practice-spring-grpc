@@ -18,6 +18,7 @@
         <module>pro-04-server-interceptor-multi-thread</module>
         <module>pro-04-server-interceptor-header-and-error</module>
         <module>pro-05-grpc-tls</module>
+        <module>pro-06-server-simple-delegation</module>
         <module>grpc-client-app</module>
     </modules>
 
