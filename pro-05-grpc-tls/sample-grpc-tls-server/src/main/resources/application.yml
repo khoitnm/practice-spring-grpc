@@ -4,8 +4,8 @@ grpc:
 
 grpc-server-tls:
   enabled: true
-  cert-chain-file-path: "/home/kevintran/SourceCode/Personal/Practice/practice-spring-grpc/sample-grpc-tls-client/certificates/server/cert.pem"
-  private-key-file-path: "/home/kevintran/SourceCode/Personal/Practice/practice-spring-grpc/sample-grpc-tls-client/certificates/server/private_key.pkcs8.pem"
+  cert-chain-file-path: "/home/kevintran/SourceCode/Personal/Practice/practice-spring-grpc/pro-05-grpc-tls/certificates/server/cert.pem"
+  private-key-file-path: "/home/kevintran/SourceCode/Personal/Practice/practice-spring-grpc/pro-05-grpc-tls/certificates/server/private_key.pkcs8.pem"
 # Below is the wrong way because yaml file doesn't allow this
 #  cert-chain: >
 #-----BEGIN CERTIFICATE-----
