@@ -84,3 +84,8 @@ Case 1: Works
 Case 2: Doesn't Work
     io.grpc-version: 1.11.0
     io.netty-version: 2.0.7.Final (follow the compatible versions table)    
+    
+# Trouble shooting
+grpc-netty 1.11.0 has a bug which consume tons of CPU when there's no requests send to the server after a few hours.
+To solve that problem, we need to use the newer netty version.
+However, that netty is coupled inside spring boot and grpc-netty, that's why we need to upgrade versions for both of them.     
