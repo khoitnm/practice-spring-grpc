@@ -6,15 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ActiveProfiles
-import org.tnmk.practice.springgrpc.pro06serversimpledelegation.Pro01Application
+import org.tnmk.practice.springgrpc.pro06serversimpledelegation.Pro06Application
 import org.tnmk.practice.springgrpc.pro06serversimpledelegation.common.client.GrpcConnectionProperties
 import org.tnmk.practice.springgrpc.protobuf.ItemIdProto
 import org.tnmk.practice.springgrpc.protobuf.ItemProto
 import org.tnmk.practice.springgrpc.protobuf.SampleItemGrpcServiceGrpc
 import spock.lang.Specification
 @ActiveProfiles("componenttest")
-@SpringBootTest(classes = Pro01Application.class)
-class ContentGrpcServiceGrpcSpec extends Specification {
+@SpringBootTest(classes = Pro06Application.class)
+class SampleItemGrpcServiceGrpcSpec extends Specification {
 
     @Qualifier("sampleItemGrpcServerConnection")
     @Autowired

@@ -4,15 +4,18 @@ import io.grpc.ManagedChannel
 import io.grpc.ManagedChannelBuilder
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.annotation.DirtiesContext
 import org.tnmk.practice.springgrpc.pro01serversimple.Pro01Application
 import org.tnmk.practice.springgrpc.pro01serversimple.client.GrpcConnectionProperties
 import org.tnmk.practice.springgrpc.protobuf.ItemIdProto
 import org.tnmk.practice.springgrpc.protobuf.ItemProto
 import org.tnmk.practice.springgrpc.protobuf.SampleItemGrpcServiceGrpc
+import spock.lang.Ignore
 import spock.lang.Specification
 
+@DirtiesContext
 @SpringBootTest(classes = Pro01Application.class)
-class ContentGrpcServiceGrpcSpec extends Specification {
+class SampleItemGrpcServiceGrpcSpec extends Specification {
 
     @Autowired
     private final GrpcConnectionProperties connectionProperties;

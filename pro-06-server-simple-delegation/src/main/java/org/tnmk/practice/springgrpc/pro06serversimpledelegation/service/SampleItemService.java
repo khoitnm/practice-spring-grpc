@@ -26,7 +26,7 @@ public class SampleItemService {
             return itemProto;
         } else {
             id = STOP_CHAR + id;
-            itemProto = externalGrpcSystemService.getItem(id);
+            itemProto = externalGrpcSystemService.getExternalItem(id);
         }
         return itemProto;
     }

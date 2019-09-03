@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.tnmk.practice.springgrpc.pro06serversimpledelegation.common.client.GrpcConnectionProperties;
+import org.tnmk.practice.springgrpc.protobuf.ExternalGrpcServiceGrpc;
 import org.tnmk.practice.springgrpc.protobuf.ItemIdProto;
 import org.tnmk.practice.springgrpc.protobuf.ItemProto;
 import org.tnmk.practice.springgrpc.protobuf.SampleItemGrpcServiceGrpc;
@@ -19,7 +20,7 @@ import org.tnmk.practice.springgrpc.protobuf.SampleItemGrpcServiceGrpc;
 public class ExternalGrpcSystemService {
 
     private final GrpcConnectionProperties grpcConnectionProperties;
-    private final SampleItemGrpcServiceGrpc.SampleItemGrpcServiceBlockingStub blockingStub;
+    private final ExternalGrpcServiceGrpc.ExternalGrpcServiceBlockingStub blockingStub;
 
     @Autowired
     public ExternalGrpcSystemService(@Qualifier("externalGrpcServerConnection") GrpcConnectionProperties grpcConnectionProperties) {
@@ -28,14 +29,14 @@ public class ExternalGrpcSystemService {
             .usePlaintext()
             .build();
 
-        blockingStub = SampleItemGrpcServiceGrpc.newBlockingStub(channel);
+        blockingStub = ExternalGrpcServiceGrpc.newBlockingStub(channel);
     }
 
-    public ItemProto getItem(String id) {
+    public ItemProto getExternalItem(String id) {
         ItemIdProto itemIdProto = ItemIdProto.newBuilder()
             .setId(id)
             .build();
-        ItemProto itemProto = blockingStub.getItem(itemIdProto);
+        ItemProto itemProto = blockingStub.getExternalItem(itemIdProto);
         return itemProto;
     }
 }
