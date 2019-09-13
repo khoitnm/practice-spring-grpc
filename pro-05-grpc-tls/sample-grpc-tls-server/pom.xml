@@ -14,10 +14,12 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <spring-boot-version>2.1.1.RELEASE</spring-boot-version>
+        <spring-boot.version>2.1.8.RELEASE</spring-boot.version>
+        <grpc-spring-boot-starter.version>2.4.3</grpc-spring-boot-starter.version>
 
-        <io.grpc-version>1.11.0</io.grpc-version>
-        <io.netty-version>2.0.25.Final</io.netty-version>
+        <io-grpc.version>1.23.0</io-grpc.version>
+        <io-netty.version>2.0.25.Final</io-netty.version>
+        <protobuf-java.version>3.5.1</protobuf-java.version>
     </properties>
 
     <dependencies>
@@ -36,12 +38,12 @@
         <dependency>
             <groupId>org.lognet</groupId>
             <artifactId>grpc-spring-boot-starter</artifactId>
-            <version>2.3.2</version>
+            <version>${grpc-spring-boot-starter.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
-            <version>3.5.1</version>
+            <version>${protobuf-java.version}</version>
         </dependency>
 
         <!-- PROTO MESSAGE -->
@@ -55,20 +57,20 @@
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-stub</artifactId>
-            <version>${io.grpc-version}</version>
+            <version>${io-grpc.version}</version>
         </dependency>
 
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-protobuf</artifactId>
-            <version>${io.grpc-version}</version>
+            <version>${io-grpc.version}</version>
         </dependency>
 
         <!-- GRPC TLS SERVER-->
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-tcnative-boringssl-static</artifactId>
-            <version>${io.netty-version}</version>
+            <version>${io-netty.version}</version>
         </dependency>
     </dependencies>
 
@@ -79,7 +81,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot-version}</version>
+                <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

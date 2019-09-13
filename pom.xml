@@ -29,7 +29,9 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <grpc.version>1.15.1</grpc.version><!-- https://github.com/grpc/grpc-java/issues/2601 :v1.11.0 looks like has problem sending grpc header -->
+        <spring-boot.version>2.1.8.RELEASE</spring-boot.version>
+        <grpc.version>1.23.0</grpc.version><!-- https://github.com/grpc/grpc-java/issues/2601 :v1.11.0 looks like has problem sending grpc header -->
+        <grpc-spring-boot-starter.version>2.4.3</grpc-spring-boot-starter.version>
     </properties>
 
     <dependencies>
@@ -75,14 +77,14 @@
             <dependency>
                 <groupId>org.lognet</groupId>
                 <artifactId>grpc-spring-boot-starter</artifactId>
-                <version>2.2.0</version>
+                <version>${grpc-spring-boot-starter.version}</version>
             </dependency>
 
             <!-- SPRING FRAMEWORK DEPENDENCIES MANAGEMENT-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.0.2.RELEASE</version>
+                <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

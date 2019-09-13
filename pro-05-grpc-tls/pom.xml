@@ -13,4 +13,9 @@
     <artifactId>pro-05-grpc-tls</artifactId>
     <packaging>pom</packaging>
 
+    <modules>
+        <module>sample-grpc-tls-client</module>
+        <module>sample-grpc-tls-server</module>
+    </modules>
+
 </project>
