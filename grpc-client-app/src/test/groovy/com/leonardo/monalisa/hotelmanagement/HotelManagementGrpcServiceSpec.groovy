@@ -26,7 +26,7 @@ class HotelManagementGrpcServiceSpec extends BaseSpecification {
                 HotelViewGrpcServiceGrpc.HotelViewGrpcServiceBlockingStub.class);
     }
 
-    @Ignore
+//    @Ignore
     def 'Verify find content by Hotelview and Oid account'() {
         given:
         // 819d4fdb-7894-4ede-b113-69eddc414d01 : Lux
