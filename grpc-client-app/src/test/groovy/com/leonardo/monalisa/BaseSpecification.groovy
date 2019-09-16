@@ -12,8 +12,9 @@ import spock.lang.Specification
 @Ignore
 @DirtiesContext
 //@ActiveProfiles("dev")
-@ActiveProfiles("prdgenerateddns")
+//@ActiveProfiles("prdgenerateddns")
 //@ActiveProfiles("prdexternaldns")
+@ActiveProfiles("portforward")
 @ContextConfiguration(initializers = [])
 @SpringBootTest(classes = GrpcClientApplication.class)
 abstract class BaseSpecification extends Specification {

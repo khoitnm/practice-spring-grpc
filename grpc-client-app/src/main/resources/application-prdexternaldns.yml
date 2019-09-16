@@ -1,5 +1,5 @@
 grpc-connections:
-  content-management:
+  api-gateway-content-management:
     host: mobias-mona-lisa-api-gateway.app.leonardo.com
     port: 6565
     tls-certificate-file-path: "/opt/apps/resource/mobias-mona-lisa-syndicator/certificate/leo-prd_external-dns/ca/cacert.pem"

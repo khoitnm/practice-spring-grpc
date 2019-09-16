@@ -1,4 +1,4 @@
-package com.leonardo.monalisa.hotelmanagement
+package com.leonardo.monalisa.apigateway.hotelmanagement
 
 import com.leonardo.monalisa.BaseSpecification
 import com.leonardo.monalisa.hotelmanagement.hotelview.proto.HotelViewGrpcServiceGrpc

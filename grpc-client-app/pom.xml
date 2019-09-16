@@ -103,6 +103,13 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.leonardo.mona-lisa.hotel-management.hotel-view</groupId>
+            <artifactId>hotel-view-service-proto</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+
+        <!-- VScape - Mona Lisa API Gateway -->
         <!-- Hotel Management -->
         <dependency>
             <groupId>com.leonardo.mona-lisa.mobias-mona-lisa-syndicator-api-gateway</groupId>

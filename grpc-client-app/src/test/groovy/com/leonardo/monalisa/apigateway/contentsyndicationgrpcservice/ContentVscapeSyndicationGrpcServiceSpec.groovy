@@ -1,4 +1,4 @@
-package com.leonardo.monalisa.contentmanagement.content.contentsyndicationgrpcservice
+package com.leonardo.monalisa.apigateway.contentsyndicationgrpcservice
 
 import com.leonardo.monalisa.BaseSpecification
 import com.leonardo.monalisa.contentmanagement.content.proto.AssetProto
