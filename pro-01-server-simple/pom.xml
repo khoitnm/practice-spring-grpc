@@ -8,11 +8,11 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <parent>
-        <groupId>org.tnmk.skeleton</groupId>
-        <artifactId>practice-spring-grpc</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-    </parent>
+<!--    <parent>-->
+<!--        <groupId>org.tnmk.skeleton</groupId>-->
+<!--        <artifactId>practice-spring-grpc</artifactId>-->
+<!--        <version>0.0.1-SNAPSHOT</version>-->
+<!--    </parent>-->
 
     <dependencies>
         <dependency>
@@ -25,19 +25,12 @@
         <dependency>
             <groupId>org.lognet</groupId>
             <artifactId>grpc-spring-boot-starter</artifactId>
-            <version>2.2.0</version>
         </dependency>
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
-            <version>3.5.1</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.tnmk.skeleton.practice-spring-grpc</groupId>
-            <artifactId>sample-proto</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
         <!-- GRPC SERVICE: SPRING BOOT GRPC -->
         <dependency>
             <groupId>org.lognet</groupId>
@@ -56,22 +49,41 @@
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
-            <version>2.4.7</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.spockframework</groupId>
             <artifactId>spock-core</artifactId>
-            <version>1.1-groovy-2.4</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.spockframework</groupId>
             <artifactId>spock-spring</artifactId>
-            <version>1.1-groovy-2.4</version>
             <scope>test</scope>
         </dependency>
+
+
+        <dependency>
+            <groupId>org.tnmk.skeleton.practice-spring-grpc</groupId>
+            <artifactId>sample-proto</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
+
+
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- SPRING FRAMEWORK DEPENDENCIES MANAGEMENT-->
+            <dependency>
+                <groupId>org.tnmk.skeleton</groupId>
+                <artifactId>practice-spring-grpc-dependencies</artifactId>
+                <version>0.0.1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <repositories>
         <!-- GRPC GENERATION -->
@@ -87,17 +99,14 @@
         </repository>
     </repositories>
 
-    <build>
-        <extensions>
-
-        </extensions>
-        <plugins>
-            <!-- SPRING PLUGIN -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+<!--    <build>-->
+<!--        <plugins>-->
+<!--            &lt;!&ndash; SPRING PLUGIN &ndash;&gt;-->
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--    </build>-->
 
 </project>
