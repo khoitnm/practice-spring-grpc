@@ -21,10 +21,16 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- ProtoBuf Serialization -->
         <dependency>
-            <groupId>org.tnmk.skeleton.practice-spring-grpc</groupId>
-            <artifactId>common-grpc</artifactId>
-            <version>${project.version}</version>
+            <groupId>org.lognet</groupId>
+            <artifactId>grpc-spring-boot-starter</artifactId>
+            <version>2.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>3.5.1</version>
         </dependency>
 
         <dependency>

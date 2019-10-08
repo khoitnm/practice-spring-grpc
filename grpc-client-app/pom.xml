@@ -16,12 +16,12 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <spring-boot.version>2.1.6.RELEASE</spring-boot.version>
+<!--        <spring-boot.version>2.1.6.RELEASE</spring-boot.version>-->
 
         <!-- The compatible between grpc-version & netty-version: https://github.com/grpc/grpc-java/blob/master/SECURITY.md -->
         <!-- We cannot use netty-version 2.0.12.Final because it doesn't compatible with netty-tcnative-boringssl-static -->
-        <io-grpc.version>1.11.0</io-grpc.version>
-        <io-netty.version>2.0.25.Final</io-netty.version>
+<!--        <io-grpc.version>1.11.0</io-grpc.version>-->
+<!--        <io-netty.version>2.0.25.Final</io-netty.version>-->
     </properties>
 
     <dependencies>
@@ -46,21 +46,21 @@
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-netty-shaded</artifactId>
-            <version>${io-grpc.version}</version>
+<!--            <version>${io-grpc.version}</version>-->
         </dependency>
 
         <!-- Grpc TLS -->
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-tcnative-boringssl-static</artifactId>
-            <version>${io-netty.version}</version>
+<!--            <version>${io-netty.version}</version>-->
         </dependency>
 
         <!-- gRPC testing -->
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-testing</artifactId>
-            <version>${io-grpc.version}</version>
+<!--            <version>${io-grpc.version}</version>-->
             <scope>test</scope>
         </dependency>
 
@@ -68,12 +68,12 @@
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-stub</artifactId>
-            <version>${io-grpc.version}</version>
+<!--            <version>${io-grpc.version}</version>-->
         </dependency>
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-protobuf</artifactId>
-            <version>${io-grpc.version}</version>
+<!--            <version>${io-grpc.version}</version>-->
         </dependency>
 
 
@@ -81,19 +81,19 @@
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
-            <version>2.4.15</version>
+<!--            <version>2.4.15</version>-->
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.spockframework</groupId>
             <artifactId>spock-core</artifactId>
-            <version>1.1-groovy-2.4</version>
+<!--            <version>1.1-groovy-2.4</version>-->
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.spockframework</groupId>
             <artifactId>spock-spring</artifactId>
-            <version>1.1-groovy-2.4</version>
+<!--            <version>1.1-groovy-2.4</version>-->
             <scope>test</scope>
         </dependency>
 
@@ -135,13 +135,12 @@
         <dependencies>
             <!-- SPRING FRAMEWORK DEPENDENCIES MANAGEMENT-->
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.1.6.RELEASE</version>
+                <groupId>org.tnmk.skeleton</groupId>
+                <artifactId>practice-spring-grpc-dependencies</artifactId>
+                <version>0.0.1</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
 

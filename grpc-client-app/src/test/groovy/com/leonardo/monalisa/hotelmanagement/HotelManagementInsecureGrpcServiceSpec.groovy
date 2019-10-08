@@ -1,7 +1,6 @@
 package com.leonardo.monalisa.hotelmanagement
 
 import com.leonardo.monalisa.BaseSpecification
-import com.leonardo.monalisa.hotelmanagement.hotelview.proto.HotelViewGrpcServiceGrpc
 import com.leonardo.monalisa.hotelmanagement.hotelview.proto.HotelViewInsecureGrpcServiceGrpc
 import com.leonardo.monalisa.hotelmanagement.hotelview.proto.HotelViewProto
 import com.leonardo.monalisa.hotelmanagement.hotelview.proto.HotelViewRequestProto
@@ -21,7 +20,7 @@ class HotelManagementInsecureGrpcServiceSpec extends BaseSpecification {
      * run before the first feature method
      * @return
      */
-    def setup(){
+    def setup() {
         stub = grpcClientStubFactory.constructStub(
                 "hotel-management",
                 HotelViewInsecureGrpcServiceGrpc.HotelViewInsecureGrpcServiceBlockingStub.class);
@@ -39,8 +38,12 @@ class HotelManagementInsecureGrpcServiceSpec extends BaseSpecification {
         HotelViewRequestProto hotelViewRequestProto = HotelViewRequestProto.newBuilder().setOidAccount(oidAccount.toString()).build()
 
         List<HotelViewProto> response = stub.findHotelViewsByOidAccount(hotelViewRequestProto).getHotelViewsList()
-        List<String> PIDs = response.stream().map{hv -> hv.getVscapeOidPropertyClient()}.collect(Collectors.toList());
-        System.out.println(PIDs)
+        List<String> hotelViews = response.stream()
+                .filter{ hv -> hv.getVscapeOidPropertyClient() == 1266211}
+                .map { hv -> toStringHotelView(hv) }
+                .collect(Collectors.toList());
+        printHotelViews(hotelViews);
+//        System.out.println(hotelViews)
 
 //        System.out.println(response);
 
@@ -48,6 +51,18 @@ class HotelManagementInsecureGrpcServiceSpec extends BaseSpecification {
 
         1 == 1
 
+    }
+
+    private static String toStringHotelView(HotelViewProto hotelViewProto) {
+//        String string = "" + hotelViewProto.getOidHotelView().toString() + "_" + hotelViewProto.getVscapeOidPropertyClient() + "_" + hotelViewProto.getAddress1() + "_" + hotelViewProto.getHotelName();
+        String string = hotelViewProto.toString()
+        return string;
+    }
+
+    private static void printHotelViews(List<String> hotelViews) {
+        for (String hotelView : hotelViews) {
+            System.out.println("\n"+hotelView);
+        }
     }
 
 }

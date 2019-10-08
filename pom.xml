@@ -20,6 +20,7 @@
         <module>pro-05-grpc-tls</module>
         <module>pro-06-server-simple-delegation</module>
         <module>grpc-client-app</module>
+        <module>practice-spring-grpc-dependencies</module>
     </modules>
 
     <properties>
