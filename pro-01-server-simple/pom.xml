@@ -17,26 +17,32 @@
     </properties>
 
     <dependencies>
+        <!-- SPRING BOOT -->
         <dependency>
-            <groupId>io.grpc</groupId>
-            <artifactId>grpc-testing</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- ProtoBuf Serialization -->
-        <dependency>
-            <groupId>org.lognet</groupId>
-            <artifactId>grpc-spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.protobuf</groupId>
-            <artifactId>protobuf-java</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <!--
+            If we don't define spring-boot-starter, it's still work because of grpc-spring-boot-starter.
+            However, spring-boot version inside grpc-spring-boot-starter is the old version.
+            That's why we should define newer dependency here
+            -->
         </dependency>
 
         <!-- GRPC SERVICE: SPRING BOOT GRPC -->
         <dependency>
             <groupId>org.lognet</groupId>
             <artifactId>grpc-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- ProtoBuf Serialization -->
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-testing</artifactId>
+            <scope>test</scope>
         </dependency>
 
         <!-- TEST -->
@@ -63,7 +69,6 @@
             <artifactId>spock-spring</artifactId>
             <scope>test</scope>
         </dependency>
-
 
         <dependency>
             <groupId>org.tnmk.skeleton.practice-spring-grpc</groupId>
