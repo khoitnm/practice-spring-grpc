@@ -16,6 +16,7 @@
     <modules>
         <module>download-file-client</module>
         <module>download-file-server</module>
+        <module>download-file-server-proto</module>
     </modules>
 
 </project>

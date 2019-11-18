@@ -62,7 +62,7 @@
         <!-- PROTO MESSAGE -->
         <dependency>
             <groupId>org.tnmk.skeleton.practice-spring-grpc</groupId>
-            <artifactId>sample-proto</artifactId>
+            <artifactId>download-file-server-proto</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 

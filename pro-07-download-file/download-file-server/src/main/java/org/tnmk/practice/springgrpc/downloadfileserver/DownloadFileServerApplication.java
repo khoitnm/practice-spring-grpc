@@ -6,9 +6,9 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
 @EnableAsync
-public class ServerTlsApplication {
+public class DownloadFileServerApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(ServerTlsApplication.class, args);
+    SpringApplication.run(DownloadFileServerApplication.class, args);
   }
 }

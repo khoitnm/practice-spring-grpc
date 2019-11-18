@@ -45,7 +45,7 @@
 
         <dependency>
             <groupId>org.tnmk.skeleton.practice-spring-grpc</groupId>
-            <artifactId>sample-proto</artifactId>
+            <artifactId>download-file-server-proto</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
@@ -85,7 +85,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
                 <configuration>
-                    <mainClass>org.tnmk.practice.springgrpc.client.ClientTlsApplication</mainClass>
+                    <mainClass>org.tnmk.practice.springgrpc.client.DownloadFileClientApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>
