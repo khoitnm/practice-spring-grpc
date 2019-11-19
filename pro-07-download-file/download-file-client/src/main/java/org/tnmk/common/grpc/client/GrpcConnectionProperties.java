@@ -3,8 +3,6 @@ package org.tnmk.common.grpc.client;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
-@ConfigurationProperties("grpc-connections.download-file-service")
 public class GrpcConnectionProperties {
     private String host;
     private int port;

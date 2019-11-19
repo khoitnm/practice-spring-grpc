@@ -4,3 +4,7 @@ grpc-connections:
     port: 6565
 server:
   port: 8081
+
+grpc:
+  server:
+    port: 6566
