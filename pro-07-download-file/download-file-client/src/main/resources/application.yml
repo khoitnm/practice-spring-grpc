@@ -1,7 +1,6 @@
 grpc-connections:
-  sample-item:
+  download-file-service:
     host: localhost
     port: 6565
-    tls-certificate-file-path: "/home/kevintran/SourceCode/Personal/Practice/practice-spring-grpc/pro-07-download-file/certificates/ca/cacert.pem"
 server:
   port: 8081
