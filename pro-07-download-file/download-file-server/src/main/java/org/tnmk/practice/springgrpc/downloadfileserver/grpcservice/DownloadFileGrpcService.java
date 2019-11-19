@@ -15,6 +15,7 @@ public class DownloadFileGrpcService extends DownloadFileGrpcServiceGrpc.Downloa
     private DownloadFileService downloadFileService;
 
     public void downloadFile(DownloadFileRequestProto request, StreamObserver<DownloadFileResponseProto> responseObserver) {
-
+        byte[] bytes = downloadFileService.getFileData(request.getFileName());
+//        DownloadFileResponseProto.newBuilder().setData()
     }
 }
