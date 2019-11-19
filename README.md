@@ -7,14 +7,16 @@ You can import the whole project with all modules into your IDE, or you can impo
 
 1.  `common-grpc`: The common code related to gRPC which can be reused in other projects. At this moment, it just contains the common dependencies for other grpc server modules (such as `sample-grpc-server-01-simple` & `sample-grpc-server-02-error-and-header`). 
 
-2. `sample-proto`: Declare the grpc servers in *.proto file.
+2. `sample-proto`: Declare the grpc servers and messages in *.proto file. This proto will be used for most of the sample client & server applications such as `pro-01-client-simple`, `pro-01-server-simple`, `pro-03-server-interceptor`, etc.
     
 3. `pro-01-client-simple`: The client application which will connect to grpc servers.
 
-4. `sample-grpc-server-01-simple`: Provides some simple gRPC endpoints
+4. `pro-01-server-simple`: Provides some simple gRPC endpoints
 
-5. `sample-grpc-server-02-error-and-header`: Provides a central error handler for gRPC endpoints by using AOP. 
-We also have an Component Test which will start the grpcServer, then the client stub will connect to that server in the test cases. 
+5. `pro-02-server-simple-header-and-error`: Provides a central error handler for gRPC endpoints by using AOP. 
+We also have an Component Test which will start the grpcServer, then the client stub will connect to that server in the test cases.
+
+etc.
 
 # II. Build projects
 Run the command line, it will complie the source code, build project, and then run tests.
