@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>practice-spring-grpc</artifactId>
+        <groupId>org.tnmk.skeleton</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.tnmk.skeleton</groupId>
+    <artifactId>pro-08-stream-stream-download-file</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>stream-download-file-client</module>
+        <module>stream-download-file-server</module>
+        <module>stream-download-file-server-proto</module>
+    </modules>
+
+</project>

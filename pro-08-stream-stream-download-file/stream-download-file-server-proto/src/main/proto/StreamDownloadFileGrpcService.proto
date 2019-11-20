@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.tnmk.practice.springgrpc.protobuf";
+
+service StreamDownloadFileGrpcService {
+    rpc streamStreamDownloadFile (StreamDownloadFileRequestProto) returns (StreamDownloadFileResponseProto);
+}
+
+message StreamDownloadFileRequestProto {
+    string fileName = 1;
+}
+
+message StreamDownloadFileResponseProto {
+    bytes data = 1;
+}
