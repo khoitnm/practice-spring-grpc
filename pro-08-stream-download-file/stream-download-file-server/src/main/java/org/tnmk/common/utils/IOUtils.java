@@ -48,7 +48,7 @@ public final class IOUtils {
         }
     }
 
-    private static InputStream validateExistInputStreamFromClassPath(final String path) {
+    public static InputStream validateExistInputStreamFromClassPath(final String path) {
         final InputStream inputStream = loadInputStreamFileInClassPath(path);
         if (inputStream == null) {
             throw new UnexpectedException(String.format("Not found file from '%s'", path));

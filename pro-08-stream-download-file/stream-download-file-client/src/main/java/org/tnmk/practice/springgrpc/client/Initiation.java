@@ -13,6 +13,6 @@ public class Initiation {
 
     @EventListener(ApplicationReadyEvent.class)
     public void init() {
-        streamDownloadFileClient.streamDownloadFileFromServer();
+        streamDownloadFileClient.downloadFileFromServer();
     }
 }

@@ -29,7 +29,7 @@ public class StreamDownloadFileClient {
         this.blockingStub = StreamDownloadFileGrpcServiceGrpc.newBlockingStub(channel);
     }
 
-    public void streamDownloadFileFromServer() {
+    public void downloadFileFromServer() {
         StreamDownloadFileRequestProto streamDownloadFileRequestProto = StreamDownloadFileRequestProto.newBuilder()
             .setFileName("RandomFile_" + System.nanoTime())
             .build();
