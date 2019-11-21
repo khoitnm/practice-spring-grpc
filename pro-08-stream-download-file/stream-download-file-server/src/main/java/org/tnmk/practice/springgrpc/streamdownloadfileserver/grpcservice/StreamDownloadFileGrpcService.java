@@ -37,18 +37,18 @@ public class StreamDownloadFileGrpcService extends StreamDownloadFileGrpcService
 
         // Use a cancel handler to stop download process when cancelled by the gRPC client
         serverCallStreamObserver.setOnCancelHandler(() -> {
-            stopReadingDataFromInputStream(inputStream);
+            stopReadingDataFromInputStream(inputStream, serverCallStreamObserver);
         });
-        responseObserver.onCompleted();
     }
 
-    private void stopReadingDataFromInputStream(InputStream inputStream){
+    private void stopReadingDataFromInputStream(InputStream inputStream, ServerCallStreamObserver<StreamDownloadChunkProto> serverCallStreamObserver){
         logger.info("Bulk download was cancelled by client");
         try {
             inputStream.close();
         } catch (IOException e) {
             logger.error("Failed to clean bulk download streams: " + e.getMessage(), e);
         }
+        serverCallStreamObserver.onCompleted();
     }
 
     private void transferDataFromInputStreamToGrpcResponse(InputStream inputStream, ServerCallStreamObserver<StreamDownloadChunkProto> serverCallStreamObserver) {
@@ -77,6 +77,7 @@ public class StreamDownloadFileGrpcService extends StreamDownloadFileGrpcService
             } catch (IOException e) {
                 throw new UnexpectedException("Cannot close the input stream " + e.getMessage(), e);
             }
+            serverCallStreamObserver.onCompleted();
         }
     }
 }
