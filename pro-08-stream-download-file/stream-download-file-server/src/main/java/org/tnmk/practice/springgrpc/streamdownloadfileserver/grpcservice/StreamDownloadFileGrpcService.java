@@ -16,7 +16,7 @@ public class StreamDownloadFileGrpcService extends StreamDownloadFileGrpcService
     private StreamDownloadFileService streamDownloadFileService;
 
     @Override
-    public void streamDownloadFile(StreamDownloadFileRequestProto request, StreamObserver<StreamDownloadFileResponseProto> responseObserver) {
+    public void downloadFile(StreamDownloadFileRequestProto request, StreamObserver<StreamDownloadFileResponseProto> responseObserver) {
         byte[] bytes = streamDownloadFileService.getFileData(request.getFileName());
 
         StreamDownloadFileResponseProto streamDownloadFileResponseProto = StreamDownloadFileResponseProto.newBuilder().setData(ByteString.copyFrom(bytes)).build();

@@ -33,7 +33,7 @@ public class StreamDownloadFileClient {
         StreamDownloadFileRequestProto streamDownloadFileRequestProto = StreamDownloadFileRequestProto.newBuilder()
             .setFileName("RandomFile_" + System.nanoTime())
             .build();
-        StreamDownloadFileResponseProto streamDownloadFileResponseProto = blockingStub.streamDownloadFile(streamDownloadFileRequestProto);
+        StreamDownloadFileResponseProto streamDownloadFileResponseProto = blockingStub.downloadFile(streamDownloadFileRequestProto);
         String fileContent = streamDownloadFileResponseProto.getData().toString(UTF_8);
         logger.info("File Content\n" + fileContent);
     }
