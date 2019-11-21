@@ -13,14 +13,14 @@ import org.tnmk.practice.springgrpc.protobuf.StreamDownloadFileResponseProto;
 public class StreamDownloadFileGrpcService extends StreamDownloadFileGrpcServiceGrpc.StreamDownloadFileGrpcServiceImplBase {
 
     @Autowired
-    private StreamDownloadFileService streamStreamDownloadFileService;
+    private StreamDownloadFileService streamDownloadFileService;
 
     @Override
-    public void streamStreamDownloadFile(StreamDownloadFileRequestProto request, StreamObserver<StreamDownloadFileResponseProto> responseObserver) {
-        byte[] bytes = streamStreamDownloadFileService.getFileData(request.getFileName());
+    public void streamDownloadFile(StreamDownloadFileRequestProto request, StreamObserver<StreamDownloadFileResponseProto> responseObserver) {
+        byte[] bytes = streamDownloadFileService.getFileData(request.getFileName());
 
-        StreamDownloadFileResponseProto streamStreamDownloadFileResponseProto = StreamDownloadFileResponseProto.newBuilder().setData(ByteString.copyFrom(bytes)).build();
-        responseObserver.onNext(streamStreamDownloadFileResponseProto);
+        StreamDownloadFileResponseProto streamDownloadFileResponseProto = StreamDownloadFileResponseProto.newBuilder().setData(ByteString.copyFrom(bytes)).build();
+        responseObserver.onNext(streamDownloadFileResponseProto);
         responseObserver.onCompleted();
     }
 }

@@ -4,7 +4,7 @@ option java_multiple_files = true;
 option java_package = "org.tnmk.practice.springgrpc.protobuf";
 
 service StreamDownloadFileGrpcService {
-    rpc streamStreamDownloadFile (StreamDownloadFileRequestProto) returns (StreamDownloadFileResponseProto);
+    rpc streamDownloadFile (StreamDownloadFileRequestProto) returns (StreamDownloadFileResponseProto);
 }
 
 message StreamDownloadFileRequestProto {

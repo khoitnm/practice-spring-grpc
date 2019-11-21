@@ -9,10 +9,10 @@ import org.tnmk.practice.springgrpc.client.samplestory.streamdownloadfileclient.
 @Service
 public class Initiation {
     @Autowired
-    private StreamDownloadFileClient streamStreamDownloadFileClient;
+    private StreamDownloadFileClient streamDownloadFileClient;
 
     @EventListener(ApplicationReadyEvent.class)
     public void init() {
-        streamStreamDownloadFileClient.streamStreamDownloadFileFromServer();
+        streamDownloadFileClient.streamDownloadFileFromServer();
     }
 }

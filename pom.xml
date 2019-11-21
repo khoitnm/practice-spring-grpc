@@ -20,7 +20,7 @@
         <module>pro-05-grpc-tls</module>
         <module>pro-06-server-simple-delegation</module>
         <module>pro-07-unary-download-file</module>
-        <module>pro-08-stream-stream-download-file</module>
+        <module>pro-08-stream-download-file</module>
 
         <module>grpc-client-app</module>
         <module>practice-spring-grpc-dependencies</module>

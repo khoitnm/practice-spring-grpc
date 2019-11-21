@@ -29,12 +29,12 @@ public class StreamDownloadFileClient {
         this.blockingStub = StreamDownloadFileGrpcServiceGrpc.newBlockingStub(channel);
     }
 
-    public void streamStreamDownloadFileFromServer() {
-        StreamDownloadFileRequestProto streamStreamDownloadFileRequestProto = StreamDownloadFileRequestProto.newBuilder()
+    public void streamDownloadFileFromServer() {
+        StreamDownloadFileRequestProto streamDownloadFileRequestProto = StreamDownloadFileRequestProto.newBuilder()
             .setFileName("RandomFile_" + System.nanoTime())
             .build();
-        StreamDownloadFileResponseProto streamStreamDownloadFileResponseProto = blockingStub.streamStreamDownloadFile(streamStreamDownloadFileRequestProto);
-        String fileContent = streamStreamDownloadFileResponseProto.getData().toString(UTF_8);
+        StreamDownloadFileResponseProto streamDownloadFileResponseProto = blockingStub.streamDownloadFile(streamDownloadFileRequestProto);
+        String fileContent = streamDownloadFileResponseProto.getData().toString(UTF_8);
         logger.info("File Content\n" + fileContent);
     }
 }

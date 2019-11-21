@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.tnmk.skeleton</groupId>
-    <artifactId>pro-08-stream-stream-download-file</artifactId>
+    <artifactId>pro-08-stream-download-file</artifactId>
     <packaging>pom</packaging>
 
     <modules>
