@@ -75,6 +75,9 @@ To test the returning an empty object case:
 # References
 + https://github.com/LogNet/grpc-spring-boot-starter
 + https://thenewstack.io/build-real-world-microservices-with-grpc/
++ Upload file:
+    - https://github.com/grpc/grpc-go/issues/414 
+    - https://github.com/tzutalin/example-grpc/tree/master/java/src/main/java
 
 # TLS gRPC 
 Note: To make TLS gRPC works, the versions of dependencies must be compatible. Please look at the table in this link:
