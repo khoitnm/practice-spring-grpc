@@ -78,6 +78,8 @@ To test the returning an empty object case:
 + Upload file:
     - https://github.com/grpc/grpc-go/issues/414 
     - https://github.com/tzutalin/example-grpc/tree/master/java/src/main/java
+    - https://ops.tips/blog/sending-files-via-grpc/
+    - https://stackoverflow.com/questions/34969446/grpc-image-upload
 
 # TLS gRPC 
 Note: To make TLS gRPC works, the versions of dependencies must be compatible. Please look at the table in this link:
