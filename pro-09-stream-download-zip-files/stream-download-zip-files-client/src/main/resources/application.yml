@@ -1,0 +1,10 @@
+grpc-connections:
+  stream-download-zip-files-service:
+    host: localhost
+    port: 6565
+server:
+  port: 8081
+
+grpc:
+  server:
+    port: 6566

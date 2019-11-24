@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.tnmk.skeleton.practice-spring-grpc</groupId>
+    <artifactId>stream-download-zip-files-server</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <spring-boot.version>2.1.8.RELEASE</spring-boot.version>
+        <grpc-spring-boot-starter.version>2.4.3</grpc-spring-boot-starter.version>
+
+        <io-grpc.version>1.23.0</io-grpc.version>
+        <io-netty.version>2.0.25.Final</io-netty.version>
+        <protobuf-java.version>3.5.1</protobuf-java.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- SPRING FRAMEWORK DEPENDENCIES MANAGEMENT-->
+            <dependency>
+                <groupId>org.tnmk.skeleton</groupId>
+                <artifactId>practice-spring-grpc-dependencies</artifactId>
+                <version>0.0.1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!-- SPRING -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- SPRING-GRPC SERIALIZATION -->
+        <dependency>
+            <groupId>org.lognet</groupId>
+            <artifactId>grpc-spring-boot-starter</artifactId>
+<!--            <version>${grpc-spring-boot-starter.version}</version>-->
+        </dependency>
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+<!--            <version>${protobuf-java.version}</version>-->
+        </dependency>
+
+        <!-- PROTO MESSAGE -->
+        <dependency>
+            <groupId>org.tnmk.skeleton.practice-spring-grpc</groupId>
+            <artifactId>stream-download-zip-files-server-proto</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <!-- GRPC GENERATION: GENERATED STUB -->
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-stub</artifactId>
+<!--            <version>${io-grpc.version}</version>-->
+        </dependency>
+
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-protobuf</artifactId>
+<!--            <version>${io-grpc.version}</version>-->
+        </dependency>
+
+        <!-- GRPC TLS SERVER-->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-tcnative-boringssl-static</artifactId>
+<!--            <version>${io-netty.version}</version>-->
+        </dependency>
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+    </dependencies>
+
+    <repositories>
+        <!-- GRPC GENERATION -->
+        <repository>
+            <!-- required for grpc-spring-boot-starter -->
+            <id>jcenter</id>
+            <url>https://jcenter.bintray.com/</url>
+        </repository>
+    </repositories>
+
+</project>

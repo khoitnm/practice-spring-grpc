@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.tnmk.skeleton.practice-spring-grpc</groupId>
+    <artifactId>stream-download-zip-files-client</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <spring-boot.version>2.1.8.RELEASE</spring-boot.version>
+        <io-grpc.version>1.23.0</io-grpc.version>
+        <io-netty.version>2.0.25.Final</io-netty.version>
+        <protobuf-java.version>3.5.1</protobuf-java.version><!-- TODO Do we really need this??? -->
+
+        <org.mapstruct.version>1.2.0.Final</org.mapstruct.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- SPRING FRAMEWORK DEPENDENCIES MANAGEMENT-->
+            <dependency>
+                <groupId>org.tnmk.skeleton</groupId>
+                <artifactId>practice-spring-grpc-dependencies</artifactId>
+                <version>0.0.1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.tnmk.skeleton.practice-spring-grpc</groupId>
+            <artifactId>stream-download-zip-files-server-proto</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <!-- GRPC GENERATION: GENERATED STUB -->
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-stub</artifactId>
+<!--            <version>${io-grpc.version}</version>-->
+        </dependency>
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-protobuf</artifactId>
+<!--            <version>${io-grpc.version}</version>-->
+        </dependency>
+
+        <!-- GRPC CLIENT CONNECTION-->
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <!-- Use grpc-netty-shaded instead of grpc-netty to resolve incompatible versions https://github.com/grpc/grpc-java/blob/master/SECURITY.md -->
+            <artifactId>grpc-netty-shaded</artifactId>
+<!--            <version>${io-grpc.version}</version>-->
+        </dependency>
+
+        <!-- Grpc TLS -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-tcnative-boringssl-static</artifactId>
+<!--            <version>${io-netty.version}</version>-->
+        </dependency>
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>stream-download-zip-files-client-${project.version}</finalName>
+        <plugins>
+            <plugin><!-- This plugin help use to create a jar file in a way that we can run it by using `java -jar xxx.jar` -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+                <configuration>
+                    <mainClass>org.tnmk.practice.springgrpc.client.StreamDownloadZipFilesClientApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
