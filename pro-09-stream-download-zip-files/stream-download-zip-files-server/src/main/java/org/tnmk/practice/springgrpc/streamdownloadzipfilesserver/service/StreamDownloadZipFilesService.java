@@ -18,6 +18,10 @@ public class StreamDownloadZipFilesService {
     @Autowired
     private ZipEntriesStreaming zipEntriesStreaming;
 
+    /**
+     * @param numZipEntries
+     * @return the InputStream of the zipFile. The client code must close this InputStream after finishing reading this file.
+     */
     public InputStream downloadZipFile(long numZipEntries) {
         //TODO try to understand what is Thread interruption
         // Thread.currentThread().isInterrupted()
@@ -33,7 +37,7 @@ public class StreamDownloadZipFilesService {
 
         zipEntriesStreaming.asyncStreamEntriesData(numZipEntries, zipOutputStream);
 
-        //The client code will close the InputStream, hence will close the ZioOutputStream and pipedOutputStreamForZipFile, too!
+        //NOTE: The client code MUST close the InputStream, hence will close the ZioOutputStream and pipedOutputStreamForZipFile, too!
 //        pipedOutputStreamForZipFile.close();
 //        zipOutputStream.close();
         return pipedInputStreamForZipFile;
