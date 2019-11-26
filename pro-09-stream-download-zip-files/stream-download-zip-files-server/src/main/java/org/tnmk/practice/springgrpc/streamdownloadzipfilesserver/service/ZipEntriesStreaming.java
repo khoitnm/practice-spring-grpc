@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StreamUtils;
@@ -12,6 +14,7 @@ import org.tnmk.common.utils.UnexpectedException;
 
 @Service
 public class ZipEntriesStreaming {
+    public static final Logger logger = LoggerFactory.getLogger(ZipEntriesStreaming.class);
     public static final String SOURCE_FILE_NAME = "SampleFile";
     public static final String SOURCE_FILE_EXTENSION = ".txt";
     public static final String SOURCE_FILE_PATH = "/samplefiles/" + SOURCE_FILE_NAME + SOURCE_FILE_EXTENSION;
@@ -28,6 +31,15 @@ public class ZipEntriesStreaming {
             } catch (IOException e) {
                 throw new UnexpectedException("Cannot close zipEntry" + zipEntry.getName() + ": " + e, e);
             }
+        }
+        logger.info("Finish adding zip entries");
+        // DO NOT need to flush output stream
+        try {
+            zipOutputStream.close();
+            logger.info("Close zipOutputStream.");
+            //We MUST close stream. Otherwise, the client app will wait for it until timeout!?
+        } catch (IOException e) {
+            throw new UnexpectedException("Cannot close zipOutputStream: " + e.getMessage(), e);
         }
     }
 

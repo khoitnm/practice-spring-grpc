@@ -40,7 +40,7 @@ public class StreamDownloadZipFilesGrpcService extends StreamDownloadZipFilesGrp
         });
     }
 
-    private void stopReadingDataFromInputStream(InputStream inputStream, ServerCallStreamObserver<StreamDownloadChunkProto> serverCallStreamObserver){
+    private void stopReadingDataFromInputStream(InputStream inputStream, ServerCallStreamObserver<StreamDownloadChunkProto> serverCallStreamObserver) {
         logger.info("Bulk download was cancelled by client");
         close(inputStream);
         serverCallStreamObserver.onCompleted();
@@ -52,27 +52,30 @@ public class StreamDownloadZipFilesGrpcService extends StreamDownloadZipFilesGrp
             //The number of bytes which will be read from the inputStream and stored into the buffer.
             int numReadBytes = 0;
             while (serverCallStreamObserver.isReady() && (numReadBytes = inputStream.read(buffer, 0, buffer.length)) != -1) {
+                logger.info("Copy buffer data into response stream: numReadBytes=" + numReadBytes);
                 StreamDownloadChunkProto dataChunkProto = StreamDownloadChunkProto.newBuilder()
-                    .setData(ByteString.copyFrom(buffer, 0, numReadBytes))
-                    .build();
+                        .setData(ByteString.copyFrom(buffer, 0, numReadBytes))
+                        .build();
                 serverCallStreamObserver.onNext(dataChunkProto);
             }
 
             // If loop terminated because of length, the bulk download is complete; otherwise simply wait until client is ready again
             if (numReadBytes == -1) {//when numReadBytes == -1, it means all data inside the InputStream are read completely.
+                close(inputStream);
                 serverCallStreamObserver.onCompleted();
+                logger.info("Completed stream");
             } else {
+                logger.info("Continue waiting. Don't close the inputStream.");
                 //simply wait until client is ready again.
             }
-        } catch (IOException e) {
-            throw new UnexpectedException("Cannot read data and transfer it into the response " + e.getMessage(), e);
-        } finally {
+        } catch (Exception e) {
             close(inputStream);
             serverCallStreamObserver.onCompleted();
+            throw new UnexpectedException("Cannot read data and transfer it into the response " + e.getMessage(), e);
         }
     }
 
-    private void close(InputStream inputStream){
+    private void close(InputStream inputStream) {
         try {
             inputStream.close();
         } catch (IOException e) {
