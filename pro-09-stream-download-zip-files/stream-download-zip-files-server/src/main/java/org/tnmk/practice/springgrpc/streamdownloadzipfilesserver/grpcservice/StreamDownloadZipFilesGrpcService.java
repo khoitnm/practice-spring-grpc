@@ -19,7 +19,7 @@ import org.tnmk.practice.springgrpc.streamdownloadzipfilesserver.service.StreamD
 @GRpcService
 public class StreamDownloadZipFilesGrpcService extends StreamDownloadZipFilesGrpcServiceGrpc.StreamDownloadZipFilesGrpcServiceImplBase {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-    private static final int BUFFER_SIZE = 16 * 1024;//16 KB
+    private static final int BUFFER_SIZE = 200;//16 * 1024;//16 KB
     @Autowired
     private StreamDownloadZipFilesService streamDownloadZipFilesService;
 
@@ -52,7 +52,7 @@ public class StreamDownloadZipFilesGrpcService extends StreamDownloadZipFilesGrp
             //The number of bytes which will be read from the inputStream and stored into the buffer.
             int numReadBytes = 0;
             while (serverCallStreamObserver.isReady() && (numReadBytes = inputStream.read(buffer, 0, buffer.length)) != -1) {
-                logger.info("Copy buffer data into response stream: numReadBytes=" + numReadBytes);
+                logger.info("Copy buffer data into response stream: numReadBytes={}, inputStream.available={}", numReadBytes, inputStream.available());
                 StreamDownloadChunkProto dataChunkProto = StreamDownloadChunkProto.newBuilder()
                         .setData(ByteString.copyFrom(buffer, 0, numReadBytes))
                         .build();

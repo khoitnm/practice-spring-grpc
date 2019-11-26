@@ -36,12 +36,12 @@ public class StreamDownloadZipFilesClient {
     }
 
     public void downloadFileFromServer() {
-        String filePath = DOWNLOADED_FILE_PATH;
+        String destFilePath = DOWNLOADED_FILE_PATH;
         StreamDownloadZipFilesRequestProto streamDownloadZipFilesRequestProto = StreamDownloadZipFilesRequestProto.newBuilder()
                 .setNumZipFiles(10)
                 .build();
         Iterator<StreamDownloadChunkProto> streamDownloadChunkProtoIterator = blockStub.downloadFile(streamDownloadZipFilesRequestProto);
-        OutputStream outputStream = writeStreamDataToFileService.createStreamForWritingDataToFile(filePath);
+        OutputStream outputStream = writeStreamDataToFileService.createStreamForWritingDataToFile(destFilePath);
         while (streamDownloadChunkProtoIterator.hasNext()) {
             StreamDownloadChunkProto streamDownloadChunkProto = streamDownloadChunkProtoIterator.next();
             ByteString byteString = streamDownloadChunkProto.getData();
@@ -49,7 +49,7 @@ public class StreamDownloadZipFilesClient {
         }
         try {
             outputStream.close();
-            logger.info("Finish downloading bytes, the data was written into the file " + filePath);
+            logger.info("Finish downloading bytes, the data was written into the file " + destFilePath);
         } catch (IOException e) {
             throw new UnexpectedException("Cannot close outputStream:" + e.getMessage(), e);
         }
