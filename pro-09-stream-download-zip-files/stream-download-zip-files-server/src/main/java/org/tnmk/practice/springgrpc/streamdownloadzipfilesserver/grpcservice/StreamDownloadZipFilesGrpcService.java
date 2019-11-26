@@ -42,11 +42,7 @@ public class StreamDownloadZipFilesGrpcService extends StreamDownloadZipFilesGrp
 
     private void stopReadingDataFromInputStream(InputStream inputStream, ServerCallStreamObserver<StreamDownloadChunkProto> serverCallStreamObserver){
         logger.info("Bulk download was cancelled by client");
-        try {
-            inputStream.close();
-        } catch (IOException e) {
-            logger.error("Failed to clean bulk download streams: " + e.getMessage(), e);
-        }
+        close(inputStream);
         serverCallStreamObserver.onCompleted();
     }
 
@@ -71,12 +67,16 @@ public class StreamDownloadZipFilesGrpcService extends StreamDownloadZipFilesGrp
         } catch (IOException e) {
             throw new UnexpectedException("Cannot read data and transfer it into the response " + e.getMessage(), e);
         } finally {
-            try {
-                inputStream.close();
-            } catch (IOException e) {
-                throw new UnexpectedException("Cannot close the input stream " + e.getMessage(), e);
-            }
+            close(inputStream);
             serverCallStreamObserver.onCompleted();
+        }
+    }
+
+    private void close(InputStream inputStream){
+        try {
+            inputStream.close();
+        } catch (IOException e) {
+            throw new UnexpectedException("Cannot close the input stream " + e.getMessage(), e);
         }
     }
 }

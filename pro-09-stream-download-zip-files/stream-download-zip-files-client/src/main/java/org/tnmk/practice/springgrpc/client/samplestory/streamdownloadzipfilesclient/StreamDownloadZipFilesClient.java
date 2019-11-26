@@ -22,15 +22,15 @@ import java.util.Iterator;
 public class StreamDownloadZipFilesClient {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-    public static final String DOWNLOADED_FILE_PATH = "downloaded_file.txt";
+    public static final String DOWNLOADED_FILE_PATH = "downloaded_file.zip";
     private final WriteStreamDataToFileService writeStreamDataToFileService;
     private final StreamDownloadZipFilesGrpcServiceGrpc.StreamDownloadZipFilesGrpcServiceBlockingStub blockStub;
 
     @Autowired
     public StreamDownloadZipFilesClient(GrpcConnectionProperties grpcConnectionProperties, WriteStreamDataToFileService writeStreamDataToFileService) {
         ManagedChannel channel = ManagedChannelBuilder.forAddress(grpcConnectionProperties.getHost(), grpcConnectionProperties.getPort())
-            .usePlaintext()
-            .build();
+                .usePlaintext()
+                .build();
         this.writeStreamDataToFileService = writeStreamDataToFileService;
         this.blockStub = StreamDownloadZipFilesGrpcServiceGrpc.newBlockingStub(channel);
     }
@@ -38,8 +38,8 @@ public class StreamDownloadZipFilesClient {
     public void downloadFileFromServer() {
         String filePath = DOWNLOADED_FILE_PATH;
         StreamDownloadZipFilesRequestProto streamDownloadZipFilesRequestProto = StreamDownloadZipFilesRequestProto.newBuilder()
-            .setFileName("RandomFile_" + System.nanoTime())
-            .build();
+                .setNumZipFiles(10)
+                .build();
         Iterator<StreamDownloadChunkProto> streamDownloadChunkProtoIterator = blockStub.downloadFile(streamDownloadZipFilesRequestProto);
         OutputStream outputStream = writeStreamDataToFileService.createStreamForWritingDataToFile(filePath);
         while (streamDownloadChunkProtoIterator.hasNext()) {

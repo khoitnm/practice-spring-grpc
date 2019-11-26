@@ -43,12 +43,12 @@ public class StreamDownloadZipFilesService {
         return pipedInputStreamForZipFile;
     }
 
-    private PipedInputStream connectOutputStreamToInputStream(PipedOutputStream pipedOutputStream, int bufferSize) throws UnexpectedException{
+    private PipedInputStream connectOutputStreamToInputStream(PipedOutputStream pipedOutputStream, int bufferSize) throws UnexpectedException {
         try {
             PipedInputStream pipedInputStreamForZipFile = new PipedInputStream(pipedOutputStream, bufferSize);
             return pipedInputStreamForZipFile;
         } catch (IOException e) {
-            throw new UnexpectedException("Cannot connect pipedOutputStream to InputStream");
+            throw new UnexpectedException("Cannot connect pipedOutputStream to InputStream: " + e, e);
         }
     }
 }
