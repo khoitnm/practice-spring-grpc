@@ -23,6 +23,6 @@ public class Initiation {
     @EventListener(ApplicationReadyEvent.class)
     public void init() {
         Item item = itemPro01Client.getItem("RandomItemId" + System.nanoTime());
-        logger.info("Receive item:{}", item);
+        logger.info("Receive item from server: {}", item);
     }
 }
