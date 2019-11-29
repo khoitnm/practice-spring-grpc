@@ -1,4 +1,4 @@
-package org.tnmk.practice.springgrpc.client.samplestory.pro01clientsimple;
+package org.tnmk.practice.springgrpc.client.samplestory.pro04clientinterceptorheadererror;
 
 import io.grpc.*;
 import org.springframework.beans.BeanUtils;
@@ -12,7 +12,7 @@ import org.tnmk.practice.springgrpc.protobuf.ItemProto;
 import org.tnmk.practice.springgrpc.protobuf.SampleItemGrpcServiceGrpc;
 
 @Component
-public class ItemPro01ClientSimple {
+public class ItemPro04ClientInterceptorHeaderError {
 
     private final GrpcConnectionProperties connectionProperties;
     private final ItemMapper itemMapper;
@@ -21,7 +21,7 @@ public class ItemPro01ClientSimple {
     private SampleItemGrpcServiceGrpc.SampleItemGrpcServiceFutureStub futureStub;//Just to show that we can call with futureStub, we don't use it here.
 
     @Autowired
-    public ItemPro01ClientSimple(GrpcConnectionProperties connectionProperties, ItemMapper itemMapper) {
+    public ItemPro04ClientInterceptorHeaderError(GrpcConnectionProperties connectionProperties, ItemMapper itemMapper) {
         this.connectionProperties = connectionProperties;
         this.itemMapper = itemMapper;
 

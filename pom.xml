@@ -15,6 +15,7 @@
         <module>pro-01-server-simple</module>
         <module>pro-02-server-simple-header-and-error</module>
         <module>pro-03-server-interceptor</module>
+        <module>pro-04-client-interceptor-header-error</module>
         <module>pro-04-server-interceptor-multi-thread</module>
         <module>pro-04-server-interceptor-header-and-error</module>
         <module>pro-05-grpc-tls</module>

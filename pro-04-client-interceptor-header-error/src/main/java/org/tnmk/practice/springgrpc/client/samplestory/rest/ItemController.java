@@ -7,16 +7,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.tnmk.common.grpc.client.MDCConstants;
-import org.tnmk.practice.springgrpc.client.samplestory.pro01clientsimple.Item;
-import org.tnmk.practice.springgrpc.client.samplestory.pro01clientsimple.ItemId;
-import org.tnmk.practice.springgrpc.client.samplestory.pro01clientsimple.ItemPro01ClientSimple;
+import org.tnmk.practice.springgrpc.client.samplestory.pro04clientinterceptorheadererror.Item;
+import org.tnmk.practice.springgrpc.client.samplestory.pro04clientinterceptorheadererror.ItemId;
+import org.tnmk.practice.springgrpc.client.samplestory.pro04clientinterceptorheadererror.ItemPro04ClientInterceptorHeaderError;
 
 @RestController
 public class ItemController {
-    private final ItemPro01ClientSimple itemProtoClient;
+    private final ItemPro04ClientInterceptorHeaderError itemProtoClient;
 
     @Autowired
-    public ItemController(ItemPro01ClientSimple itemProtoClient) {
+    public ItemController(ItemPro04ClientInterceptorHeaderError itemProtoClient) {
         this.itemProtoClient = itemProtoClient;
     }
 
