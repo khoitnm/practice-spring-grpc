@@ -11,12 +11,15 @@ import java.util.Date;
 @Service
 public class SampleItemService {
     private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+
     public ItemProto getItem(String id) {
-        logger.info("GetItem - request: "+id);
+        logger.info("GetItem - request: " + id);
         ItemProto itemProto = ItemProto.newBuilder()
-            .setId(id)
-            .setName("Some name " + new Date()).build();
-        logger.info("GetItem - result: \n"+itemProto);
+                .setId(id)
+                .setName("Some name " + new Date())
+                .setDescription("Some description " + System.nanoTime())
+                .build();
+        logger.info("GetItem - result: \n" + itemProto);
         return itemProto;
     }
 }

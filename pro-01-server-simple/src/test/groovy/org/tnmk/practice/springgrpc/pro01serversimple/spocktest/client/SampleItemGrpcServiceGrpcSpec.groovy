@@ -5,7 +5,7 @@ import io.grpc.ManagedChannelBuilder
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.annotation.DirtiesContext
-import org.tnmk.practice.springgrpc.pro01serversimple.Pro01Application
+import org.tnmk.practice.springgrpc.pro01serversimple.Pro01ServerSimpleApplication
 import org.tnmk.practice.springgrpc.pro01serversimple.client.GrpcConnectionProperties
 import org.tnmk.practice.springgrpc.protobuf.ItemIdProto
 import org.tnmk.practice.springgrpc.protobuf.ItemProto
@@ -14,7 +14,7 @@ import spock.lang.Ignore
 import spock.lang.Specification
 
 @DirtiesContext
-@SpringBootTest(classes = Pro01Application.class)
+@SpringBootTest(classes = Pro01ServerSimpleApplication.class)
 class SampleItemGrpcServiceGrpcSpec extends Specification {
 
     @Autowired
@@ -38,6 +38,8 @@ class SampleItemGrpcServiceGrpcSpec extends Specification {
 
         then:
         itemProto.getId() != null
+        itemProto.getName() != null
+        itemProto.getDescription() != null
     }
 
 }
