@@ -2,35 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
+    <parent>
+        <artifactId>pro-01-simple</artifactId>
+        <groupId>org.tnmk.skeleton.practice-spring-grpc</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.tnmk.skeleton.practice-spring-grpc</groupId>
-    <artifactId>stream-download-file-server-proto</artifactId>
+    <artifactId>pro-01-server-simple-proto</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>8</java.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-
-        <io-grpc.version>1.23.0</io-grpc.version>
-    </properties>
-
-    <dependencyManagement>
-        <dependencies>
-            <!-- SPRING FRAMEWORK DEPENDENCIES MANAGEMENT-->
-            <dependency>
-                <groupId>org.tnmk.skeleton</groupId>
-                <artifactId>practice-spring-grpc-dependencies</artifactId>
-                <version>0.0.1</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <dependencies>
 
@@ -38,12 +19,14 @@
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-stub</artifactId>
+            <version>${io-grpc.version}</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-protobuf</artifactId>
+            <version>${io-grpc.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

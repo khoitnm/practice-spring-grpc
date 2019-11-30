@@ -11,8 +11,7 @@
     <modules>
         <module>common-grpc</module>
         <module>sample-proto</module>
-        <module>pro-01-client-simple</module>
-        <module>pro-01-server-simple</module>
+        <module>pro-01-simple</module>
         <module>pro-02-server-simple-header-and-error</module>
         <module>pro-03-server-interceptor</module>
         <module>pro-04-client-interceptor-header-error</module>
@@ -36,7 +35,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
 
         <spring-boot.version>2.1.8.RELEASE</spring-boot.version>
-        <grpc.version>1.23.0</grpc.version><!-- https://github.com/grpc/grpc-java/issues/2601 :v1.11.0 looks like has problem sending grpc header -->
+        <io-grpc.version>1.23.0</io-grpc.version><!-- https://github.com/grpc/grpc-java/issues/2601 :v1.11.0 looks like has problem sending grpc header -->
         <grpc-spring-boot-starter.version>2.4.3</grpc-spring-boot-starter.version>
     </properties>
 
@@ -55,27 +54,27 @@
             <dependency>
                 <groupId>io.grpc</groupId>
                 <artifactId>grpc-netty</artifactId>
-                <version>${grpc.version}</version>
+                <version>${io-grpc.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.grpc</groupId>
                 <artifactId>grpc-protobuf</artifactId>
-                <version>${grpc.version}</version>
+                <version>${io-grpc.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.grpc</groupId>
                 <artifactId>grpc-stub</artifactId>
-                <version>${grpc.version}</version>
+                <version>${io-grpc.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.grpc</groupId>
                 <artifactId>grpc-alts</artifactId>
-                <version>${grpc.version}</version>
+                <version>${io-grpc.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.grpc</groupId>
                 <artifactId>grpc-testing</artifactId>
-                <version>${grpc.version}</version>
+                <version>${io-grpc.version}</version>
                 <scope>test</scope>
             </dependency>
 

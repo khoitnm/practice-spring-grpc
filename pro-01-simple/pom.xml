@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.tnmk.skeleton</groupId>
-    <artifactId>practice-spring-grpc-dependencies</artifactId>
+    <groupId>org.tnmk.skeleton.practice-spring-grpc</groupId>
+    <artifactId>pro-01-simple</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.1</version>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <modules>
+        <module>pro-01-client-simple</module>
+        <module>pro-01-server-simple</module>
+        <module>pro-01-server-simple-proto</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -32,7 +38,6 @@
         <protobuf-maven-plugin.version>0.5.1</protobuf-maven-plugin.version>
         <os-maven-plugin.version>1.6.0</os-maven-plugin.version>
         <gmaven-plus-plugin.version>1.5</gmaven-plus-plugin.version>
-
     </properties>
 
     <dependencyManagement>
@@ -121,70 +126,4 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <!-- JAVA COMPILING -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${maven-compiler-plugin.version}</version>
-                    <configuration>
-                        <source>${java.version}</source>
-                        <target>${java.version}</target>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <version>${maven-jar-plugin.version}</version>
-                </plugin>
-
-                <!-- SPRING -->
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>${spring-boot.version}</version>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>repackage</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-
-                <!-- SPOCK - GROOVY TESTING -->
-                <plugin>
-                    <groupId>org.codehaus.gmavenplus</groupId>
-                    <artifactId>gmavenplus-plugin</artifactId>
-                    <version>${gmaven-plus-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${surefire.version}</version>
-                    <configuration>
-                        <includes>
-                            <include>**/*Spec.java</include>
-                            <include>**/*Test.java</include>
-                        </includes>
-                    </configuration>
-                </plugin>
-
-                <!-- PROTO-BUF GENERATION: The plugin for generating Java files from ProtoBuf files -->
-                <plugin>
-                    <groupId>org.xolstice.maven.plugins</groupId>
-                    <artifactId>protobuf-maven-plugin</artifactId>
-                    <version>${protobuf-maven-plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>kr.motd.maven</groupId>
-                    <artifactId>os-maven-plugin</artifactId>
-                    <version>${os-maven-plugin.version}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
 </project>
