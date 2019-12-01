@@ -5,6 +5,9 @@ option java_package = "org.tnmk.practice.springgrpc.protobuf";
 
 import "ItemProto.proto";
 
+/*
+ * a sample service
+ */
 service SampleItemGrpcService {
     rpc addItem (ItemProto) returns (ItemProto);
     rpc deleteItem (ItemIdProto) returns (ItemProto);

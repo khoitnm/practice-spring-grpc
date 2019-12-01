@@ -100,3 +100,13 @@ However, that netty is coupled inside spring boot and grpc-netty, that's why we 
 
 # Generate Documentation from proto files
 https://github.com/pseudomuto/protoc-gen-doc     
+
+Or by default, the generated Java class will aslo include comments in proto files.
+Then we can use asciidoc with Spring Boot?
+
+- https://medium.com/@thiagotn/testing-and-generate-documentation-for-restful-apis-using-spring-rest-docs-with-kotlin-and-7ba243df26c9
+- Overview some tools realted to asciidoc: https://medium.com/97-things/augment-javadoc-with-asciidoc-8d5c9a24dfe2
+    It also mentioned Antora to generate doc across multiple repositories.
+- Asciidoc: https://asciidoctor-docs.netlify.com/asciidoctor/1.5/
+- Generate asciidoc from Java code: https://mrhaki.blogspot.com/2015/10/awesome-asciidoctor-using-asciidoctor.html
+- Generate HTML/PDF from asciidoc format: https://www.baeldung.com/asciidoctor
