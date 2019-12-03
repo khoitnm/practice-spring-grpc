@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.tnmk.practice.springgrpc.protobuf";
+
+message MessageA {
+    int64 idLong = 1;
+    string name = 2;
+    bool activeA = 3;
+}
+
+message MessageB {
+    int32 idInt = 1;
+    string name = 2;
+    bool activeB = 3;
+}
