@@ -7,10 +7,20 @@ message MessageA {
     int64 idLong = 1;
     string name = 2;
     bool activeA = 3;
+    MessagAChild childA = 4;
+}
+
+message MessagAChild {
+    string name = 1;
 }
 
 message MessageB {
     int32 idInt = 1;
     string name = 2;
     bool activeB = 3;
+    MessageBChild childB = 4;
+}
+
+message MessageBChild {
+    string name = 1;
 }
