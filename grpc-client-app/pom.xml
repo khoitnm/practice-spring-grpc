@@ -110,15 +110,9 @@
 
         <!-- Content Management -->
         <dependency>
-            <groupId>com.leonardo.mona-lisa.mobias-mona-lisa-syndicator-api-gateway</groupId>
-            <artifactId>content-api-proto</artifactId>
-            <version>0.9.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.leonardo.mona-lisa.mobias-mona-lisa-syndicator-api-gateway</groupId>
-            <artifactId>collection-api-proto</artifactId>
-            <version>0.8.0</version>
+            <groupId>com.leonardo.mona-lisa.content-management.content</groupId>
+            <artifactId>content-vscape-syndication-service-proto</artifactId>
+            <version>0.8.1</version>
         </dependency>
     </dependencies>
 
