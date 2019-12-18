@@ -46,7 +46,7 @@ class UserGrpcServiceSpec extends BaseSpecification {
         UserAuthenticationRequestProto authenticationRequestProto = UserAuthenticationRequestProto.newBuilder()
             .setOidAccount(oidAccount)
             .setEmail("owner@langham.com")
-            .setPassword("so safe")
+            .setPassword("") //FIXME
             .build();
         UserAuthenticationResponseProto userAuthenticationResponseProto = authenticationGrpcServiceBlockingStub.authenticateUser(authenticationRequestProto);
         String jwt = userAuthenticationResponseProto.jwt;
