@@ -2,7 +2,10 @@ package org.tnmk.common.grpc.client;
 
 import io.grpc.*;
 import java.lang.invoke.MethodHandles;
+import java.util.Map;
 import java.util.UUID;
+
+import io.grpc.netty.shaded.io.netty.handler.codec.HeadersUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -32,6 +35,7 @@ public class GlobalGrpcClientInterceptor implements ClientInterceptor {
                     correlationId = UUID.randomUUID().toString();
                 }
                 headers.put(CORRELATION_ID, correlationId);
+                copyMDCToGrpcHeader(headers);
                 super.start(new ForwardingClientCallListener.SimpleForwardingClientCallListener<RespT>(responseListener) {
                     @Override
                     public void onHeaders(Metadata headers) {
@@ -46,5 +50,15 @@ public class GlobalGrpcClientInterceptor implements ClientInterceptor {
                 }, headers);
             }
         };
+    }
+
+    public void copyMDCToGrpcHeader(Metadata headers){
+        Map<String, String> mdcContext = MDC.getCopyOfContextMap();
+        if (mdcContext != null){
+            for (Map.Entry<String, String> mdcEntry : mdcContext.entrySet()) {
+                MetadataUtils.putMetadata(headers, mdcEntry.getKey(), mdcEntry.getValue());
+            }
+        }
+
     }
 }

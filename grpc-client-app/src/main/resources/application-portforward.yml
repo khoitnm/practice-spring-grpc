@@ -15,3 +15,7 @@ grpc-connections:
     host: 127.0.0.1
     port: 6565
     tls-certificate-file-path: ""
+  user-management:
+    host: 127.0.0.1
+    port: 6565
+    tls-certificate-file-path: ""
