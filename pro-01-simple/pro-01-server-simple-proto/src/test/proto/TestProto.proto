@@ -24,3 +24,13 @@ message MessageB {
 message MessageBChild {
     string name = 1;
 }
+
+/*
+ * The fields are the same as MessageA, only the field index are changed.
+ */
+message MessageC {
+    int64 idLong = 2;
+    string name = 1;
+    bool activeA = 4;
+    MessagAChild childA = 3;
+}
