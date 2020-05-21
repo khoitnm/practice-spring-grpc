@@ -1,4 +1,4 @@
-package org.tnmk.practice.springgrpc.pro01serversimple.spocktest.client
+package org.tnmk.practice.springgrpc.pro01serversimple.client
 
 import io.grpc.ManagedChannel
 import io.grpc.ManagedChannelBuilder
