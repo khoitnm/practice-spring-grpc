@@ -1,8 +1,8 @@
 package org.tnmk.practice.springgrpc.pro04serverinterceptorheaderanderror.samplestory.grpcservice;
 
-import com.leonardo.monalisa.authentication.authenticationserviceproto.proto.AuthenticationGrpcServiceGrpc;
-import com.leonardo.monalisa.authentication.authenticationserviceproto.proto.AuthenticationRequestProto;
-import com.leonardo.monalisa.authentication.authenticationserviceproto.proto.AuthenticationResponseProto;
+import org.tnmk.practice.authentication.authenticationserviceproto.proto.AuthenticationGrpcServiceGrpc;
+import org.tnmk.practice.authentication.authenticationserviceproto.proto.AuthenticationRequestProto;
+import org.tnmk.practice.authentication.authenticationserviceproto.proto.AuthenticationResponseProto;
 import io.grpc.stub.StreamObserver;
 import org.lognet.springboot.grpc.GRpcService;
 

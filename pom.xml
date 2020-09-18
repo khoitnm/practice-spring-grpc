@@ -23,7 +23,6 @@
         <module>pro-08-stream-download-file</module>
         <module>pro-09-stream-download-zip-files</module>
 
-        <module>grpc-client-app</module>
         <module>practice-spring-grpc-dependencies</module>
     </modules>
 
